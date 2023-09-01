@@ -16,7 +16,7 @@
 #define ENOTSUP 134		/* Not supported */
 
 /* Common addresses definition for temperature sensor. */
-#define NPM1300_ADDR                (0x6BU >> 1)
+#define NPM1300_ADDR             0x6B  //   (0x6BU >> 1)
 
 #define ARDUINO_SCL_PIN             27    // SCL signal pin
 #define ARDUINO_SDA_PIN             26    // SDA signal pin
@@ -115,7 +115,7 @@ static const struct linear_range vbus_current_ranges[] = {
 	LINEAR_RANGE_INIT(100000, 0, 1U, 1U), LINEAR_RANGE_INIT(500000, 100000, 5U, 15U)};
 
 
-static ret_code_t twi_master_init(void)
+ret_code_t twi_master_init(void)
 {
     ret_code_t ret;
     const nrfx_twi_config_t config =
@@ -335,17 +335,57 @@ int npm1300_charger_sample_fetch(void)
 
 	return ret;
 }
+#if 0  //from zephyr dts file
+npm1300_ek_regulators: regulators {
+					compatible = "nordic,npm1300-regulator";
+					npm1300_ek_buck1: BUCK1 {
+						regulator-min-microvolt = < 0x1b7740 >;
+						regulator-max-microvolt = < 0x325aa0 >;
+					};
+					npm1300_ek_buck2: BUCK2 {
+						regulator-min-microvolt = < 0xf4240 >;
+						regulator-max-microvolt = < 0x325aa0 >;
+						regulator-init-microvolt = < 0x325aa0 >;
+						retention-microvolt = < 0x2625a0 >;
+						enable-gpios = < &npm1300_ek_gpio 0x1 0x1 >;
+						retention-gpios = < &npm1300_ek_gpio 0x2 0x0 >;
+						pwm-gpios = < &npm1300_ek_gpio 0x2 0x1 >;
+					};
+					npm1300_ek_ldo1: LDO1 {
+						regulator-min-microvolt = < 0xf4240 >;
+						regulator-max-microvolt = < 0x325aa0 >;
+						enable-gpios = < &npm1300_ek_gpio 0x2 0x1 >;
+					};
+					npm1300_ek_ldo2: LDO2 {
+						regulator-min-microvolt = < 0xf4240 >;
+						regulator-max-microvolt = < 0x325aa0 >;
+						enable-gpios = < &npm1300_ek_gpio 0x2 0x1 >;
+					};
+				};
+npm1300_ek_charger: charger {
+					compatible = "nordic,npm1300-charger";
+					term-microvolt = < 0x3f52f0 >;
+					term-warm-microvolt = < 0x3d0900 >;
+					current-microamp = < 0x249f0 >;
+					dischg-limit-microamp = < 0xf4240 >;
+					vbus-limit-microamp = < 0x7a120 >;
+					thermistor-ohms = < 0x2710 >;
+					thermistor-beta = < 0xd34 >;
+					charging-enable;
+				};
+#endif
 
 int npm1300_charger_init(void)
 {
-	const struct npm1300_charger_config *const config = NULL;//dev->config;
+	struct npm1300_charger_config *config = NULL;
+        config->term_microvolt = 0x3f52f0;
+        config->term_warm_microvolt = 0x3d0900; 
+        config->current_microamp = 0x249f0;
+        config->dischg_limit_microamp = 0xf4240;
+        config->vbus_limit_microamp = 0x7a120;
+
 	uint16_t idx;
 	int ret;
-
-        ret = twi_master_init();
-        if (ret != 0) {
-		return ret;
-	}
 
 	/* Configure thermistor */
 	ret = reg_write(ADC_BASE, ADC_OFFSET_NTCR_SEL, config->thermistor_idx + 1U);

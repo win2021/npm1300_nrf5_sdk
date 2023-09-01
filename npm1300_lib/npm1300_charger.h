@@ -9,5 +9,6 @@
 int npm1300_charger_sample_fetch(void);
 int npm1300_charger_channel_get(enum sensor_channel chan,struct sensor_value *valp);
 int npm1300_charger_init(void);
+ret_code_t twi_master_init(void);
 
 #endif

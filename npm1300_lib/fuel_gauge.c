@@ -8,6 +8,8 @@
 #include "sensor.h"
 #include "npm1300_charger.h"
 #include "nrf_fuel_gauge.h"
+#include "nrf_log.h"
+#include "nrf_drv_twi.h"
 
 static float max_charge_current;
 static float term_charge_current;
@@ -16,6 +18,7 @@ static int64_t ref_time;
 extern int npm1300_charger_sample_fetch(void);
 extern int npm1300_charger_channel_get(enum sensor_channel chan,struct sensor_value *valp);
 extern int npm1300_charger_init(void);
+extern ret_code_t twi_master_init(void);
 
 static const struct battery_model battery_model = {
 #include "battery_model.inc"
@@ -49,8 +52,8 @@ int fuel_gauge_init(void)
 	struct nrf_fuel_gauge_init_parameters parameters = { .model = &battery_model };
 	int ret;
 
-        ret = npm1300_charger_init();
-        if (ret < 0) {
+        ret = twi_master_init();
+        if (ret != 0) {
 		return ret;
 	}
 
@@ -65,15 +68,27 @@ int fuel_gauge_init(void)
 	term_charge_current = max_charge_current / 10.f;
 
 	nrf_fuel_gauge_init(&parameters, NULL);
+
+        ret = npm1300_charger_init();
+        if (ret < 0) {
+		return ret;
+	}
         
 	//ref_time = k_uptime_get();  //maybe here is modify
-        ref_time = 1000000;   //about 15ms
+        ref_time = 4500000;   //about 15ms
 
 	return 0;
 }
 
 int fuel_gauge_update(void)
 {
+  char v_buf[20];
+  char i_buf[20];
+  char t_buf[20];
+  char soc_buf[20];
+  char tte_buf[20];
+  char ttf_buf[20];
+
 	float voltage;
 	float current;
 	float temp;
@@ -81,6 +96,7 @@ int fuel_gauge_update(void)
 	float tte;
 	float ttf;
 	float delta;
+        float testdata;
 	int ret;
 
 	ret = read_sensors(&voltage, &current, &temp);
@@ -90,14 +106,26 @@ int fuel_gauge_update(void)
 	}
 
 	//delta = (float) k_uptime_delta(&ref_time) / 1000.f;
-        delta = 100000;
+        delta = 3000000;
 
 	soc = nrf_fuel_gauge_process(voltage, current, temp, delta, NULL);
 	tte = nrf_fuel_gauge_tte_get();
 	ttf = nrf_fuel_gauge_ttf_get(-max_charge_current, -term_charge_current);
 
-	printf("V: %.3f, I: %.3f, T: %.2f, ", voltage, current, temp);
-	printf("SoC: %.2f, TTE: %.0f, TTF: %.0f\n", soc, tte, ttf);
+        sprintf(v_buf,"%s%d.%03d",NRF_LOG_FLOAT(voltage));
+        sprintf(i_buf,"%s%d.%03d",NRF_LOG_FLOAT(current));
+        sprintf(t_buf,"%s%d.%02d",NRF_LOG_FLOAT(temp));
+        sprintf(soc_buf,"%s%d.%02d",NRF_LOG_FLOAT(soc));
+        sprintf(tte_buf,"%s%d.%02d",NRF_LOG_FLOAT(tte));
+        sprintf(ttf_buf,"%s%d.%02d",NRF_LOG_FLOAT(ttf));
+
+	//printf("V: %.3f, I: %.3f, T: %.2f, ", voltage, current, temp);
+        printf("V: %s, I: %s, T: %s, ", v_buf, i_buf, t_buf);
+	printf("SoC: %s, TTE: %s, TTF: %s\n", soc_buf, tte_buf, ttf_buf);
+
+        //testdata = 31.141;
+        //sprintf(test1,"%s%d.%02d",NRF_LOG_FLOAT(testdata));
+        //printf("testdata: %s\n", test1);
 
 	return 0;
 }
