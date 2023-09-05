@@ -4888,8 +4888,8 @@ FLASH1           0x0000000000000000 0x0000000000080000 xw
 
 Linker script and memory map
 
-                0x0000000000004780                __do_debug_operation = __do_debug_operation_mempoll
-                0x0000000000004128                __vfprintf = __vfprintf_long
+                0x0000000000004710                __do_debug_operation = __do_debug_operation_mempoll
+                0x00000000000040b8                __vfprintf = __vfprintf_long
                 0x0000000000000000                __vfscanf = __vfscanf_long
                 0x0000000020000000                __RAM1_segment_start__ = 0x20000000
                 0x0000000020010000                __RAM1_segment_end__ = 0x20010000
@@ -5007,7 +5007,7 @@ Linker script and memory map
                 0x0000000000000001                . = ASSERT (((__init_rodata_start__ == __init_rodata_end__) || ((__init_rodata_end__ - __FLASH1_segment_start__) <= __FLASH1_segment_size__)), error: .init_rodata is too large to fit in FLASH1 memory segment)
                 0x00000000000003d0                __text_load_start__ = ALIGN (__init_rodata_end__, 0x4)
 
-.text           0x00000000000003d0     0x644c
+.text           0x00000000000003d0     0x63dc
                 0x00000000000003d0                __text_start__ = .
  *(.text .text.* .glue_7t .glue_7 .gnu.linkonce.t.* .gcc_except_table .ARM.extab* .gnu.linkonce.armextab.*)
  .glue_7        0x00000000000003d0        0x0 linker stubs
@@ -5221,218 +5221,217 @@ Linker script and memory map
  .text.adc_get_res
                 0x000000000000222c       0x3c Output/Debug/Obj/npm1300_pca10040/npm1300_charger.o
  .text.calc_current
-                0x0000000000002268      0x100 Output/Debug/Obj/npm1300_pca10040/npm1300_charger.o
+                0x0000000000002268      0x104 Output/Debug/Obj/npm1300_pca10040/npm1300_charger.o
  .text.npm1300_charger_channel_get
-                0x0000000000002368      0x1dc Output/Debug/Obj/npm1300_pca10040/npm1300_charger.o
-                0x0000000000002368                npm1300_charger_channel_get
+                0x000000000000236c      0x18c Output/Debug/Obj/npm1300_pca10040/npm1300_charger.o
+                0x000000000000236c                npm1300_charger_channel_get
  .text.reg_read
-                0x0000000000002544       0x84 Output/Debug/Obj/npm1300_pca10040/npm1300_charger.o
+                0x00000000000024f8       0x84 Output/Debug/Obj/npm1300_pca10040/npm1300_charger.o
  .text.npm1300_charger_sample_fetch
-                0x00000000000025c8      0x154 Output/Debug/Obj/npm1300_pca10040/npm1300_charger.o
-                0x00000000000025c8                npm1300_charger_sample_fetch
+                0x000000000000257c      0x164 Output/Debug/Obj/npm1300_pca10040/npm1300_charger.o
+                0x000000000000257c                npm1300_charger_sample_fetch
  .text.npm1300_charger_init
-                0x000000000000271c      0x36e Output/Debug/Obj/npm1300_pca10040/npm1300_charger.o
-                0x000000000000271c                npm1300_charger_init
- *fill*         0x0000000000002a8a        0x2 
+                0x00000000000026e0      0x36e Output/Debug/Obj/npm1300_pca10040/npm1300_charger.o
+                0x00000000000026e0                npm1300_charger_init
+ *fill*         0x0000000000002a4e        0x2 
  .text.read_sensors
-                0x0000000000002a8c       0xc0 Output/Debug/Obj/npm1300_pca10040/fuel_gauge.o
+                0x0000000000002a50       0xb8 Output/Debug/Obj/npm1300_pca10040/fuel_gauge.o
  .text.fuel_gauge_init
-                0x0000000000002b4c       0xb4 Output/Debug/Obj/npm1300_pca10040/fuel_gauge.o
-                0x0000000000002b4c                fuel_gauge_init
+                0x0000000000002b08       0xd0 Output/Debug/Obj/npm1300_pca10040/fuel_gauge.o
+                0x0000000000002b08                fuel_gauge_init
  .text.fuel_gauge_update
-                0x0000000000002c00      0x428 Output/Debug/Obj/npm1300_pca10040/fuel_gauge.o
-                0x0000000000002c00                fuel_gauge_update
+                0x0000000000002bd8      0x3e4 Output/Debug/Obj/npm1300_pca10040/fuel_gauge.o
+                0x0000000000002bd8                fuel_gauge_update
  .text.__aeabi_dadd
-                0x0000000000003028      0x244 C:/Program Files/SEGGER/SEGGER Embedded Studio for ARM 5.42a/lib/libm_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libm_asm.o)
-                0x0000000000003028                __aeabi_dadd
+                0x0000000000002fbc      0x244 C:/Program Files/SEGGER/SEGGER Embedded Studio for ARM 5.42a/lib/libm_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libm_asm.o)
+                0x0000000000002fbc                __aeabi_dadd
  .text.__aeabi_dsub
-                0x000000000000326c        0x8 C:/Program Files/SEGGER/SEGGER Embedded Studio for ARM 5.42a/lib/libm_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libm_asm.o)
-                0x000000000000326c                __aeabi_dsub
+                0x0000000000003200        0x8 C:/Program Files/SEGGER/SEGGER Embedded Studio for ARM 5.42a/lib/libm_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libm_asm.o)
+                0x0000000000003200                __aeabi_dsub
  .text.__aeabi_dmul
-                0x0000000000003274      0x138 C:/Program Files/SEGGER/SEGGER Embedded Studio for ARM 5.42a/lib/libm_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libm_asm.o)
-                0x0000000000003274                __aeabi_dmul
+                0x0000000000003208      0x138 C:/Program Files/SEGGER/SEGGER Embedded Studio for ARM 5.42a/lib/libm_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libm_asm.o)
+                0x0000000000003208                __aeabi_dmul
  .text.__aeabi_ddiv
-                0x00000000000033ac      0x1cc C:/Program Files/SEGGER/SEGGER Embedded Studio for ARM 5.42a/lib/libm_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libm_asm.o)
-                0x00000000000033ac                __aeabi_ddiv
+                0x0000000000003340      0x1cc C:/Program Files/SEGGER/SEGGER Embedded Studio for ARM 5.42a/lib/libm_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libm_asm.o)
+                0x0000000000003340                __aeabi_ddiv
  .text.__aeabi_dcmpeq
-                0x0000000000003578       0x34 C:/Program Files/SEGGER/SEGGER Embedded Studio for ARM 5.42a/lib/libm_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libm_asm.o)
-                0x0000000000003578                __aeabi_dcmpeq
+                0x000000000000350c       0x34 C:/Program Files/SEGGER/SEGGER Embedded Studio for ARM 5.42a/lib/libm_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libm_asm.o)
+                0x000000000000350c                __aeabi_dcmpeq
  .text.__aeabi_dcmpgt
-                0x00000000000035ac       0x38 C:/Program Files/SEGGER/SEGGER Embedded Studio for ARM 5.42a/lib/libm_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libm_asm.o)
-                0x00000000000035ac                __aeabi_dcmpgt
+                0x0000000000003540       0x38 C:/Program Files/SEGGER/SEGGER Embedded Studio for ARM 5.42a/lib/libm_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libm_asm.o)
+                0x0000000000003540                __aeabi_dcmpgt
  .text.__aeabi_dcmplt
-                0x00000000000035e4       0x38 C:/Program Files/SEGGER/SEGGER Embedded Studio for ARM 5.42a/lib/libm_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libm_asm.o)
-                0x00000000000035e4                __aeabi_dcmplt
+                0x0000000000003578       0x38 C:/Program Files/SEGGER/SEGGER Embedded Studio for ARM 5.42a/lib/libm_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libm_asm.o)
+                0x0000000000003578                __aeabi_dcmplt
  .text.__aeabi_dcmpun
-                0x000000000000361c       0x20 C:/Program Files/SEGGER/SEGGER Embedded Studio for ARM 5.42a/lib/libm_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libm_asm.o)
-                0x000000000000361c                __aeabi_dcmpun
+                0x00000000000035b0       0x20 C:/Program Files/SEGGER/SEGGER Embedded Studio for ARM 5.42a/lib/libm_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libm_asm.o)
+                0x00000000000035b0                __aeabi_dcmpun
  .text.__aeabi_i2d
-                0x000000000000363c       0x28 C:/Program Files/SEGGER/SEGGER Embedded Studio for ARM 5.42a/lib/libm_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libm_asm.o)
-                0x000000000000363c                __aeabi_i2d
+                0x00000000000035d0       0x28 C:/Program Files/SEGGER/SEGGER Embedded Studio for ARM 5.42a/lib/libm_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libm_asm.o)
+                0x00000000000035d0                __aeabi_i2d
  .text.__aeabi_f2d
-                0x0000000000003664       0x34 C:/Program Files/SEGGER/SEGGER Embedded Studio for ARM 5.42a/lib/libm_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libm_asm.o)
-                0x0000000000003664                __aeabi_f2d
+                0x00000000000035f8       0x34 C:/Program Files/SEGGER/SEGGER Embedded Studio for ARM 5.42a/lib/libm_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libm_asm.o)
+                0x00000000000035f8                __aeabi_f2d
  .text.__aeabi_d2f
-                0x0000000000003698       0x54 C:/Program Files/SEGGER/SEGGER Embedded Studio for ARM 5.42a/lib/libm_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libm_asm.o)
-                0x0000000000003698                __aeabi_d2f
+                0x000000000000362c       0x54 C:/Program Files/SEGGER/SEGGER Embedded Studio for ARM 5.42a/lib/libm_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libm_asm.o)
+                0x000000000000362c                __aeabi_d2f
  .text.__float32_isinf
-                0x00000000000036ec       0x14 C:/Program Files/SEGGER/SEGGER Embedded Studio for ARM 5.42a/lib/libm_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libm_asm.o)
-                0x00000000000036ec                __float32_isinf
+                0x0000000000003680       0x14 C:/Program Files/SEGGER/SEGGER Embedded Studio for ARM 5.42a/lib/libm_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libm_asm.o)
+                0x0000000000003680                __float32_isinf
  .text.__float32_isnan
-                0x0000000000003700       0x14 C:/Program Files/SEGGER/SEGGER Embedded Studio for ARM 5.42a/lib/libm_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libm_asm.o)
-                0x0000000000003700                __float32_isnan
+                0x0000000000003694       0x14 C:/Program Files/SEGGER/SEGGER Embedded Studio for ARM 5.42a/lib/libm_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libm_asm.o)
+                0x0000000000003694                __float32_isnan
  .text.__float64_isnan
-                0x0000000000003714       0x14 C:/Program Files/SEGGER/SEGGER Embedded Studio for ARM 5.42a/lib/libm_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libm_asm.o)
-                0x0000000000003714                __float64_isnan
- .text.fabsf    0x0000000000003728        0x8 C:/Program Files/SEGGER/SEGGER Embedded Studio for ARM 5.42a/lib/libm_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libm_asm.o)
-                0x0000000000003728                fabsf
-                0x0000000000003728                fabs(float)
- .text.floorf   0x0000000000003730       0x70 C:/Program Files/SEGGER/SEGGER Embedded Studio for ARM 5.42a/lib/libm_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libm_asm.o)
-                0x0000000000003730                floorf
-                0x0000000000003730                floor(float)
- .text.frexpf   0x00000000000037a0       0x3c C:/Program Files/SEGGER/SEGGER Embedded Studio for ARM 5.42a/lib/libm_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libm_asm.o)
-                0x00000000000037a0                frexpf
-                0x00000000000037a0                frexp(float, int*)
+                0x00000000000036a8       0x14 C:/Program Files/SEGGER/SEGGER Embedded Studio for ARM 5.42a/lib/libm_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libm_asm.o)
+                0x00000000000036a8                __float64_isnan
+ .text.fabsf    0x00000000000036bc        0x8 C:/Program Files/SEGGER/SEGGER Embedded Studio for ARM 5.42a/lib/libm_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libm_asm.o)
+                0x00000000000036bc                fabsf
+                0x00000000000036bc                fabs(float)
+ .text.floorf   0x00000000000036c4       0x70 C:/Program Files/SEGGER/SEGGER Embedded Studio for ARM 5.42a/lib/libm_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libm_asm.o)
+                0x00000000000036c4                floorf
+                0x00000000000036c4                floor(float)
+ .text.frexpf   0x0000000000003734       0x3c C:/Program Files/SEGGER/SEGGER Embedded Studio for ARM 5.42a/lib/libm_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libm_asm.o)
+                0x0000000000003734                frexpf
+                0x0000000000003734                frexp(float, int*)
  .text.libc.expf
-                0x00000000000037dc      0x16c C:/Program Files/SEGGER/SEGGER Embedded Studio for ARM 5.42a/lib/libm_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libm2.o)
-                0x00000000000037dc                expf
-                0x00000000000037dc                exp(float)
+                0x0000000000003770      0x16c C:/Program Files/SEGGER/SEGGER Embedded Studio for ARM 5.42a/lib/libm_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libm2.o)
+                0x0000000000003770                expf
+                0x0000000000003770                exp(float)
  .text.libc.fmaxf
-                0x0000000000003948       0x3c C:/Program Files/SEGGER/SEGGER Embedded Studio for ARM 5.42a/lib/libm_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libm2.o)
-                0x0000000000003948                fmaxf
-                0x0000000000003948                fmax(float, float)
+                0x00000000000038dc       0x3c C:/Program Files/SEGGER/SEGGER Embedded Studio for ARM 5.42a/lib/libm_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libm2.o)
+                0x00000000000038dc                fmaxf
+                0x00000000000038dc                fmax(float, float)
  .text.libc.fminf
-                0x0000000000003984       0x10 C:/Program Files/SEGGER/SEGGER Embedded Studio for ARM 5.42a/lib/libm_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libm2.o)
-                0x0000000000003984                fmin(float, float)
-                0x0000000000003984                fminf
+                0x0000000000003918       0x10 C:/Program Files/SEGGER/SEGGER Embedded Studio for ARM 5.42a/lib/libm_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libm2.o)
+                0x0000000000003918                fmin(float, float)
+                0x0000000000003918                fminf
  .text.libc.frexp
-                0x0000000000003994       0x50 C:/Program Files/SEGGER/SEGGER Embedded Studio for ARM 5.42a/lib/libm_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libm2.o)
-                0x0000000000003994                frexpl(long double, int*)
-                0x0000000000003994                frexpl
-                0x0000000000003994                frexp
-                0x0000000000003994                frexp(double, int*)
- *fill*         0x00000000000039e4        0x4 
+                0x0000000000003928       0x50 C:/Program Files/SEGGER/SEGGER Embedded Studio for ARM 5.42a/lib/libm_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libm2.o)
+                0x0000000000003928                frexpl(long double, int*)
+                0x0000000000003928                frexpl
+                0x0000000000003928                frexp
+                0x0000000000003928                frexp(double, int*)
  .text.libc.ldexp
-                0x00000000000039e8       0x7c C:/Program Files/SEGGER/SEGGER Embedded Studio for ARM 5.42a/lib/libm_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libm2.o)
-                0x00000000000039e8                ldexpl(long double, int)
-                0x00000000000039e8                ldexp
-                0x00000000000039e8                ldexpl
-                0x00000000000039e8                ldexp(double, int)
- *fill*         0x0000000000003a64        0x4 
+                0x0000000000003978       0x7c C:/Program Files/SEGGER/SEGGER Embedded Studio for ARM 5.42a/lib/libm_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libm2.o)
+                0x0000000000003978                ldexpl(long double, int)
+                0x0000000000003978                ldexp
+                0x0000000000003978                ldexpl
+                0x0000000000003978                ldexp(double, int)
+ *fill*         0x00000000000039f4        0x4 
  .text.libc.log
-                0x0000000000003a68      0x230 C:/Program Files/SEGGER/SEGGER Embedded Studio for ARM 5.42a/lib/libm_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libm2.o)
-                0x0000000000003a68                log(double)
-                0x0000000000003a68                logl
-                0x0000000000003a68                logl(long double)
-                0x0000000000003a68                log
+                0x00000000000039f8      0x230 C:/Program Files/SEGGER/SEGGER Embedded Studio for ARM 5.42a/lib/libm_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libm2.o)
+                0x00000000000039f8                log(double)
+                0x00000000000039f8                logl
+                0x00000000000039f8                logl(long double)
+                0x00000000000039f8                log
  .text.libc.logf
-                0x0000000000003c98      0x114 C:/Program Files/SEGGER/SEGGER Embedded Studio for ARM 5.42a/lib/libm_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libm2.o)
-                0x0000000000003c98                log(float)
-                0x0000000000003c98                logf
+                0x0000000000003c28      0x114 C:/Program Files/SEGGER/SEGGER Embedded Studio for ARM 5.42a/lib/libm_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libm2.o)
+                0x0000000000003c28                log(float)
+                0x0000000000003c28                logf
  .text.libc.modff
-                0x0000000000003dac       0x5c C:/Program Files/SEGGER/SEGGER Embedded Studio for ARM 5.42a/lib/libm_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libm2.o)
-                0x0000000000003dac                modf(float, float*)
-                0x0000000000003dac                modff
+                0x0000000000003d3c       0x5c C:/Program Files/SEGGER/SEGGER Embedded Studio for ARM 5.42a/lib/libm_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libm2.o)
+                0x0000000000003d3c                modf(float, float*)
+                0x0000000000003d3c                modff
  .text.libc.fmodf
-                0x0000000000003e08       0xfc C:/Program Files/SEGGER/SEGGER Embedded Studio for ARM 5.42a/lib/libm_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libm2.o)
-                0x0000000000003e08                fmod(float, float)
-                0x0000000000003e08                fmodf
+                0x0000000000003d98       0xfc C:/Program Files/SEGGER/SEGGER Embedded Studio for ARM 5.42a/lib/libm_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libm2.o)
+                0x0000000000003d98                fmod(float, float)
+                0x0000000000003d98                fmodf
  .text.libc.__putc
-                0x0000000000003f04       0x36 C:/Program Files/SEGGER/SEGGER Embedded Studio for ARM 5.42a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libc2.o)
-                0x0000000000003f04                __putc
+                0x0000000000003e94       0x36 C:/Program Files/SEGGER/SEGGER Embedded Studio for ARM 5.42a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libc2.o)
+                0x0000000000003e94                __putc
  .text.libc.__RAL_print_padding
-                0x0000000000003f3a       0x1c C:/Program Files/SEGGER/SEGGER Embedded Studio for ARM 5.42a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libc2.o)
-                0x0000000000003f3a                __RAL_print_padding
+                0x0000000000003eca       0x1c C:/Program Files/SEGGER/SEGGER Embedded Studio for ARM 5.42a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libc2.o)
+                0x0000000000003eca                __RAL_print_padding
  .text.libc.__RAL_pre_padding
-                0x0000000000003f56       0x1a C:/Program Files/SEGGER/SEGGER Embedded Studio for ARM 5.42a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libc2.o)
-                0x0000000000003f56                __RAL_pre_padding
+                0x0000000000003ee6       0x1a C:/Program Files/SEGGER/SEGGER Embedded Studio for ARM 5.42a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libc2.o)
+                0x0000000000003ee6                __RAL_pre_padding
  .text.libc.__aeabi_errno_addr
-                0x0000000000003f70       0x14 C:/Program Files/SEGGER/SEGGER Embedded Studio for ARM 5.42a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libc2.o)
-                0x0000000000003f70                __aeabi_errno_addr
+                0x0000000000003f00       0x14 C:/Program Files/SEGGER/SEGGER Embedded Studio for ARM 5.42a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libc2.o)
+                0x0000000000003f00                __aeabi_errno_addr
  .text.libc.printf
-                0x0000000000003f84       0x40 C:/Program Files/SEGGER/SEGGER Embedded Studio for ARM 5.42a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libc2.o)
-                0x0000000000003f84                printf
+                0x0000000000003f14       0x40 C:/Program Files/SEGGER/SEGGER Embedded Studio for ARM 5.42a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libc2.o)
+                0x0000000000003f14                printf
  .text.libc.sprintf
-                0x0000000000003fc4       0x2a C:/Program Files/SEGGER/SEGGER Embedded Studio for ARM 5.42a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libc2.o)
-                0x0000000000003fc4                sprintf
+                0x0000000000003f54       0x2a C:/Program Files/SEGGER/SEGGER Embedded Studio for ARM 5.42a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libc2.o)
+                0x0000000000003f54                sprintf
  .text.libc.strnlen
-                0x0000000000003fee       0x22 C:/Program Files/SEGGER/SEGGER Embedded Studio for ARM 5.42a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libc2.o)
-                0x0000000000003fee                strnlen
+                0x0000000000003f7e       0x22 C:/Program Files/SEGGER/SEGGER Embedded Studio for ARM 5.42a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libc2.o)
+                0x0000000000003f7e                strnlen
  .text.libc.memcpy
-                0x0000000000004010       0x52 C:/Program Files/SEGGER/SEGGER Embedded Studio for ARM 5.42a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libc2_asm.o)
-                0x0000000000004010                __aeabi_memcpy
-                0x0000000000004010                memcpy
-                0x000000000000401c                __aeabi_memcpy8
-                0x000000000000401c                __aeabi_memcpy4
+                0x0000000000003fa0       0x52 C:/Program Files/SEGGER/SEGGER Embedded Studio for ARM 5.42a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libc2_asm.o)
+                0x0000000000003fa0                __aeabi_memcpy
+                0x0000000000003fa0                memcpy
+                0x0000000000003fac                __aeabi_memcpy8
+                0x0000000000003fac                __aeabi_memcpy4
  .text.libc.memset
-                0x0000000000004062       0x66 C:/Program Files/SEGGER/SEGGER Embedded Studio for ARM 5.42a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libc2_asm.o)
-                0x0000000000004062                memset
+                0x0000000000003ff2       0x66 C:/Program Files/SEGGER/SEGGER Embedded Studio for ARM 5.42a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libc2_asm.o)
+                0x0000000000003ff2                memset
  .text.libc.strlen
-                0x00000000000040c8       0x60 C:/Program Files/SEGGER/SEGGER Embedded Studio for ARM 5.42a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libc2_asm.o)
-                0x00000000000040c8                strlen
+                0x0000000000004058       0x60 C:/Program Files/SEGGER/SEGGER Embedded Studio for ARM 5.42a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libc2_asm.o)
+                0x0000000000004058                strlen
  .text.libc.__vfprintf_long
-                0x0000000000004128      0x638 C:/Program Files/SEGGER/SEGGER Embedded Studio for ARM 5.42a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libvfprintf.o)
-                0x0000000000004128                __vfprintf_long
+                0x00000000000040b8      0x638 C:/Program Files/SEGGER/SEGGER Embedded Studio for ARM 5.42a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libvfprintf.o)
+                0x00000000000040b8                __vfprintf_long
  .text.libc.__printf_lock
-                0x0000000000004760        0x2 C:/Program Files/SEGGER/SEGGER Embedded Studio for ARM 5.42a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libc.o)
-                0x0000000000004760                __printf_lock
+                0x00000000000046f0        0x2 C:/Program Files/SEGGER/SEGGER Embedded Studio for ARM 5.42a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libc.o)
+                0x00000000000046f0                __printf_lock
  .text.libc.__printf_unlock
-                0x0000000000004762        0x2 C:/Program Files/SEGGER/SEGGER Embedded Studio for ARM 5.42a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libc.o)
-                0x0000000000004762                __printf_unlock
+                0x00000000000046f2        0x2 C:/Program Files/SEGGER/SEGGER Embedded Studio for ARM 5.42a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libc.o)
+                0x00000000000046f2                __printf_unlock
  .text.libdebugio.debug_putchar
-                0x0000000000004764       0x18 C:/Program Files/SEGGER/SEGGER Embedded Studio for ARM 5.42a/lib/libdebugio_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libdebugio.o)
-                0x0000000000004764                debug_putchar
+                0x00000000000046f4       0x18 C:/Program Files/SEGGER/SEGGER Embedded Studio for ARM 5.42a/lib/libdebugio_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libdebugio.o)
+                0x00000000000046f4                debug_putchar
  .text.libdebugio.__debug_io_lock
-                0x000000000000477c        0x2 C:/Program Files/SEGGER/SEGGER Embedded Studio for ARM 5.42a/lib/libdebugio_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libdebugio.o)
-                0x000000000000477c                __debug_io_lock
+                0x000000000000470c        0x2 C:/Program Files/SEGGER/SEGGER Embedded Studio for ARM 5.42a/lib/libdebugio_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libdebugio.o)
+                0x000000000000470c                __debug_io_lock
  .text.libdebugio.__debug_io_unlock
-                0x000000000000477e        0x2 C:/Program Files/SEGGER/SEGGER Embedded Studio for ARM 5.42a/lib/libdebugio_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libdebugio.o)
-                0x000000000000477e                __debug_io_unlock
+                0x000000000000470e        0x2 C:/Program Files/SEGGER/SEGGER Embedded Studio for ARM 5.42a/lib/libdebugio_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libdebugio.o)
+                0x000000000000470e                __debug_io_unlock
  .text.libdebugio.__do_debug_operation_mempoll
-                0x0000000000004780       0x30 C:/Program Files/SEGGER/SEGGER Embedded Studio for ARM 5.42a/lib/libdebugio_v7em_fpv4_sp_d16_hard_t_le_eabi.a(mempoll_debug_operations.o)
-                0x0000000000004780                __do_debug_operation_mempoll
- .text          0x00000000000047b0       0x8c ../../../../../../examples/lm_code/nrf_npm1300_fuel_gauge/npm1300_lib/lib/cortex-m4/hard-float/libnrf_fuel_gauge.a(libnrf_fuel_gauge__obfuscated.elf)
-                0x00000000000047b0                nrf_fuel_gauge_init
- .text          0x000000000000483c       0x60 ../../../../../../examples/lm_code/nrf_npm1300_fuel_gauge/npm1300_lib/lib/cortex-m4/hard-float/libnrf_fuel_gauge.a(libnrf_fuel_gauge__obfuscated.elf)
-                0x000000000000483c                nrf_fuel_gauge_process
- .text          0x000000000000489c        0xc ../../../../../../examples/lm_code/nrf_npm1300_fuel_gauge/npm1300_lib/lib/cortex-m4/hard-float/libnrf_fuel_gauge.a(libnrf_fuel_gauge__obfuscated.elf)
-                0x000000000000489c                nrf_fuel_gauge_tte_get
- .text          0x00000000000048a8        0xc ../../../../../../examples/lm_code/nrf_npm1300_fuel_gauge/npm1300_lib/lib/cortex-m4/hard-float/libnrf_fuel_gauge.a(libnrf_fuel_gauge__obfuscated.elf)
-                0x00000000000048a8                nrf_fuel_gauge_ttf_get
- .text          0x00000000000048b4      0x198 ../../../../../../examples/lm_code/nrf_npm1300_fuel_gauge/npm1300_lib/lib/cortex-m4/hard-float/libnrf_fuel_gauge.a(libnrf_fuel_gauge__obfuscated.elf)
-                0x00000000000048b4                sym_UAZPLDKGPDVQX5TKL77ORD2WLPGOPSZ2NV5YCZI
- .text          0x0000000000004a4c      0x400 ../../../../../../examples/lm_code/nrf_npm1300_fuel_gauge/npm1300_lib/lib/cortex-m4/hard-float/libnrf_fuel_gauge.a(libnrf_fuel_gauge__obfuscated.elf)
-                0x0000000000004a4c                sym_5OPP37WU6XHQMSAL5GW2DIFF6HY5W7NQQYWLB5Y
- .text          0x0000000000004e4c       0x1c ../../../../../../examples/lm_code/nrf_npm1300_fuel_gauge/npm1300_lib/lib/cortex-m4/hard-float/libnrf_fuel_gauge.a(libnrf_fuel_gauge__obfuscated.elf)
-                0x0000000000004e4c                sym_IIGOMG7JGLSQ4TS65377DCUR25GF54AHS4YY7WY
- .text          0x0000000000004e68       0x64 ../../../../../../examples/lm_code/nrf_npm1300_fuel_gauge/npm1300_lib/lib/cortex-m4/hard-float/libnrf_fuel_gauge.a(libnrf_fuel_gauge__obfuscated.elf)
-                0x0000000000004e68                sym_ZYPI4JQCEQGXDLJFOPU5GSQ3XIVTXZC6R4B7OYQ
- .text          0x0000000000004ecc       0x64 ../../../../../../examples/lm_code/nrf_npm1300_fuel_gauge/npm1300_lib/lib/cortex-m4/hard-float/libnrf_fuel_gauge.a(libnrf_fuel_gauge__obfuscated.elf)
-                0x0000000000004ecc                sym_Y7TL3SFWHWSOZBTJCULEIA3LHLTTIAX7EYNM7OQ
- .text          0x0000000000004f30       0x34 ../../../../../../examples/lm_code/nrf_npm1300_fuel_gauge/npm1300_lib/lib/cortex-m4/hard-float/libnrf_fuel_gauge.a(libnrf_fuel_gauge__obfuscated.elf)
-                0x0000000000004f30                sym_3UIHQUC7XVAXESSVI5JMOL44XN7QRX6LGJLZCPA
- .text          0x0000000000004f64      0x1a4 ../../../../../../examples/lm_code/nrf_npm1300_fuel_gauge/npm1300_lib/lib/cortex-m4/hard-float/libnrf_fuel_gauge.a(libnrf_fuel_gauge__obfuscated.elf)
-                0x0000000000004f64                sym_GUEPXTDH5NNPPR4S7QYQRKNWV6MFZE6WHCAQYTI
- .text          0x0000000000005108       0x24 ../../../../../../examples/lm_code/nrf_npm1300_fuel_gauge/npm1300_lib/lib/cortex-m4/hard-float/libnrf_fuel_gauge.a(libnrf_fuel_gauge__obfuscated.elf)
-                0x0000000000005108                sym_SBD2NVCKYJ3J5NPJP4ABVNYTZBKNTPTXCRZVBFY
- *fill*         0x000000000000512c        0x4 
- .text          0x0000000000005130     0x1214 ../../../../../../examples/lm_code/nrf_npm1300_fuel_gauge/npm1300_lib/lib/cortex-m4/hard-float/libnrf_fuel_gauge.a(libnrf_fuel_gauge__obfuscated.elf)
-                0x0000000000005130                sym_3KIPDHMQQDERGOPJKAF4KMY7F76E62MKGMWAZYA
- .text          0x0000000000006344      0x30c ../../../../../../examples/lm_code/nrf_npm1300_fuel_gauge/npm1300_lib/lib/cortex-m4/hard-float/libnrf_fuel_gauge.a(libnrf_fuel_gauge__obfuscated.elf)
-                0x0000000000006344                sym_AG2LBGGSIA77K5XJMD3UV3SBGRW3AIHATLB7FZA
- .text          0x0000000000006650      0x10c ../../../../../../examples/lm_code/nrf_npm1300_fuel_gauge/npm1300_lib/lib/cortex-m4/hard-float/libnrf_fuel_gauge.a(libnrf_fuel_gauge__obfuscated.elf)
-                0x0000000000006650                sym_7XQW4RE4A3JLVFL2OP6WK5QVNJ446EJG7FAPPAY
- .text          0x000000000000675c       0xb8 ../../../../../../examples/lm_code/nrf_npm1300_fuel_gauge/npm1300_lib/lib/cortex-m4/hard-float/libnrf_fuel_gauge.a(libnrf_fuel_gauge__obfuscated.elf)
-                0x000000000000675c                sym_OPTO2XH6CI6Y5TL7RRJWOQE3AL2WZINJXFVJHQY
+                0x0000000000004710       0x30 C:/Program Files/SEGGER/SEGGER Embedded Studio for ARM 5.42a/lib/libdebugio_v7em_fpv4_sp_d16_hard_t_le_eabi.a(mempoll_debug_operations.o)
+                0x0000000000004710                __do_debug_operation_mempoll
+ .text          0x0000000000004740       0x8c ../../../../../../examples/lm_code/nrf_npm1300_fuel_gauge/npm1300_lib/lib/cortex-m4/hard-float/libnrf_fuel_gauge.a(libnrf_fuel_gauge__obfuscated.elf)
+                0x0000000000004740                nrf_fuel_gauge_init
+ .text          0x00000000000047cc       0x60 ../../../../../../examples/lm_code/nrf_npm1300_fuel_gauge/npm1300_lib/lib/cortex-m4/hard-float/libnrf_fuel_gauge.a(libnrf_fuel_gauge__obfuscated.elf)
+                0x00000000000047cc                nrf_fuel_gauge_process
+ .text          0x000000000000482c        0xc ../../../../../../examples/lm_code/nrf_npm1300_fuel_gauge/npm1300_lib/lib/cortex-m4/hard-float/libnrf_fuel_gauge.a(libnrf_fuel_gauge__obfuscated.elf)
+                0x000000000000482c                nrf_fuel_gauge_tte_get
+ .text          0x0000000000004838        0xc ../../../../../../examples/lm_code/nrf_npm1300_fuel_gauge/npm1300_lib/lib/cortex-m4/hard-float/libnrf_fuel_gauge.a(libnrf_fuel_gauge__obfuscated.elf)
+                0x0000000000004838                nrf_fuel_gauge_ttf_get
+ .text          0x0000000000004844      0x198 ../../../../../../examples/lm_code/nrf_npm1300_fuel_gauge/npm1300_lib/lib/cortex-m4/hard-float/libnrf_fuel_gauge.a(libnrf_fuel_gauge__obfuscated.elf)
+                0x0000000000004844                sym_UAZPLDKGPDVQX5TKL77ORD2WLPGOPSZ2NV5YCZI
+ .text          0x00000000000049dc      0x400 ../../../../../../examples/lm_code/nrf_npm1300_fuel_gauge/npm1300_lib/lib/cortex-m4/hard-float/libnrf_fuel_gauge.a(libnrf_fuel_gauge__obfuscated.elf)
+                0x00000000000049dc                sym_5OPP37WU6XHQMSAL5GW2DIFF6HY5W7NQQYWLB5Y
+ .text          0x0000000000004ddc       0x1c ../../../../../../examples/lm_code/nrf_npm1300_fuel_gauge/npm1300_lib/lib/cortex-m4/hard-float/libnrf_fuel_gauge.a(libnrf_fuel_gauge__obfuscated.elf)
+                0x0000000000004ddc                sym_IIGOMG7JGLSQ4TS65377DCUR25GF54AHS4YY7WY
+ .text          0x0000000000004df8       0x64 ../../../../../../examples/lm_code/nrf_npm1300_fuel_gauge/npm1300_lib/lib/cortex-m4/hard-float/libnrf_fuel_gauge.a(libnrf_fuel_gauge__obfuscated.elf)
+                0x0000000000004df8                sym_ZYPI4JQCEQGXDLJFOPU5GSQ3XIVTXZC6R4B7OYQ
+ .text          0x0000000000004e5c       0x64 ../../../../../../examples/lm_code/nrf_npm1300_fuel_gauge/npm1300_lib/lib/cortex-m4/hard-float/libnrf_fuel_gauge.a(libnrf_fuel_gauge__obfuscated.elf)
+                0x0000000000004e5c                sym_Y7TL3SFWHWSOZBTJCULEIA3LHLTTIAX7EYNM7OQ
+ .text          0x0000000000004ec0       0x34 ../../../../../../examples/lm_code/nrf_npm1300_fuel_gauge/npm1300_lib/lib/cortex-m4/hard-float/libnrf_fuel_gauge.a(libnrf_fuel_gauge__obfuscated.elf)
+                0x0000000000004ec0                sym_3UIHQUC7XVAXESSVI5JMOL44XN7QRX6LGJLZCPA
+ .text          0x0000000000004ef4      0x1a4 ../../../../../../examples/lm_code/nrf_npm1300_fuel_gauge/npm1300_lib/lib/cortex-m4/hard-float/libnrf_fuel_gauge.a(libnrf_fuel_gauge__obfuscated.elf)
+                0x0000000000004ef4                sym_GUEPXTDH5NNPPR4S7QYQRKNWV6MFZE6WHCAQYTI
+ .text          0x0000000000005098       0x24 ../../../../../../examples/lm_code/nrf_npm1300_fuel_gauge/npm1300_lib/lib/cortex-m4/hard-float/libnrf_fuel_gauge.a(libnrf_fuel_gauge__obfuscated.elf)
+                0x0000000000005098                sym_SBD2NVCKYJ3J5NPJP4ABVNYTZBKNTPTXCRZVBFY
+ *fill*         0x00000000000050bc        0x4 
+ .text          0x00000000000050c0     0x1214 ../../../../../../examples/lm_code/nrf_npm1300_fuel_gauge/npm1300_lib/lib/cortex-m4/hard-float/libnrf_fuel_gauge.a(libnrf_fuel_gauge__obfuscated.elf)
+                0x00000000000050c0                sym_3KIPDHMQQDERGOPJKAF4KMY7F76E62MKGMWAZYA
+ .text          0x00000000000062d4      0x30c ../../../../../../examples/lm_code/nrf_npm1300_fuel_gauge/npm1300_lib/lib/cortex-m4/hard-float/libnrf_fuel_gauge.a(libnrf_fuel_gauge__obfuscated.elf)
+                0x00000000000062d4                sym_AG2LBGGSIA77K5XJMD3UV3SBGRW3AIHATLB7FZA
+ .text          0x00000000000065e0      0x10c ../../../../../../examples/lm_code/nrf_npm1300_fuel_gauge/npm1300_lib/lib/cortex-m4/hard-float/libnrf_fuel_gauge.a(libnrf_fuel_gauge__obfuscated.elf)
+                0x00000000000065e0                sym_7XQW4RE4A3JLVFL2OP6WK5QVNJ446EJG7FAPPAY
+ .text          0x00000000000066ec       0xb8 ../../../../../../examples/lm_code/nrf_npm1300_fuel_gauge/npm1300_lib/lib/cortex-m4/hard-float/libnrf_fuel_gauge.a(libnrf_fuel_gauge__obfuscated.elf)
+                0x00000000000066ec                sym_OPTO2XH6CI6Y5TL7RRJWOQE3AL2WZINJXFVJHQY
  .text.libc.sqrtf
-                0x0000000000006814        0x6 C:/Program Files/SEGGER/SEGGER Embedded Studio for ARM 5.42a/lib/libm_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libm2_asm.o)
-                0x0000000000006814                sqrt(float)
-                0x0000000000006814                sqrtf
-                0x000000000000681c                . = ALIGN (MAX ((__text_start__ + 0x4), .), 0x4)
- *fill*         0x000000000000681a        0x2 
-                0x000000000000681c                __text_end__ = (__text_start__ + SIZEOF (.text))
-                0x000000000000644c                __text_size__ = SIZEOF (.text)
-                0x000000000000681c                __text_load_end__ = __text_end__
+                0x00000000000067a4        0x6 C:/Program Files/SEGGER/SEGGER Embedded Studio for ARM 5.42a/lib/libm_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libm2_asm.o)
+                0x00000000000067a4                sqrt(float)
+                0x00000000000067a4                sqrtf
+                0x00000000000067ac                . = ALIGN (MAX ((__text_start__ + 0x4), .), 0x4)
+ *fill*         0x00000000000067aa        0x2 
+                0x00000000000067ac                __text_end__ = (__text_start__ + SIZEOF (.text))
+                0x00000000000063dc                __text_size__ = SIZEOF (.text)
+                0x00000000000067ac                __text_load_end__ = __text_end__
 
 .vfp11_veneer   0x0000000100000000        0x0
  .vfp11_veneer  0x0000000100000000        0x0 linker stubs
@@ -5443,59 +5442,59 @@ Linker script and memory map
 .iplt           0x0000000100000000        0x0
  .iplt          0x0000000100000000        0x0 Output/Debug/Obj/npm1300_pca10040/thumb_crt0.o
                 0x0000000000000001                . = ASSERT (((__text_start__ == __text_end__) || ((__text_end__ - __FLASH1_segment_start__) <= __FLASH1_segment_size__)), error: .text is too large to fit in FLASH1 memory segment)
-                0x000000000000681c                __log_const_data_load_start__ = ALIGN (__text_end__, 0x4)
+                0x00000000000067ac                __log_const_data_load_start__ = ALIGN (__text_end__, 0x4)
 
 .log_const_data
-                0x000000000000681c        0x0
-                0x000000000000681c                __log_const_data_start__ = .
-                0x000000000000681c                __start_log_const_data = __log_const_data_start__
+                0x00000000000067ac        0x0
+                0x00000000000067ac                __log_const_data_start__ = .
+                0x00000000000067ac                __start_log_const_data = __log_const_data_start__
  *(SORT_BY_NAME(.log_const_data*))
-                0x000000000000681c                __log_const_data_end__ = (__log_const_data_start__ + SIZEOF (.log_const_data))
+                0x00000000000067ac                __log_const_data_end__ = (__log_const_data_start__ + SIZEOF (.log_const_data))
                 0x0000000000000000                __log_const_data_size__ = SIZEOF (.log_const_data)
-                0x000000000000681c                __stop_log_const_data = __log_const_data_end__
-                0x000000000000681c                __log_const_data_load_end__ = __log_const_data_end__
+                0x00000000000067ac                __stop_log_const_data = __log_const_data_end__
+                0x00000000000067ac                __log_const_data_load_end__ = __log_const_data_end__
                 0x0000000000000001                . = ASSERT (((__log_const_data_start__ == __log_const_data_end__) || ((__log_const_data_end__ - __FLASH1_segment_start__) <= __FLASH1_segment_size__)), error: .log_const_data is too large to fit in FLASH1 memory segment)
-                0x000000000000681c                __log_backends_load_start__ = ALIGN (__log_const_data_end__, 0x4)
+                0x00000000000067ac                __log_backends_load_start__ = ALIGN (__log_const_data_end__, 0x4)
 
-.log_backends   0x000000000000681c        0x0
-                0x000000000000681c                __log_backends_start__ = .
-                0x000000000000681c                __start_log_backends = __log_backends_start__
+.log_backends   0x00000000000067ac        0x0
+                0x00000000000067ac                __log_backends_start__ = .
+                0x00000000000067ac                __start_log_backends = __log_backends_start__
  *(SORT_BY_NAME(.log_backends*))
-                0x000000000000681c                __log_backends_end__ = (__log_backends_start__ + SIZEOF (.log_backends))
+                0x00000000000067ac                __log_backends_end__ = (__log_backends_start__ + SIZEOF (.log_backends))
                 0x0000000000000000                __log_backends_size__ = SIZEOF (.log_backends)
-                0x000000000000681c                __stop_log_backends = __log_backends_end__
-                0x000000000000681c                __log_backends_load_end__ = __log_backends_end__
+                0x00000000000067ac                __stop_log_backends = __log_backends_end__
+                0x00000000000067ac                __log_backends_load_end__ = __log_backends_end__
                 0x0000000000000001                . = ASSERT (((__log_backends_start__ == __log_backends_end__) || ((__log_backends_end__ - __FLASH1_segment_start__) <= __FLASH1_segment_size__)), error: .log_backends is too large to fit in FLASH1 memory segment)
-                0x000000000000681c                __nrf_balloc_load_start__ = ALIGN (__log_backends_end__, 0x4)
+                0x00000000000067ac                __nrf_balloc_load_start__ = ALIGN (__log_backends_end__, 0x4)
 
-.nrf_balloc     0x000000000000681c        0x0
-                0x000000000000681c                __nrf_balloc_start__ = .
-                0x000000000000681c                __start_nrf_balloc = __nrf_balloc_start__
+.nrf_balloc     0x00000000000067ac        0x0
+                0x00000000000067ac                __nrf_balloc_start__ = .
+                0x00000000000067ac                __start_nrf_balloc = __nrf_balloc_start__
  *(.nrf_balloc*)
-                0x000000000000681c                __nrf_balloc_end__ = (__nrf_balloc_start__ + SIZEOF (.nrf_balloc))
+                0x00000000000067ac                __nrf_balloc_end__ = (__nrf_balloc_start__ + SIZEOF (.nrf_balloc))
                 0x0000000000000000                __nrf_balloc_size__ = SIZEOF (.nrf_balloc)
-                0x000000000000681c                __stop_nrf_balloc = __nrf_balloc_end__
-                0x000000000000681c                __nrf_balloc_load_end__ = __nrf_balloc_end__
+                0x00000000000067ac                __stop_nrf_balloc = __nrf_balloc_end__
+                0x00000000000067ac                __nrf_balloc_load_end__ = __nrf_balloc_end__
                 0x0000000000000001                . = ASSERT (((__nrf_balloc_start__ == __nrf_balloc_end__) || ((__nrf_balloc_end__ - __FLASH1_segment_start__) <= __FLASH1_segment_size__)), error: .nrf_balloc is too large to fit in FLASH1 memory segment)
-                0x000000000000681c                __nrf_sections_load_start__ = ALIGN (__nrf_balloc_end__, 0x4)
+                0x00000000000067ac                __nrf_sections_load_start__ = ALIGN (__nrf_balloc_end__, 0x4)
 
-.nrf_sections   0x000000000000681c        0x0
-                0x000000000000681c                __nrf_sections_start__ = .
-                0x000000000000681c                __start_nrf_sections = __nrf_sections_start__
+.nrf_sections   0x00000000000067ac        0x0
+                0x00000000000067ac                __nrf_sections_start__ = .
+                0x00000000000067ac                __start_nrf_sections = __nrf_sections_start__
  *(.nrf_sections .nrf_sections.*)
-                0x000000000000681c                __nrf_sections_end__ = (__nrf_sections_start__ + SIZEOF (.nrf_sections))
+                0x00000000000067ac                __nrf_sections_end__ = (__nrf_sections_start__ + SIZEOF (.nrf_sections))
                 0x0000000000000000                __nrf_sections_size__ = SIZEOF (.nrf_sections)
-                0x000000000000681c                __nrf_sections_load_end__ = __nrf_sections_end__
+                0x00000000000067ac                __nrf_sections_load_end__ = __nrf_sections_end__
                 0x0000000000000001                . = ASSERT (((__nrf_sections_start__ == __nrf_sections_end__) || ((__nrf_sections_end__ - __FLASH1_segment_start__) <= __FLASH1_segment_size__)), error: .nrf_sections is too large to fit in FLASH1 memory segment)
-                0x000000000000681c                __log_dynamic_data_load_start__ = ALIGN (__nrf_sections_end__, 0x4)
+                0x00000000000067ac                __log_dynamic_data_load_start__ = ALIGN (__nrf_sections_end__, 0x4)
 
 .log_dynamic_data
-                0x0000000020000000        0x0 load address 0x000000000000681c
+                0x0000000020000000        0x0 load address 0x00000000000067ac
                 0x0000000020000000                __log_dynamic_data_start__ = .
  *(SORT_BY_NAME(.log_dynamic_data*))
                 0x0000000020000000                __log_dynamic_data_end__ = (__log_dynamic_data_start__ + SIZEOF (.log_dynamic_data))
                 0x0000000000000000                __log_dynamic_data_size__ = SIZEOF (.log_dynamic_data)
-                0x000000000000681c                __log_dynamic_data_load_end__ = (__log_dynamic_data_load_start__ + SIZEOF (.log_dynamic_data))
+                0x00000000000067ac                __log_dynamic_data_load_end__ = (__log_dynamic_data_load_start__ + SIZEOF (.log_dynamic_data))
                 0x0000000000000001                . = ASSERT (((__log_dynamic_data_load_start__ == __log_dynamic_data_load_end__) || ((__log_dynamic_data_load_end__ - __FLASH1_segment_start__) <= __FLASH1_segment_size__)), error: .log_dynamic_data is too large to fit in FLASH1 memory segment)
 
 .log_dynamic_data_run
@@ -5507,15 +5506,15 @@ Linker script and memory map
                 0x0000000020000000                __stop_log_dynamic_data = __log_dynamic_data_run_end__
                 0x0000000020000000                __log_dynamic_data_run_load_end__ = __log_dynamic_data_run_end__
                 0x0000000000000001                . = ASSERT (((__log_dynamic_data_run_start__ == __log_dynamic_data_run_end__) || ((__log_dynamic_data_run_end__ - __RAM1_segment_start__) <= __RAM1_segment_size__)), error: .log_dynamic_data_run is too large to fit in RAM1 memory segment)
-                0x000000000000681c                __log_filter_data_load_start__ = ALIGN ((__log_dynamic_data_load_start__ + SIZEOF (.log_dynamic_data)), 0x4)
+                0x00000000000067ac                __log_filter_data_load_start__ = ALIGN ((__log_dynamic_data_load_start__ + SIZEOF (.log_dynamic_data)), 0x4)
 
 .log_filter_data
-                0x0000000020000000        0x0 load address 0x000000000000681c
+                0x0000000020000000        0x0 load address 0x00000000000067ac
                 0x0000000020000000                __log_filter_data_start__ = .
  *(SORT_BY_NAME(.log_filter_data*))
                 0x0000000020000000                __log_filter_data_end__ = (__log_filter_data_start__ + SIZEOF (.log_filter_data))
                 0x0000000000000000                __log_filter_data_size__ = SIZEOF (.log_filter_data)
-                0x000000000000681c                __log_filter_data_load_end__ = (__log_filter_data_load_start__ + SIZEOF (.log_filter_data))
+                0x00000000000067ac                __log_filter_data_load_end__ = (__log_filter_data_load_start__ + SIZEOF (.log_filter_data))
                 0x0000000000000001                . = ASSERT (((__log_filter_data_load_start__ == __log_filter_data_load_end__) || ((__log_filter_data_load_end__ - __FLASH1_segment_start__) <= __FLASH1_segment_size__)), error: .log_filter_data is too large to fit in FLASH1 memory segment)
 
 .log_filter_data_run
@@ -5538,99 +5537,100 @@ Linker script and memory map
                 0x0000000000000000                __nrf_sections_run_end_size__ = SIZEOF (.nrf_sections_run_end)
                 0x0000000020000000                __nrf_sections_run_end_load_end__ = __nrf_sections_run_end_end__
                 0x0000000000000001                . = ASSERT (((__nrf_sections_run_end_start__ == __nrf_sections_run_end_end__) || ((__nrf_sections_run_end_end__ - __RAM1_segment_start__) <= __RAM1_segment_size__)), error: .nrf_sections_run_end is too large to fit in RAM1 memory segment)
-                0x000000000000681c                __dtors_load_start__ = ALIGN ((__log_filter_data_load_start__ + SIZEOF (.log_filter_data)), 0x4)
+                0x00000000000067ac                __dtors_load_start__ = ALIGN ((__log_filter_data_load_start__ + SIZEOF (.log_filter_data)), 0x4)
 
-.dtors          0x000000000000681c        0x0
-                0x000000000000681c                __dtors_start__ = .
+.dtors          0x00000000000067ac        0x0
+                0x00000000000067ac                __dtors_start__ = .
  *(SORT_BY_NAME(.dtors.*))
  *(.dtors)
  *(.fini_array)
  *(SORT_BY_NAME(.fini_array.*))
-                0x000000000000681c                __dtors_end__ = (__dtors_start__ + SIZEOF (.dtors))
+                0x00000000000067ac                __dtors_end__ = (__dtors_start__ + SIZEOF (.dtors))
                 0x0000000000000000                __dtors_size__ = SIZEOF (.dtors)
-                0x000000000000681c                __dtors_load_end__ = __dtors_end__
+                0x00000000000067ac                __dtors_load_end__ = __dtors_end__
                 0x0000000000000001                . = ASSERT (((__dtors_start__ == __dtors_end__) || ((__dtors_end__ - __FLASH1_segment_start__) <= __FLASH1_segment_size__)), error: .dtors is too large to fit in FLASH1 memory segment)
-                0x000000000000681c                __ctors_load_start__ = ALIGN (__dtors_end__, 0x4)
+                0x00000000000067ac                __ctors_load_start__ = ALIGN (__dtors_end__, 0x4)
 
-.ctors          0x000000000000681c        0x0
-                0x000000000000681c                __ctors_start__ = .
+.ctors          0x00000000000067ac        0x0
+                0x00000000000067ac                __ctors_start__ = .
  *(SORT_BY_NAME(.ctors.*))
  *(.ctors)
  *(.init_array)
  *(SORT_BY_NAME(.init_array.*))
-                0x000000000000681c                __ctors_end__ = (__ctors_start__ + SIZEOF (.ctors))
+                0x00000000000067ac                __ctors_end__ = (__ctors_start__ + SIZEOF (.ctors))
                 0x0000000000000000                __ctors_size__ = SIZEOF (.ctors)
-                0x000000000000681c                __ctors_load_end__ = __ctors_end__
+                0x00000000000067ac                __ctors_load_end__ = __ctors_end__
                 0x0000000000000001                . = ASSERT (((__ctors_start__ == __ctors_end__) || ((__ctors_end__ - __FLASH1_segment_start__) <= __FLASH1_segment_size__)), error: .ctors is too large to fit in FLASH1 memory segment)
-                0x000000000000681c                __rodata_load_start__ = ALIGN (__ctors_end__, 0x4)
+                0x00000000000067ac                __rodata_load_start__ = ALIGN (__ctors_end__, 0x4)
 
-.rodata         0x000000000000681c     0x1918
-                0x000000000000681c                __rodata_start__ = .
+.rodata         0x00000000000067ac     0x193c
+                0x00000000000067ac                __rodata_start__ = .
  *(.rodata .rodata.* .gnu.linkonce.r.*)
- .rodata        0x000000000000681c       0x79 Output/Debug/Obj/npm1300_pca10040/boards.o
- *fill*         0x0000000000006895        0x3 
+ .rodata        0x00000000000067ac       0x79 Output/Debug/Obj/npm1300_pca10040/boards.o
+ *fill*         0x0000000000006825        0x3 
  .rodata.m_board_led_list
-                0x0000000000006898        0x4 Output/Debug/Obj/npm1300_pca10040/boards.o
+                0x0000000000006828        0x4 Output/Debug/Obj/npm1300_pca10040/boards.o
  .rodata.m_board_btn_list
-                0x000000000000689c        0x4 Output/Debug/Obj/npm1300_pca10040/boards.o
- .rodata        0x00000000000068a0       0xb2 Output/Debug/Obj/npm1300_pca10040/nrfx_twi.o
- *fill*         0x0000000000006952        0x2 
- .rodata        0x0000000000006954       0x34 Output/Debug/Obj/npm1300_pca10040/main.o
- *fill*         0x0000000000006988        0x8 
+                0x000000000000682c        0x4 Output/Debug/Obj/npm1300_pca10040/boards.o
+ .rodata        0x0000000000006830       0xb2 Output/Debug/Obj/npm1300_pca10040/nrfx_twi.o
+ *fill*         0x00000000000068e2        0x2 
+ .rodata        0x00000000000068e4       0x34 Output/Debug/Obj/npm1300_pca10040/main.o
+ *fill*         0x0000000000006918        0x8 
  .rodata.delay_machine_code.0
-                0x0000000000006990        0x6 Output/Debug/Obj/npm1300_pca10040/main.o
- *fill*         0x0000000000006996        0x2 
- .rodata.m_twi  0x0000000000006998        0x8 Output/Debug/Obj/npm1300_pca10040/npm1300_charger.o
- .rodata        0x00000000000069a0       0x84 Output/Debug/Obj/npm1300_pca10040/npm1300_charger.o
+                0x0000000000006920        0x6 Output/Debug/Obj/npm1300_pca10040/main.o
+ *fill*         0x0000000000006926        0x2 
+ .rodata.m_twi  0x0000000000006928        0x8 Output/Debug/Obj/npm1300_pca10040/npm1300_charger.o
+ .rodata        0x0000000000006930       0xa6 Output/Debug/Obj/npm1300_pca10040/npm1300_charger.o
+ *fill*         0x00000000000069d6        0x2 
  .rodata.battery_model
-                0x0000000000006a24     0x1600 Output/Debug/Obj/npm1300_pca10040/fuel_gauge.o
- .rodata        0x0000000000008024       0x7f Output/Debug/Obj/npm1300_pca10040/fuel_gauge.o
- *fill*         0x00000000000080a3        0x1 
+                0x00000000000069d8     0x1600 Output/Debug/Obj/npm1300_pca10040/fuel_gauge.o
+ .rodata        0x0000000000007fd8       0x7f Output/Debug/Obj/npm1300_pca10040/fuel_gauge.o
+ *fill*         0x0000000000008057        0x1 
  .rodata.libc.expf_twojby8
-                0x00000000000080a4       0x20 C:/Program Files/SEGGER/SEGGER Embedded Studio for ARM 5.42a/lib/libm_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libm2.o)
+                0x0000000000008058       0x20 C:/Program Files/SEGGER/SEGGER Embedded Studio for ARM 5.42a/lib/libm_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libm2.o)
  .rodata.libc.__RAL_hex_lc
-                0x00000000000080c4       0x10 C:/Program Files/SEGGER/SEGGER Embedded Studio for ARM 5.42a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libc2.o)
-                0x00000000000080c4                __RAL_hex_lc
+                0x0000000000008078       0x10 C:/Program Files/SEGGER/SEGGER Embedded Studio for ARM 5.42a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libc2.o)
+                0x0000000000008078                __RAL_hex_lc
  .rodata.libc.__RAL_hex_uc
-                0x00000000000080d4       0x10 C:/Program Files/SEGGER/SEGGER Embedded Studio for ARM 5.42a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libc2.o)
-                0x00000000000080d4                __RAL_hex_uc
+                0x0000000000008088       0x10 C:/Program Files/SEGGER/SEGGER Embedded Studio for ARM 5.42a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libc2.o)
+                0x0000000000008088                __RAL_hex_uc
  .rodata.libc.__aeabi_EDOM
-                0x00000000000080e4        0x4 C:/Program Files/SEGGER/SEGGER Embedded Studio for ARM 5.42a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libc2.o)
-                0x00000000000080e4                __aeabi_EDOM
+                0x0000000000008098        0x4 C:/Program Files/SEGGER/SEGGER Embedded Studio for ARM 5.42a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libc2.o)
+                0x0000000000008098                __aeabi_EDOM
  .rodata.libc.__aeabi_ERANGE
-                0x00000000000080e8        0x4 C:/Program Files/SEGGER/SEGGER Embedded Studio for ARM 5.42a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libc2.o)
-                0x00000000000080e8                __aeabi_ERANGE
+                0x000000000000809c        0x4 C:/Program Files/SEGGER/SEGGER Embedded Studio for ARM 5.42a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libc2.o)
+                0x000000000000809c                __aeabi_ERANGE
  .rodata.libc.__vfprintf_int.str1.4
-                0x00000000000080ec        0x7 C:/Program Files/SEGGER/SEGGER Embedded Studio for ARM 5.42a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libvfprintf.o)
- *fill*         0x00000000000080f3        0x1 
- .rodata        0x00000000000080f4       0x40 ../../../../../../examples/lm_code/nrf_npm1300_fuel_gauge/npm1300_lib/lib/cortex-m4/hard-float/libnrf_fuel_gauge.a(libnrf_fuel_gauge__obfuscated.elf)
-                0x0000000000008134                . = ALIGN (MAX ((__rodata_start__ + 0x4), .), 0x4)
-                0x0000000000008134                __rodata_end__ = (__rodata_start__ + SIZEOF (.rodata))
-                0x0000000000001918                __rodata_size__ = SIZEOF (.rodata)
-                0x0000000000008134                __rodata_load_end__ = __rodata_end__
+                0x00000000000080a0        0x7 C:/Program Files/SEGGER/SEGGER Embedded Studio for ARM 5.42a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libvfprintf.o)
+ *fill*         0x00000000000080a7        0x1 
+ .rodata        0x00000000000080a8       0x40 ../../../../../../examples/lm_code/nrf_npm1300_fuel_gauge/npm1300_lib/lib/cortex-m4/hard-float/libnrf_fuel_gauge.a(libnrf_fuel_gauge__obfuscated.elf)
+                0x00000000000080e8                . = ALIGN (MAX ((__rodata_start__ + 0x4), .), 0x4)
+                0x00000000000080e8                __rodata_end__ = (__rodata_start__ + SIZEOF (.rodata))
+                0x000000000000193c                __rodata_size__ = SIZEOF (.rodata)
+                0x00000000000080e8                __rodata_load_end__ = __rodata_end__
 
-.rel.dyn        0x0000000000008134        0x0
- .rel.iplt      0x0000000000008134        0x0 Output/Debug/Obj/npm1300_pca10040/thumb_crt0.o
+.rel.dyn        0x00000000000080e8        0x0
+ .rel.iplt      0x00000000000080e8        0x0 Output/Debug/Obj/npm1300_pca10040/thumb_crt0.o
                 0x0000000000000001                . = ASSERT (((__rodata_start__ == __rodata_end__) || ((__rodata_end__ - __FLASH1_segment_start__) <= __FLASH1_segment_size__)), error: .rodata is too large to fit in FLASH1 memory segment)
-                0x0000000000008134                __ARM.exidx_load_start__ = ALIGN (__rodata_end__, 0x4)
+                0x00000000000080e8                __ARM.exidx_load_start__ = ALIGN (__rodata_end__, 0x4)
 
-.ARM.exidx      0x0000000000008134        0x0
-                0x0000000000008134                __ARM.exidx_start__ = .
-                0x0000000000008134                __exidx_start = __ARM.exidx_start__
+.ARM.exidx      0x00000000000080e8        0x0
+                0x00000000000080e8                __ARM.exidx_start__ = .
+                0x00000000000080e8                __exidx_start = __ARM.exidx_start__
  *(.ARM.exidx .ARM.exidx.*)
-                0x0000000000008134                __ARM.exidx_end__ = (__ARM.exidx_start__ + SIZEOF (.ARM.exidx))
+                0x00000000000080e8                __ARM.exidx_end__ = (__ARM.exidx_start__ + SIZEOF (.ARM.exidx))
                 0x0000000000000000                __ARM.exidx_size__ = SIZEOF (.ARM.exidx)
-                0x0000000000008134                __exidx_end = __ARM.exidx_end__
-                0x0000000000008134                __ARM.exidx_load_end__ = __ARM.exidx_end__
+                0x00000000000080e8                __exidx_end = __ARM.exidx_end__
+                0x00000000000080e8                __ARM.exidx_load_end__ = __ARM.exidx_end__
                 0x0000000000000001                . = ASSERT (((__ARM.exidx_start__ == __ARM.exidx_end__) || ((__ARM.exidx_end__ - __FLASH1_segment_start__) <= __FLASH1_segment_size__)), error: .ARM.exidx is too large to fit in FLASH1 memory segment)
-                0x0000000000008134                __fast_load_start__ = ALIGN (__ARM.exidx_end__, 0x4)
+                0x00000000000080e8                __fast_load_start__ = ALIGN (__ARM.exidx_end__, 0x4)
 
-.fast           0x0000000020000000        0x0 load address 0x0000000000008134
+.fast           0x0000000020000000        0x0 load address 0x00000000000080e8
                 0x0000000020000000                __fast_start__ = .
  *(.fast .fast.*)
                 0x0000000020000000                __fast_end__ = (__fast_start__ + SIZEOF (.fast))
                 0x0000000000000000                __fast_size__ = SIZEOF (.fast)
-                0x0000000000008134                __fast_load_end__ = (__fast_load_start__ + SIZEOF (.fast))
+                0x00000000000080e8                __fast_load_end__ = (__fast_load_start__ + SIZEOF (.fast))
                 0x0000000000000001                . = ASSERT (((__fast_load_start__ == __fast_load_end__) || ((__fast_load_end__ - __FLASH1_segment_start__) <= __FLASH1_segment_size__)), error: .fast is too large to fit in FLASH1 memory segment)
 
 .fast_run       0x0000000020000000        0x0
@@ -5639,27 +5639,29 @@ Linker script and memory map
                 0x0000000000000000                __fast_run_size__ = (__fast_run_end__ - __fast_run_start__)
                 0x0000000020000000                __fast_run_load_end__ = __fast_run_end__
                 0x0000000000000001                . = ASSERT (((__fast_run_start__ == __fast_run_end__) || ((__fast_run_end__ - __RAM1_segment_start__) <= __RAM1_segment_size__)), error: .fast_run is too large to fit in RAM1 memory segment)
-                0x0000000000008134                __data_load_start__ = ALIGN ((__fast_load_start__ + SIZEOF (.fast)), 0x4)
+                0x00000000000080e8                __data_load_start__ = ALIGN ((__fast_load_start__ + SIZEOF (.fast)), 0x4)
 
-.data           0x0000000020000000       0x18 load address 0x0000000000008134
+.data           0x0000000020000000       0x34 load address 0x00000000000080e8
                 0x0000000020000000                __data_start__ = .
  *(.data .data.* .gnu.linkonce.d.*)
  .data.SystemCoreClock
                 0x0000000020000000        0x4 Output/Debug/Obj/npm1300_pca10040/system_nrf52.o
                 0x0000000020000000                SystemCoreClock
+ .data.config   0x0000000020000004       0x1c Output/Debug/Obj/npm1300_pca10040/npm1300_charger.o
+                0x0000000020000004                config
  .data.nrf_fuel_gauge_d
-                0x0000000020000004        0x4 ../../../../../../examples/lm_code/nrf_npm1300_fuel_gauge/npm1300_lib/lib/cortex-m4/hard-float/libnrf_fuel_gauge.a(libnrf_fuel_gauge__obfuscated.elf)
+                0x0000000020000020        0x4 ../../../../../../examples/lm_code/nrf_npm1300_fuel_gauge/npm1300_lib/lib/cortex-m4/hard-float/libnrf_fuel_gauge.a(libnrf_fuel_gauge__obfuscated.elf)
  .data.nrf_fuel_gauge_c
-                0x0000000020000008        0x4 ../../../../../../examples/lm_code/nrf_npm1300_fuel_gauge/npm1300_lib/lib/cortex-m4/hard-float/libnrf_fuel_gauge.a(libnrf_fuel_gauge__obfuscated.elf)
+                0x0000000020000024        0x4 ../../../../../../examples/lm_code/nrf_npm1300_fuel_gauge/npm1300_lib/lib/cortex-m4/hard-float/libnrf_fuel_gauge.a(libnrf_fuel_gauge__obfuscated.elf)
  .data.nrf_fuel_gauge_b
-                0x000000002000000c        0x4 ../../../../../../examples/lm_code/nrf_npm1300_fuel_gauge/npm1300_lib/lib/cortex-m4/hard-float/libnrf_fuel_gauge.a(libnrf_fuel_gauge__obfuscated.elf)
+                0x0000000020000028        0x4 ../../../../../../examples/lm_code/nrf_npm1300_fuel_gauge/npm1300_lib/lib/cortex-m4/hard-float/libnrf_fuel_gauge.a(libnrf_fuel_gauge__obfuscated.elf)
  .data.nrf_fuel_gauge_a
-                0x0000000020000010        0x4 ../../../../../../examples/lm_code/nrf_npm1300_fuel_gauge/npm1300_lib/lib/cortex-m4/hard-float/libnrf_fuel_gauge.a(libnrf_fuel_gauge__obfuscated.elf)
- .data.rtNaNF   0x0000000020000014        0x4 ../../../../../../examples/lm_code/nrf_npm1300_fuel_gauge/npm1300_lib/lib/cortex-m4/hard-float/libnrf_fuel_gauge.a(libnrf_fuel_gauge__obfuscated.elf)
-                0x0000000020000014                sym_OUH6KZMY2ETTXPV2GCCP7QSK6DOY3JTULCLIDAI
-                0x0000000020000018                __data_end__ = (__data_start__ + SIZEOF (.data))
-                0x0000000000000018                __data_size__ = SIZEOF (.data)
-                0x000000000000814c                __data_load_end__ = (__data_load_start__ + SIZEOF (.data))
+                0x000000002000002c        0x4 ../../../../../../examples/lm_code/nrf_npm1300_fuel_gauge/npm1300_lib/lib/cortex-m4/hard-float/libnrf_fuel_gauge.a(libnrf_fuel_gauge__obfuscated.elf)
+ .data.rtNaNF   0x0000000020000030        0x4 ../../../../../../examples/lm_code/nrf_npm1300_fuel_gauge/npm1300_lib/lib/cortex-m4/hard-float/libnrf_fuel_gauge.a(libnrf_fuel_gauge__obfuscated.elf)
+                0x0000000020000030                sym_OUH6KZMY2ETTXPV2GCCP7QSK6DOY3JTULCLIDAI
+                0x0000000020000034                __data_end__ = (__data_start__ + SIZEOF (.data))
+                0x0000000000000034                __data_size__ = SIZEOF (.data)
+                0x000000000000811c                __data_load_end__ = (__data_load_start__ + SIZEOF (.data))
 
 .igot.plt       0x0000000100000000        0x0
  .igot.plt      0x0000000100000000        0x0 Output/Debug/Obj/npm1300_pca10040/thumb_crt0.o
@@ -5667,102 +5669,97 @@ Linker script and memory map
 
 .data_run       0x0000000020000000        0x0
                 0x0000000020000000                __data_run_start__ = .
-                0x0000000020000018                __data_run_end__ = (__data_run_start__ + SIZEOF (.data))
-                0x0000000000000018                __data_run_size__ = (__data_run_end__ - __data_run_start__)
-                0x0000000020000018                __data_run_load_end__ = __data_run_end__
+                0x0000000020000034                __data_run_end__ = (__data_run_start__ + SIZEOF (.data))
+                0x0000000000000034                __data_run_size__ = (__data_run_end__ - __data_run_start__)
+                0x0000000020000034                __data_run_load_end__ = __data_run_end__
                 0x0000000000000001                . = ASSERT (((__data_run_start__ == __data_run_end__) || ((__data_run_end__ - __RAM1_segment_start__) <= __RAM1_segment_size__)), error: .data_run is too large to fit in RAM1 memory segment)
-                0x000000000000814c                __tdata_load_start__ = ALIGN ((__data_load_start__ + SIZEOF (.data)), 0x4)
+                0x000000000000811c                __tdata_load_start__ = ALIGN ((__data_load_start__ + SIZEOF (.data)), 0x4)
 
-.tdata          0x0000000020000018        0x0 load address 0x000000000000814c
-                0x0000000020000018                __tdata_start__ = .
+.tdata          0x0000000020000034        0x0 load address 0x000000000000811c
+                0x0000000020000034                __tdata_start__ = .
  *(.tdata .tdata.*)
-                0x0000000020000018                __tdata_end__ = (__tdata_start__ + SIZEOF (.tdata))
+                0x0000000020000034                __tdata_end__ = (__tdata_start__ + SIZEOF (.tdata))
                 0x0000000000000000                __tdata_size__ = SIZEOF (.tdata)
-                0x000000000000814c                __tdata_load_end__ = (__tdata_load_start__ + SIZEOF (.tdata))
-                0x000000000000814c                __FLASH1_segment_used_end__ = (ALIGN ((__data_load_start__ + SIZEOF (.data)), 0x4) + SIZEOF (.tdata))
-                0x000000000000814c                __FLASH1_segment_used_size__ = (__FLASH1_segment_used_end__ - __FLASH1_segment_start__)
+                0x000000000000811c                __tdata_load_end__ = (__tdata_load_start__ + SIZEOF (.tdata))
+                0x000000000000811c                __FLASH1_segment_used_end__ = (ALIGN ((__data_load_start__ + SIZEOF (.data)), 0x4) + SIZEOF (.tdata))
+                0x000000000000811c                __FLASH1_segment_used_size__ = (__FLASH1_segment_used_end__ - __FLASH1_segment_start__)
                 0x0000000000000001                . = ASSERT (((__tdata_load_start__ == __tdata_load_end__) || ((__tdata_load_end__ - __FLASH1_segment_start__) <= __FLASH1_segment_size__)), error: .tdata is too large to fit in FLASH1 memory segment)
 
-.tdata_run      0x0000000020000018        0x0
-                0x0000000020000018                __tdata_run_start__ = .
-                0x0000000020000018                __tdata_run_end__ = (__tdata_run_start__ + SIZEOF (.tdata))
+.tdata_run      0x0000000020000034        0x0
+                0x0000000020000034                __tdata_run_start__ = .
+                0x0000000020000034                __tdata_run_end__ = (__tdata_run_start__ + SIZEOF (.tdata))
                 0x0000000000000000                __tdata_run_size__ = (__tdata_run_end__ - __tdata_run_start__)
-                0x0000000020000018                __tdata_run_load_end__ = __tdata_run_end__
+                0x0000000020000034                __tdata_run_load_end__ = __tdata_run_end__
                 0x0000000000000001                . = ASSERT (((__tdata_run_start__ == __tdata_run_end__) || ((__tdata_run_end__ - __RAM1_segment_start__) <= __RAM1_segment_size__)), error: .tdata_run is too large to fit in RAM1 memory segment)
-                0x0000000020000018                __bss_load_start__ = ALIGN (__tdata_run_end__, 0x4)
+                0x0000000020000034                __bss_load_start__ = ALIGN (__tdata_run_end__, 0x4)
 
-.bss            0x0000000020000018     0x1818
-                0x0000000020000018                __bss_start__ = .
+.bss            0x0000000020000034     0x1810
+                0x0000000020000034                __bss_start__ = .
  *(.bss .bss.* .gnu.linkonce.b.*)
  .bss.m_error_data.0
-                0x0000000020000018       0x20 Output/Debug/Obj/npm1300_pca10040/app_error.o
- .bss.m_cb      0x0000000020000038       0x3c Output/Debug/Obj/npm1300_pca10040/nrfx_twi.o
- .bss.val.1     0x0000000020000074        0x4 Output/Debug/Obj/npm1300_pca10040/main.o
+                0x0000000020000034       0x20 Output/Debug/Obj/npm1300_pca10040/app_error.o
+ .bss.m_cb      0x0000000020000054       0x3c Output/Debug/Obj/npm1300_pca10040/nrfx_twi.o
+ .bss.val.1     0x0000000020000090        0x4 Output/Debug/Obj/npm1300_pca10040/main.o
+ .bss.npm1300_data
+                0x0000000020000094        0xa Output/Debug/Obj/npm1300_pca10040/npm1300_charger.o
+                0x0000000020000094                npm1300_data
  .bss.m_xfer_done
-                0x0000000020000078        0x1 Output/Debug/Obj/npm1300_pca10040/npm1300_charger.o
- *fill*         0x0000000020000079        0x3 
- .bss.data      0x000000002000007c        0x4 Output/Debug/Obj/npm1300_pca10040/npm1300_charger.o
-                0x000000002000007c                data
- .bss.results   0x0000000020000080        0xb Output/Debug/Obj/npm1300_pca10040/npm1300_charger.o
-                0x0000000020000080                results
- *fill*         0x000000002000008b        0x1 
+                0x000000002000009e        0x1 Output/Debug/Obj/npm1300_pca10040/npm1300_charger.o
+ *fill*         0x000000002000009f        0x1 
+ .bss.results   0x00000000200000a0        0xb Output/Debug/Obj/npm1300_pca10040/npm1300_charger.o
+                0x00000000200000a0                results
+ *fill*         0x00000000200000ab        0x1 
  .bss.max_charge_current
-                0x000000002000008c        0x4 Output/Debug/Obj/npm1300_pca10040/fuel_gauge.o
+                0x00000000200000ac        0x4 Output/Debug/Obj/npm1300_pca10040/fuel_gauge.o
  .bss.term_charge_current
-                0x0000000020000090        0x4 Output/Debug/Obj/npm1300_pca10040/fuel_gauge.o
- *fill*         0x0000000020000094        0x4 
- .bss.ref_time  0x0000000020000098        0x8 Output/Debug/Obj/npm1300_pca10040/fuel_gauge.o
- .bss.voltage   0x00000000200000a0        0x4 Output/Debug/Obj/npm1300_pca10040/fuel_gauge.o
-                0x00000000200000a0                voltage
- .bss.current   0x00000000200000a4        0x4 Output/Debug/Obj/npm1300_pca10040/fuel_gauge.o
-                0x00000000200000a4                current
- .bss.temp      0x00000000200000a8        0x4 Output/Debug/Obj/npm1300_pca10040/fuel_gauge.o
-                0x00000000200000a8                temp
+                0x00000000200000b0        0x4 Output/Debug/Obj/npm1300_pca10040/fuel_gauge.o
+ *fill*         0x00000000200000b4        0x4 
+ .bss.ref_time  0x00000000200000b8        0x8 Output/Debug/Obj/npm1300_pca10040/fuel_gauge.o
  .bss.libc.__user_format_extender
-                0x00000000200000ac        0x4 C:/Program Files/SEGGER/SEGGER Embedded Studio for ARM 5.42a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libc2.o)
-                0x00000000200000ac                __user_format_extender
+                0x00000000200000c0        0x4 C:/Program Files/SEGGER/SEGGER Embedded Studio for ARM 5.42a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libc2.o)
+                0x00000000200000c0                __user_format_extender
  .bss.libdebugio.dbgCntrlWord_mempoll
-                0x00000000200000b0        0x4 C:/Program Files/SEGGER/SEGGER Embedded Studio for ARM 5.42a/lib/libdebugio_v7em_fpv4_sp_d16_hard_t_le_eabi.a(mempoll_debug_operations.o)
-                0x00000000200000b0                dbgCntrlWord_mempoll
+                0x00000000200000c4        0x4 C:/Program Files/SEGGER/SEGGER Embedded Studio for ARM 5.42a/lib/libdebugio_v7em_fpv4_sp_d16_hard_t_le_eabi.a(mempoll_debug_operations.o)
+                0x00000000200000c4                dbgCntrlWord_mempoll
  .bss.libdebugio.dbgCommWord
-                0x00000000200000b4        0x4 C:/Program Files/SEGGER/SEGGER Embedded Studio for ARM 5.42a/lib/libdebugio_v7em_fpv4_sp_d16_hard_t_le_eabi.a(mempoll_debug_operations.o)
-                0x00000000200000b4                dbgCommWord
- .bss.ekf_data  0x00000000200000b8     0x1778 ../../../../../../examples/lm_code/nrf_npm1300_fuel_gauge/npm1300_lib/lib/cortex-m4/hard-float/libnrf_fuel_gauge.a(libnrf_fuel_gauge__obfuscated.elf)
+                0x00000000200000c8        0x4 C:/Program Files/SEGGER/SEGGER Embedded Studio for ARM 5.42a/lib/libdebugio_v7em_fpv4_sp_d16_hard_t_le_eabi.a(mempoll_debug_operations.o)
+                0x00000000200000c8                dbgCommWord
+ .bss.ekf_data  0x00000000200000cc     0x1778 ../../../../../../examples/lm_code/nrf_npm1300_fuel_gauge/npm1300_lib/lib/cortex-m4/hard-float/libnrf_fuel_gauge.a(libnrf_fuel_gauge__obfuscated.elf)
  *(COMMON)
-                0x0000000020001830                __bss_end__ = (__bss_start__ + SIZEOF (.bss))
-                0x0000000000001818                __bss_size__ = SIZEOF (.bss)
-                0x0000000020001830                __bss_load_end__ = __bss_end__
+                0x0000000020001844                __bss_end__ = (__bss_start__ + SIZEOF (.bss))
+                0x0000000000001810                __bss_size__ = SIZEOF (.bss)
+                0x0000000020001844                __bss_load_end__ = __bss_end__
                 0x0000000000000001                . = ASSERT (((__bss_start__ == __bss_end__) || ((__bss_end__ - __RAM1_segment_start__) <= __RAM1_segment_size__)), error: .bss is too large to fit in RAM1 memory segment)
-                0x0000000020001830                __tbss_load_start__ = ALIGN (__bss_end__, 0x4)
+                0x0000000020001844                __tbss_load_start__ = ALIGN (__bss_end__, 0x4)
 
-.tbss           0x0000000020001830        0x4
-                0x0000000020001830                __tbss_start__ = .
+.tbss           0x0000000020001844        0x4
+                0x0000000020001844                __tbss_start__ = .
  *(.tbss .tbss.*)
  .tbss.errno_val
-                0x0000000020001830        0x4 C:/Program Files/SEGGER/SEGGER Embedded Studio for ARM 5.42a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libc2.o)
-                0x0000000020001834                __tbss_end__ = (__tbss_start__ + SIZEOF (.tbss))
+                0x0000000020001844        0x4 C:/Program Files/SEGGER/SEGGER Embedded Studio for ARM 5.42a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libc2.o)
+                0x0000000020001848                __tbss_end__ = (__tbss_start__ + SIZEOF (.tbss))
                 0x0000000000000004                __tbss_size__ = SIZEOF (.tbss)
-                0x0000000020001834                __tbss_load_end__ = __tbss_end__
+                0x0000000020001848                __tbss_load_end__ = __tbss_end__
                 0x0000000000000001                . = ASSERT (((__tbss_start__ == __tbss_end__) || ((__tbss_end__ - __RAM1_segment_start__) <= __RAM1_segment_size__)), error: .tbss is too large to fit in RAM1 memory segment)
-                0x0000000020001834                __non_init_load_start__ = ALIGN (__tbss_end__, 0x4)
+                0x0000000020001848                __non_init_load_start__ = ALIGN (__tbss_end__, 0x4)
 
-.non_init       0x0000000020001834        0x0
-                0x0000000020001834                __non_init_start__ = .
+.non_init       0x0000000020001848        0x0
+                0x0000000020001848                __non_init_start__ = .
  *(.non_init .non_init.*)
-                0x0000000020001834                __non_init_end__ = (__non_init_start__ + SIZEOF (.non_init))
+                0x0000000020001848                __non_init_end__ = (__non_init_start__ + SIZEOF (.non_init))
                 0x0000000000000000                __non_init_size__ = SIZEOF (.non_init)
-                0x0000000020001834                __non_init_load_end__ = __non_init_end__
+                0x0000000020001848                __non_init_load_end__ = __non_init_end__
                 0x0000000000000001                . = ASSERT (((__non_init_start__ == __non_init_end__) || ((__non_init_end__ - __RAM1_segment_start__) <= __RAM1_segment_size__)), error: .non_init is too large to fit in RAM1 memory segment)
-                0x0000000020001834                __heap_load_start__ = ALIGN (__non_init_end__, 0x4)
+                0x0000000020001848                __heap_load_start__ = ALIGN (__non_init_end__, 0x4)
 
-.heap           0x0000000020001834     0x2000
-                0x0000000020001834                __heap_start__ = .
+.heap           0x0000000020001848     0x2000
+                0x0000000020001848                __heap_start__ = .
  *(.heap .heap.*)
-                0x0000000020003834                . = ALIGN (MAX ((__heap_start__ + __HEAPSIZE__), .), 0x4)
- *fill*         0x0000000020001834     0x2000 
-                0x0000000020003834                __heap_end__ = (__heap_start__ + SIZEOF (.heap))
+                0x0000000020003848                . = ALIGN (MAX ((__heap_start__ + __HEAPSIZE__), .), 0x4)
+ *fill*         0x0000000020001848     0x2000 
+                0x0000000020003848                __heap_end__ = (__heap_start__ + SIZEOF (.heap))
                 0x0000000000002000                __heap_size__ = SIZEOF (.heap)
-                0x0000000020003834                __heap_load_end__ = __heap_end__
+                0x0000000020003848                __heap_load_end__ = __heap_end__
                 0x0000000000000001                . = ASSERT (((__heap_start__ == __heap_end__) || ((__heap_end__ - __RAM1_segment_start__) <= __RAM1_segment_size__)), error: .heap is too large to fit in RAM1 memory segment)
                 0x000000002000e000                __stack_load_start__ = (__RAM1_segment_start__ + (__RAM1_segment_size__ - 0x2000))
 
@@ -5892,7 +5889,7 @@ LOAD linker stubs
  .comment       0x0000000000000025       0x26 C:/Program Files/SEGGER/SEGGER Embedded Studio for ARM 5.42a/lib/libdebugio_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libdebugio.o)
  .comment       0x0000000000000025       0x26 C:/Program Files/SEGGER/SEGGER Embedded Studio for ARM 5.42a/lib/libdebugio_v7em_fpv4_sp_d16_hard_t_le_eabi.a(mempoll_debug_operations.o)
 
-.debug_line     0x0000000000000000     0x88eb
+.debug_line     0x0000000000000000     0x88c5
  .debug_line    0x0000000000000000      0x21f Output/Debug/Obj/npm1300_pca10040/thumb_crt0.o
  .debug_line    0x000000000000021f      0x9a4 Output/Debug/Obj/npm1300_pca10040/boards.o
  .debug_line    0x0000000000000bc3      0x353 Output/Debug/Obj/npm1300_pca10040/app_error.o
@@ -5900,14 +5897,14 @@ LOAD linker stubs
  .debug_line    0x000000000000125c      0x563 Output/Debug/Obj/npm1300_pca10040/app_error_weak.o
  .debug_line    0x00000000000017bf      0x2d0 Output/Debug/Obj/npm1300_pca10040/nrf_assert.o
  .debug_line    0x0000000000001a8f     0x1169 Output/Debug/Obj/npm1300_pca10040/nrfx_twi.o
- .debug_line    0x0000000000002bf8      0x6da Output/Debug/Obj/npm1300_pca10040/main.o
- .debug_line    0x00000000000032d2       0x91 Output/Debug/Obj/npm1300_pca10040/ses_startup_nrf52.o
- .debug_line    0x0000000000003363       0xb3 Output/Debug/Obj/npm1300_pca10040/ses_startup_nrf_common.o
- .debug_line    0x0000000000003416     0x3f82 Output/Debug/Obj/npm1300_pca10040/system_nrf52.o
- .debug_line    0x0000000000007398      0xb54 Output/Debug/Obj/npm1300_pca10040/npm1300_charger.o
- .debug_line    0x0000000000007eec      0x9ff Output/Debug/Obj/npm1300_pca10040/fuel_gauge.o
+ .debug_line    0x0000000000002bf8      0x6dc Output/Debug/Obj/npm1300_pca10040/main.o
+ .debug_line    0x00000000000032d4       0x91 Output/Debug/Obj/npm1300_pca10040/ses_startup_nrf52.o
+ .debug_line    0x0000000000003365       0xb3 Output/Debug/Obj/npm1300_pca10040/ses_startup_nrf_common.o
+ .debug_line    0x0000000000003418     0x3f82 Output/Debug/Obj/npm1300_pca10040/system_nrf52.o
+ .debug_line    0x000000000000739a      0xb25 Output/Debug/Obj/npm1300_pca10040/npm1300_charger.o
+ .debug_line    0x0000000000007ebf      0xa06 Output/Debug/Obj/npm1300_pca10040/fuel_gauge.o
 
-.debug_info     0x0000000000000000     0x8a4f
+.debug_info     0x0000000000000000     0x8a43
  .debug_info    0x0000000000000000       0x22 Output/Debug/Obj/npm1300_pca10040/thumb_crt0.o
  .debug_info    0x0000000000000022      0x90f Output/Debug/Obj/npm1300_pca10040/boards.o
  .debug_info    0x0000000000000931      0x264 Output/Debug/Obj/npm1300_pca10040/app_error.o
@@ -5919,8 +5916,8 @@ LOAD linker stubs
  .debug_info    0x000000000000313f       0x23 Output/Debug/Obj/npm1300_pca10040/ses_startup_nrf52.o
  .debug_info    0x0000000000003162       0x23 Output/Debug/Obj/npm1300_pca10040/ses_startup_nrf_common.o
  .debug_info    0x0000000000003185     0x4328 Output/Debug/Obj/npm1300_pca10040/system_nrf52.o
- .debug_info    0x00000000000074ad      0xfdd Output/Debug/Obj/npm1300_pca10040/npm1300_charger.o
- .debug_info    0x000000000000848a      0x5c5 Output/Debug/Obj/npm1300_pca10040/fuel_gauge.o
+ .debug_info    0x00000000000074ad      0xfa0 Output/Debug/Obj/npm1300_pca10040/npm1300_charger.o
+ .debug_info    0x000000000000844d      0x5f6 Output/Debug/Obj/npm1300_pca10040/fuel_gauge.o
 
 .debug_abbrev   0x0000000000000000     0x11da
  .debug_abbrev  0x0000000000000000       0x12 Output/Debug/Obj/npm1300_pca10040/thumb_crt0.o
@@ -5965,7 +5962,7 @@ LOAD linker stubs
  .debug_aranges
                 0x00000000000010e8       0x30 Output/Debug/Obj/npm1300_pca10040/fuel_gauge.o
 
-.debug_str      0x0000000000000000    0x7d0c4
+.debug_str      0x0000000000000000    0x7d0d1
  .debug_str     0x0000000000000000       0xc8 Output/Debug/Obj/npm1300_pca10040/thumb_crt0.o
  .debug_str     0x00000000000000c8    0x6b58a Output/Debug/Obj/npm1300_pca10040/boards.o
                                       0x6c1f2 (size before relaxing)
@@ -5987,9 +5984,9 @@ LOAD linker stubs
                                          0xcf (size before relaxing)
  .debug_str     0x000000000007073a     0x9a18 Output/Debug/Obj/npm1300_pca10040/system_nrf52.o
                                       0x67ad8 (size before relaxing)
- .debug_str     0x000000000007a152     0x2db7 Output/Debug/Obj/npm1300_pca10040/npm1300_charger.o
-                                      0x6e314 (size before relaxing)
- .debug_str     0x000000000007cf09      0x1bb Output/Debug/Obj/npm1300_pca10040/fuel_gauge.o
+ .debug_str     0x000000000007a152     0x2dc4 Output/Debug/Obj/npm1300_pca10040/npm1300_charger.o
+                                      0x6e321 (size before relaxing)
+ .debug_str     0x000000000007cf16      0x1bb Output/Debug/Obj/npm1300_pca10040/fuel_gauge.o
                                       0x6f030 (size before relaxing)
 
 .debug_ranges   0x0000000000000000     0x1030
@@ -6005,7 +6002,7 @@ LOAD linker stubs
  .debug_ranges  0x0000000000000fa8       0x68 Output/Debug/Obj/npm1300_pca10040/npm1300_charger.o
  .debug_ranges  0x0000000000001010       0x20 Output/Debug/Obj/npm1300_pca10040/fuel_gauge.o
 
-.debug_frame    0x0000000000000000     0x2ea4
+.debug_frame    0x0000000000000000     0x2ea0
  .debug_frame   0x0000000000000000      0x460 Output/Debug/Obj/npm1300_pca10040/boards.o
  .debug_frame   0x0000000000000460       0x58 Output/Debug/Obj/npm1300_pca10040/app_error.o
  .debug_frame   0x00000000000004b8       0x20 Output/Debug/Obj/npm1300_pca10040/app_error_handler_gcc.o
@@ -6014,11 +6011,11 @@ LOAD linker stubs
  .debug_frame   0x0000000000000548      0x6e8 Output/Debug/Obj/npm1300_pca10040/nrfx_twi.o
  .debug_frame   0x0000000000000c30       0xc8 Output/Debug/Obj/npm1300_pca10040/main.o
  .debug_frame   0x0000000000000cf8     0x1f40 Output/Debug/Obj/npm1300_pca10040/system_nrf52.o
- .debug_frame   0x0000000000002c38      0x1e4 Output/Debug/Obj/npm1300_pca10040/npm1300_charger.o
- .debug_frame   0x0000000000002e1c       0x88 Output/Debug/Obj/npm1300_pca10040/fuel_gauge.o
+ .debug_frame   0x0000000000002c38      0x1e0 Output/Debug/Obj/npm1300_pca10040/npm1300_charger.o
+ .debug_frame   0x0000000000002e18       0x88 Output/Debug/Obj/npm1300_pca10040/fuel_gauge.o
 
 .debug_pubnames
-                0x0000000000000000     0x43c3
+                0x0000000000000000     0x4394
  .debug_pubnames
                 0x0000000000000000      0x4dc Output/Debug/Obj/npm1300_pca10040/boards.o
  .debug_pubnames
@@ -6036,9 +6033,9 @@ LOAD linker stubs
  .debug_pubnames
                 0x000000000000123d     0x1ed5 Output/Debug/Obj/npm1300_pca10040/system_nrf52.o
  .debug_pubnames
-                0x0000000000003112      0xaca Output/Debug/Obj/npm1300_pca10040/npm1300_charger.o
+                0x0000000000003112      0xadd Output/Debug/Obj/npm1300_pca10040/npm1300_charger.o
  .debug_pubnames
-                0x0000000000003bdc      0x7e7 Output/Debug/Obj/npm1300_pca10040/fuel_gauge.o
+                0x0000000000003bef      0x7a5 Output/Debug/Obj/npm1300_pca10040/fuel_gauge.o
 
 .debug_pubtypes
                 0x0000000000000000      0xf2d

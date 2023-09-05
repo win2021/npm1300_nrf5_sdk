@@ -24,6 +24,7 @@ static const struct battery_model battery_model = {
 #include "battery_model.inc"
 };
 
+/*
 float voltage, current, temp;
 
 static int read_sensors(void)
@@ -47,8 +48,8 @@ static int read_sensors(void)
 
 	return 0;
 }
-
-#if 0
+*/
+#if 1
 static int read_sensors(float *voltage, float *current, float *temp)
 {
 	struct sensor_value value;
@@ -78,6 +79,7 @@ int fuel_gauge_init(void)
 	struct nrf_fuel_gauge_init_parameters parameters = { .model = &battery_model };
 	int ret;
 
+ 
         ret = twi_master_init();
         if (ret != 0) {
 		return ret;
@@ -90,12 +92,11 @@ int fuel_gauge_init(void)
 
       #if 1
 
-        
-
-	//ret = read_sensors(&parameters.v0, &parameters.i0, &parameters.t0);
-	//if (ret < 0) {
-	//	return ret;
-	//}
+       
+	ret = read_sensors(&parameters.v0, &parameters.i0, &parameters.t0);
+	if (ret < 0) {
+		return ret;
+	}
        
 	/* Store charge nominal and termination current, needed for ttf calculation */
 	npm1300_charger_channel_get(SENSOR_CHAN_GAUGE_DESIRED_CHARGING_CURRENT, &value);
@@ -120,9 +121,9 @@ int fuel_gauge_update(void)
   char tte_buf[20];
   char ttf_buf[20];
 
-	//float voltage;
-	//float current;
-	//float temp;
+	float voltage;
+	float current;
+	float temp;
 	float soc;
 	float tte;
 	float ttf;
@@ -130,8 +131,8 @@ int fuel_gauge_update(void)
         float testdata;
 	int ret;
 
-	//ret = read_sensors(&voltage, &current, &temp);
-        ret = read_sensors();
+	ret = read_sensors(&voltage, &current, &temp);
+        //ret = read_sensors();
 	if (ret < 0) {
 		printf("Error: Could not read from charger device\n");
 		return ret;

@@ -37,6 +37,16 @@ struct npm1300_charger_config {
 	bool charging_enable;
 };
 
+struct npm1300_charger_config config = {
+    .term_microvolt = 4150000,
+   .term_warm_microvolt = 4000000, 
+   .current_microamp = 150000,
+   .dischg_limit_microamp = 1000000,
+   .vbus_limit_microamp = 500000,
+   .thermistor_beta = 3380,
+   .charging_enable = true,
+}; 
+
 struct npm1300_charger_data {
 	uint16_t voltage;
 	uint16_t current;
@@ -46,6 +56,17 @@ struct npm1300_charger_data {
 	uint8_t ibat_stat;
 	uint8_t vbus_stat;
 };
+
+struct npm1300_charger_data npm1300_data = {
+  .current=0,
+  .error = 0,
+  .ibat_stat = 0,
+  .status = 0,
+  .temp = 0,
+  .vbus_stat = 0,
+  .voltage = 0,
+};
+
 
 /* nPM1300 base addresses */
 #define CHGR_BASE 0x03U
@@ -118,7 +139,7 @@ static const struct linear_range vbus_current_ranges[] = {
 
 /* Indicates if operation on TWI has ended. */
 static volatile bool m_xfer_done = false;
-struct npm1300_charger_data *data = NULL;
+
 struct adc_results_t results;
 
 /**
@@ -214,12 +235,12 @@ static ret_code_t reg_write2(uint8_t base, uint8_t offset, uint8_t data1,uint8_t
     return ret;
 }
 
-static void calc_temp(const struct npm1300_charger_config *const config, uint16_t code,
+static void calc_temp(uint16_t code,
 		      struct sensor_value *valp)
 {
 	/* Ref: Datasheet Figure 42: Battery temperature (Kelvin) */
 	float log_result = log((1024.f / (float)code) - 1);
-	float inv_temp_k = (1.f / 298.15f) - (log_result / (float)config->thermistor_beta);
+	float inv_temp_k = (1.f / 298.15f) - (log_result / (float)config.thermistor_beta);
 
 	float temp = (1.f / inv_temp_k) - 273.15f;
 
@@ -232,24 +253,23 @@ static uint16_t adc_get_res(uint8_t msb, uint8_t lsb, uint16_t lsb_shift)
 	return ((uint16_t)msb << ADC_MSB_SHIFT) | ((lsb >> lsb_shift) & ADC_LSB_MASK);
 }
 
-static void calc_current(const struct npm1300_charger_config *const config,
-			 struct npm1300_charger_data *const data, struct sensor_value *valp)
+static void calc_current(struct npm1300_charger_data *const data, struct sensor_value *valp)
 {
 	int32_t full_scale_ma;
 	int32_t current;
 
 	switch (data->ibat_stat) {
 	case IBAT_STAT_DISCHARGE:
-		full_scale_ma = config->dischg_limit_microamp / 1000;
+		full_scale_ma = config.dischg_limit_microamp / 1000;
 		break;
 	case IBAT_STAT_CHARGE_TRICKLE:
-		full_scale_ma = -config->current_microamp / 10000;
+		full_scale_ma = -config.current_microamp / 10000;
 		break;
 	case IBAT_STAT_CHARGE_COOL:
-		full_scale_ma = -config->current_microamp / 2000;
+		full_scale_ma = -config.current_microamp / 2000;
 		break;
 	case IBAT_STAT_CHARGE_NORMAL:
-		full_scale_ma = -config->current_microamp / 1000;
+		full_scale_ma = -config.current_microamp / 1000;
 		break;
 	default:
 		full_scale_ma = 0;
@@ -264,46 +284,36 @@ static void calc_current(const struct npm1300_charger_config *const config,
 
 int npm1300_charger_channel_get(enum sensor_channel chan,struct sensor_value *valp)
 {
-	struct npm1300_charger_config *config = NULL; //dev->config;
-        config->term_microvolt = 0x3f52f0;
-        config->term_warm_microvolt = 0x3d0900; 
-        config->current_microamp = 0x249f0;
-        config->dischg_limit_microamp = 0xf4240;
-        config->vbus_limit_microamp = 0x7a120;
-	struct npm1300_charger_data *data = NULL; // dev->data;
-        data->current= 22333;
-        data->temp = 1162;
-        data->ibat_stat = 0;
-        data->voltage = 450000;
+        
 	int32_t tmp;
 
 	switch ((uint32_t)chan) {
 	case SENSOR_CHAN_GAUGE_VOLTAGE:
-		tmp = data->voltage * 5000 / 1024;
+		tmp = npm1300_data.voltage * 5000 / 1024;
 		valp->val1 = tmp / 1000;
 		valp->val2 = (tmp % 1000) * 1000;
 		break;
 	case SENSOR_CHAN_GAUGE_TEMP:
-		calc_temp(config, data->temp, valp);
+		calc_temp(npm1300_data.temp, valp);
 		break;
 	case SENSOR_CHAN_GAUGE_AVG_CURRENT:
-		calc_current(config, data, valp);
+		calc_current(&npm1300_data, valp);
 		break;
 	case SENSOR_CHAN_NPM1300_CHARGER_STATUS:
-		valp->val1 = data->status;
+		valp->val1 = npm1300_data.status;
 		valp->val2 = 0;
 		break;
 	case SENSOR_CHAN_NPM1300_CHARGER_ERROR:
-		valp->val1 = data->error;
+		valp->val1 = npm1300_data.error;
 		valp->val2 = 0;
 		break;
 	case SENSOR_CHAN_GAUGE_DESIRED_CHARGING_CURRENT:
-		valp->val1 = config->current_microamp / 1000000;
-		valp->val2 = config->current_microamp % 1000000;
+		valp->val1 = config.current_microamp / 1000000;
+		valp->val2 = config.current_microamp % 1000000;
 		break;
 	case SENSOR_CHAN_GAUGE_MAX_LOAD_CURRENT:
-		valp->val1 = config->dischg_limit_microamp / 1000000;
-		valp->val2 = config->dischg_limit_microamp % 1000000;
+		valp->val1 = config.dischg_limit_microamp / 1000000;
+		valp->val2 = config.dischg_limit_microamp % 1000000;
 		break;
 	default:
 		return -ENOTSUP;
@@ -340,12 +350,12 @@ int npm1300_charger_sample_fetch(void)
 	int ret;
 
 	/* Read charge status and error reason */
-	ret = reg_read(CHGR_BASE, CHGR_OFFSET_CHG_STAT, &data->status);
+	ret = reg_read(CHGR_BASE, CHGR_OFFSET_CHG_STAT, &npm1300_data.status);
 	if (ret != 0) {
 		return ret;
 	}
 
-	ret = reg_read(CHGR_BASE, CHGR_OFFSET_ERR_REASON, &data->error);
+	ret = reg_read(CHGR_BASE, CHGR_OFFSET_ERR_REASON, &npm1300_data.error);
 	if (ret != 0) {
 		return ret;
 	}
@@ -356,10 +366,10 @@ int npm1300_charger_sample_fetch(void)
 		return ret;
 	}
 
-	data->voltage = adc_get_res(results.msb_vbat, results.lsb_a, ADC_LSB_VBAT_SHIFT);
-	data->temp = adc_get_res(results.msb_ntc, results.lsb_a, ADC_LSB_NTC_SHIFT);
-	data->current = adc_get_res(results.msb_ibat, results.lsb_b, ADC_LSB_IBAT_SHIFT);
-	data->ibat_stat = results.ibat_stat;
+	npm1300_data.voltage = adc_get_res(results.msb_vbat, results.lsb_a, ADC_LSB_VBAT_SHIFT);
+	npm1300_data.temp = adc_get_res(results.msb_ntc, results.lsb_a, ADC_LSB_NTC_SHIFT);
+	npm1300_data.current = adc_get_res(results.msb_ibat, results.lsb_b, ADC_LSB_IBAT_SHIFT);
+	npm1300_data.ibat_stat = results.ibat_stat;
 
 	/* Trigger temperature measurement */
 	ret = reg_write(ADC_BASE, ADC_OFFSET_TASK_TEMP, 1U);
@@ -374,13 +384,13 @@ int npm1300_charger_sample_fetch(void)
 	}
 
 	/* Read vbus status, and set SW current limit on new vbus detection */
-	last_vbus = (data->vbus_stat & 1U) != 0U;
-	ret = reg_read(VBUS_BASE, VBUS_OFFSET_STATUS, &data->vbus_stat);
+	last_vbus = (npm1300_data.vbus_stat & 1U) != 0U;
+	ret = reg_read(VBUS_BASE, VBUS_OFFSET_STATUS, &npm1300_data.vbus_stat);
 	if (ret != 0) {
 		return ret;
 	}
 
-	if (!last_vbus && ((data->vbus_stat & 1U) != 0U)) {
+	if (!last_vbus && ((npm1300_data.vbus_stat & 1U) != 0U)) {
 		ret = reg_write(VBUS_BASE, VBUS_OFFSET_TASK_UPDATE, 1U);
 
 		if (ret != 0) {
@@ -388,50 +398,14 @@ int npm1300_charger_sample_fetch(void)
 		}
 	}
 
+        printf("results:ibat=%d,vbat=%d,ntc=%d, \n",results.ibat_stat,results.msb_vbat,results.msb_ntc);
+
 	return ret;
 }
-#if 0  //from zephyr dts file
-npm1300_ek_regulators: regulators {
-					compatible = "nordic,npm1300-regulator";
-					npm1300_ek_buck1: BUCK1 {
-						regulator-min-microvolt = < 0x1b7740 >;
-						regulator-max-microvolt = < 0x325aa0 >;
-					};
-					npm1300_ek_buck2: BUCK2 {
-						regulator-min-microvolt = < 0xf4240 >;
-						regulator-max-microvolt = < 0x325aa0 >;
-						regulator-init-microvolt = < 0x325aa0 >;
-						retention-microvolt = < 0x2625a0 >;
-						enable-gpios = < &npm1300_ek_gpio 0x1 0x1 >;
-						retention-gpios = < &npm1300_ek_gpio 0x2 0x0 >;
-						pwm-gpios = < &npm1300_ek_gpio 0x2 0x1 >;
-					};
-					npm1300_ek_ldo1: LDO1 {
-						regulator-min-microvolt = < 0xf4240 >;
-						regulator-max-microvolt = < 0x325aa0 >;
-						enable-gpios = < &npm1300_ek_gpio 0x2 0x1 >;
-					};
-					npm1300_ek_ldo2: LDO2 {
-						regulator-min-microvolt = < 0xf4240 >;
-						regulator-max-microvolt = < 0x325aa0 >;
-						enable-gpios = < &npm1300_ek_gpio 0x2 0x1 >;
-					};
-				};
-npm1300_ek_charger: charger {
-					compatible = "nordic,npm1300-charger";
-					term-microvolt = < 0x3f52f0 >;
-					term-warm-microvolt = < 0x3d0900 >;
-					current-microamp = < 0x249f0 >;
-					dischg-limit-microamp = < 0xf4240 >;
-					vbus-limit-microamp = < 0x7a120 >;
-					thermistor-ohms = < 0x2710 >;
-					thermistor-beta = < 0xd34 >;
-					charging-enable;
-				};
-#endif
 
 int npm1300_charger_init(void)
 {
+
   uint8_t results = 0;
   uint8_t res_buf[11] = {0};
   int ret;

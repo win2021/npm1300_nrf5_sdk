@@ -79,6 +79,8 @@ int main(void)
     while (true)
     {
         fuel_gauge_update();
+        //npm1300_charger_sample_fetch();
+      
         for (int i = 0; i < LEDS_NUMBER; i++)
         {
             bsp_board_led_invert(i);
