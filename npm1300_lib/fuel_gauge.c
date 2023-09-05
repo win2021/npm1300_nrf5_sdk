@@ -24,6 +24,31 @@ static const struct battery_model battery_model = {
 #include "battery_model.inc"
 };
 
+float voltage, current, temp;
+
+static int read_sensors(void)
+{
+  struct sensor_value value;
+	int ret;
+
+        ret = npm1300_charger_sample_fetch();
+	if (ret < 0) {
+		return ret;
+	}
+
+	npm1300_charger_channel_get(SENSOR_CHAN_GAUGE_VOLTAGE, &value);
+	voltage = (float)value.val1 + ((float)value.val2 / 1000000);
+
+	npm1300_charger_channel_get(SENSOR_CHAN_GAUGE_TEMP, &value);
+	temp = (float)value.val1 + ((float)value.val2 / 1000000);
+
+	npm1300_charger_channel_get(SENSOR_CHAN_GAUGE_AVG_CURRENT, &value);
+	current = (float)value.val1 + ((float)value.val2 / 1000000);
+
+	return 0;
+}
+
+#if 0
 static int read_sensors(float *voltage, float *current, float *temp)
 {
 	struct sensor_value value;
@@ -45,6 +70,7 @@ static int read_sensors(float *voltage, float *current, float *temp)
 
 	return 0;
 }
+#endif
 
 int fuel_gauge_init(void)
 {
@@ -57,26 +83,31 @@ int fuel_gauge_init(void)
 		return ret;
 	}
 
-	ret = read_sensors(&parameters.v0, &parameters.i0, &parameters.t0);
-	if (ret < 0) {
+        ret = npm1300_charger_init();
+        if (ret < 0) {
 		return ret;
 	}
 
+      #if 1
+
+        
+
+	//ret = read_sensors(&parameters.v0, &parameters.i0, &parameters.t0);
+	//if (ret < 0) {
+	//	return ret;
+	//}
+       
 	/* Store charge nominal and termination current, needed for ttf calculation */
 	npm1300_charger_channel_get(SENSOR_CHAN_GAUGE_DESIRED_CHARGING_CURRENT, &value);
 	max_charge_current = (float)value.val1 + ((float)value.val2 / 1000000);
 	term_charge_current = max_charge_current / 10.f;
 
-	nrf_fuel_gauge_init(&parameters, NULL);
-
-        ret = npm1300_charger_init();
-        if (ret < 0) {
-		return ret;
-	}
-        
+        nrf_fuel_gauge_init(&parameters, NULL);     
+	
+     
 	//ref_time = k_uptime_get();  //maybe here is modify
-        ref_time = 4500000;   //about 15ms
-
+        ref_time = 1500000;   //about 15ms
+#endif
 	return 0;
 }
 
@@ -89,9 +120,9 @@ int fuel_gauge_update(void)
   char tte_buf[20];
   char ttf_buf[20];
 
-	float voltage;
-	float current;
-	float temp;
+	//float voltage;
+	//float current;
+	//float temp;
 	float soc;
 	float tte;
 	float ttf;
@@ -99,14 +130,15 @@ int fuel_gauge_update(void)
         float testdata;
 	int ret;
 
-	ret = read_sensors(&voltage, &current, &temp);
+	//ret = read_sensors(&voltage, &current, &temp);
+        ret = read_sensors();
 	if (ret < 0) {
 		printf("Error: Could not read from charger device\n");
 		return ret;
 	}
 
 	//delta = (float) k_uptime_delta(&ref_time) / 1000.f;
-        delta = 3000000;
+        delta = 1000000;
 
 	soc = nrf_fuel_gauge_process(voltage, current, temp, delta, NULL);
 	tte = nrf_fuel_gauge_tte_get();

@@ -9,6 +9,8 @@
 #include "nrf_drv_twi.h"
 #include "sensor.h"
 #include "linear_range.h"
+#include "util.h"
+
 
 
 #define EDQUOT 132
@@ -114,6 +116,31 @@ static const struct linear_range discharge_limit_range = LINEAR_RANGE_INIT(26809
 static const struct linear_range vbus_current_ranges[] = {
 	LINEAR_RANGE_INIT(100000, 0, 1U, 1U), LINEAR_RANGE_INIT(500000, 100000, 5U, 15U)};
 
+/* Indicates if operation on TWI has ended. */
+static volatile bool m_xfer_done = false;
+struct npm1300_charger_data *data = NULL;
+struct adc_results_t results;
+
+/**
+ * @brief TWI events handler.
+ */
+void twi_handler(nrfx_twi_evt_t const * p_event, void * p_context)
+{
+    switch (p_event->type)
+    {
+        case NRF_DRV_TWI_EVT_DONE:
+            if (p_event->xfer_desc.type == NRF_DRV_TWI_XFER_RX)
+            {
+               // data_handler(m_sample);
+            }
+            m_xfer_done = true;
+            break;
+        default:
+            break;
+    }
+}
+
+
 
 ret_code_t twi_master_init(void)
 {
@@ -127,7 +154,7 @@ ret_code_t twi_master_init(void)
        .hold_bus_uninit     = false
     };
 
-    ret = nrfx_twi_init(&m_twi, &config, NULL, NULL);
+    ret = nrfx_twi_init(&m_twi, &config, twi_handler, NULL);
 
     if (NRF_SUCCESS == ret)
     {
@@ -149,27 +176,42 @@ static ret_code_t reg_read_burst(uint8_t base, uint8_t offset, void *data, size_
     uint8_t buffer[]={base, offset};
     do
     {
+       m_xfer_done = false;
        ret = nrfx_twi_tx(&m_twi, NPM1300_ADDR, buffer,sizeof(buffer), true);
-       if (NRF_SUCCESS != ret)
-       {
-           break;
-       }
+         //if (NRF_SUCCESS != ret)
+         //{
+         //    break;
+         //}
+        while (m_xfer_done == false);
+       m_xfer_done = false;
        ret = nrfx_twi_rx(&m_twi, NPM1300_ADDR, data, len);
+       while (m_xfer_done == false);
     }while (0);
 
     return ret;
 }
 
 static ret_code_t reg_write(uint8_t base, uint8_t offset, uint8_t data)
-{
+{  
+    ret_code_t ret;
     uint8_t buffer[] = {base, offset, data};
-    return(nrfx_twi_tx(&m_twi, NPM1300_ADDR, buffer, sizeof(buffer), false));
+    m_xfer_done = false;
+    ret = nrfx_twi_tx(&m_twi, NPM1300_ADDR, buffer, sizeof(buffer), false);
+    APP_ERROR_CHECK(ret);
+    while (m_xfer_done == false);
+   // for(int i=0; i<100000;i++);
+    return ret;
 }
 
 static ret_code_t reg_write2(uint8_t base, uint8_t offset, uint8_t data1,uint8_t data2)
 {
+    ret_code_t ret;
     uint8_t buffer[] = {base, offset, data1, data2};
-    return(nrfx_twi_tx(&m_twi, NPM1300_ADDR, buffer, sizeof(buffer), false));
+    m_xfer_done = false;
+    ret = nrfx_twi_tx(&m_twi, NPM1300_ADDR, buffer, sizeof(buffer), false);
+    APP_ERROR_CHECK(ret);
+    while (m_xfer_done == false);
+    return ret;
 }
 
 static void calc_temp(const struct npm1300_charger_config *const config, uint16_t code,
@@ -222,8 +264,17 @@ static void calc_current(const struct npm1300_charger_config *const config,
 
 int npm1300_charger_channel_get(enum sensor_channel chan,struct sensor_value *valp)
 {
-	const struct npm1300_charger_config *const config = NULL; //dev->config;
-	struct npm1300_charger_data *const data = NULL; // dev->data;
+	struct npm1300_charger_config *config = NULL; //dev->config;
+        config->term_microvolt = 0x3f52f0;
+        config->term_warm_microvolt = 0x3d0900; 
+        config->current_microamp = 0x249f0;
+        config->dischg_limit_microamp = 0xf4240;
+        config->vbus_limit_microamp = 0x7a120;
+	struct npm1300_charger_data *data = NULL; // dev->data;
+        data->current= 22333;
+        data->temp = 1162;
+        data->ibat_stat = 0;
+        data->voltage = 450000;
 	int32_t tmp;
 
 	switch ((uint32_t)chan) {
@@ -266,21 +317,25 @@ static ret_code_t reg_read(uint8_t base, uint8_t offset, uint8_t * pdata)
     ret_code_t ret;
     uint8_t buffer[]= { base, offset}; 
     do
-    {       
+    {    
+       m_xfer_done = false;
        ret = nrfx_twi_tx(&m_twi, NPM1300_ADDR, buffer, sizeof(buffer), true);
-       if (NRF_SUCCESS != ret)
-       {
-           break;
-       }
+        while (m_xfer_done == false);
+       //if (NRF_SUCCESS != ret)
+       //{
+       //    break;
+       //}
+       m_xfer_done = false;
        ret = nrfx_twi_rx(&m_twi, NPM1300_ADDR, pdata, 1U);
+        while (m_xfer_done == false);
     }while (0);
     return ret;
 }
 
 int npm1300_charger_sample_fetch(void)
 {
-	struct npm1300_charger_data *data = NULL;
-	struct adc_results_t results;
+	//struct npm1300_charger_data *data = NULL;
+	//struct adc_results_t results;
 	bool last_vbus;
 	int ret;
 
@@ -377,6 +432,173 @@ npm1300_ek_charger: charger {
 
 int npm1300_charger_init(void)
 {
+  uint8_t results = 0;
+  uint8_t res_buf[11] = {0};
+  int ret;
+  //w 08 0c,r 00
+   ret = reg_read_burst(0x08, 0x0c, &results, sizeof(results));
+   if (ret != 0) {
+      return ret;
+  }
+  //w 08 05 00
+  ret = reg_write(0x08, 0x05, 0x00);
+  if (ret != 0) {
+    return ret;
+  }
+  //w 04 0A 17
+  ret = reg_write(0x04, 0x0A, 0x17);
+  if (ret != 0) {
+    return ret;
+  }
+  //w 04 0f,r 02
+   ret = reg_read_burst(0x04, 0x0f, &results, sizeof(results));
+   if (ret != 0) {
+      return ret;
+  }
+   //w 04 0F 02
+  ret = reg_write(0x04, 0x0F, 0x02);
+  if (ret != 0) {
+    return ret;
+  }
+ 
+   ret = reg_read_burst(0x04, 0x0F, &results, sizeof(results));
+   if (ret != 0) {
+      return ret;
+  }
+
+    //w 04 0A,r 17
+   ret = reg_read_burst(0x04, 0x0A, &results, sizeof(results));
+   if (ret != 0) {
+      return ret;
+  }
+
+     //w 04 0B 0F
+  ret = reg_write(0x04, 0x0B, 0x0F);
+  if (ret != 0) {
+    return ret;
+  }
+
+   //w 04 0C,r 90
+   ret = reg_read_burst(0x04, 0x0C, &results, sizeof(results));
+   if (ret != 0) {
+      return ret;
+  }
+
+  ret = reg_write(0x04, 0x0C, 0x90);
+  if (ret != 0) {
+    return ret;
+  }
+
+   ret = reg_read_burst(0x04, 0x0D, &results, sizeof(results));
+   if (ret != 0) {
+      return ret;
+  }
+
+   ret = reg_write(0x04, 0x0D, 0x18);
+  if (ret != 0) {
+    return ret;
+  }
+
+  ret = reg_read_burst(0x04, 0x0E, &results, sizeof(results));
+   if (ret != 0) {
+      return ret;
+  }
+
+     ret = reg_write(0x04, 0x0D, 0x98);
+  if (ret != 0) {
+    return ret;
+  }
+
+   ret = reg_read_burst(0x04, 0x0F, &results, sizeof(results));
+   if (ret != 0) {
+      return ret;
+  }
+  ret = reg_read_burst(0x04, 0x10, &results, sizeof(results));
+   if (ret != 0) {
+      return ret;
+  }
+
+     ret = reg_write(0x05, 0x0A, 0x01);
+  if (ret != 0) {
+    return ret;
+  }
+      ret = reg_write(0x03, 0x0C, 0x07);
+  if (ret != 0) {
+    return ret;
+  }
+      ret = reg_write(0x03, 0x0d, 0x04);
+  if (ret != 0) {
+    return ret;
+  }
+
+      ret = reg_write2(0x03, 0x08, 0x25,0x00);
+  if (ret != 0) {
+    return ret;
+  }
+
+        ret = reg_write2(0x03, 0x0A, 0x9A,0x01);
+  if (ret != 0) {
+    return ret;
+  }
+
+        ret = reg_write(0x02, 0x01, 0x05);
+  if (ret != 0) {
+    return ret;
+  }
+
+   ret = reg_write(0x05, 0x24, 0x01);
+  if (ret != 0) {
+    return ret;
+  }
+   ret = reg_write(0x05, 0x00, 0x01);
+  if (ret != 0) {
+    return ret;
+  }
+   ret = reg_write(0x05, 0x01, 0x01);
+  if (ret != 0) {
+    return ret;
+  }
+   ret = reg_write(0x03, 0x04, 0x01);
+  if (ret != 0) {
+    return ret;
+  }
+
+   ret = reg_read_burst(0x03, 0x34, &results, sizeof(results));
+   if (ret != 0) {
+      return ret;
+  }
+  ret = reg_read_burst(0x03, 0x36, &results, sizeof(results));
+   if (ret != 0) {
+      return ret;
+  }
+
+  ret = reg_read_burst(0x05, 0x10, &res_buf, sizeof(res_buf));
+   if (ret != 0) {
+      return ret;
+  }
+    ret = reg_write(0x05, 0x01, 0x01);
+  if (ret != 0) {
+    return ret;
+  }
+  ret = reg_write(0x05, 0x00, 0x01);
+  if (ret != 0) {
+    return ret;
+  }
+   ret = reg_read_burst(0x02, 0x07, &results, sizeof(results));
+   if (ret != 0) {
+      return ret;
+  }
+
+    ret = reg_write(0x02, 0x00, 0x01);
+  if (ret != 0) {
+    return ret;
+  }
+
+}
+
+#if 0
+int npm1300_charger_init(void)
+{
 	struct npm1300_charger_config *config = NULL;
         config->term_microvolt = 0x3f52f0;
         config->term_warm_microvolt = 0x3d0900; 
@@ -394,23 +616,26 @@ int npm1300_charger_init(void)
 	}
 
 	/* Configure termination voltages */
-	ret = linear_range_group_get_win_index(charger_volt_ranges, ARRAY_SIZE(charger_volt_ranges),
-					       config->term_microvolt, config->term_microvolt,
-					       &idx);
-	if (ret != 0) {
-		return ret;
-	}
+	//ret = linear_range_group_get_win_index(charger_volt_ranges, ARRAY_SIZE(charger_volt_ranges),
+	//				       config->term_microvolt, config->term_microvolt,
+	//				       &idx);
+	//if (ret != 0) {
+	//	return ret;
+	//}
+        idx = 4; // Configure termination voltages setting to 4V
 	ret = reg_write(CHGR_BASE, CHGR_OFFSET_VTERM, idx);
 	if (ret != 0) {
 		return ret;
 	}
 
-	ret = linear_range_group_get_win_index(charger_volt_ranges, ARRAY_SIZE(charger_volt_ranges),
-					       config->term_warm_microvolt,
-					       config->term_warm_microvolt, &idx);
-	if (ret != 0) {
-		return ret;
-	}
+	//ret = linear_range_group_get_win_index(charger_volt_ranges, ARRAY_SIZE(charger_volt_ranges),
+	//				       config->term_warm_microvolt,
+	//				       config->term_warm_microvolt, &idx);
+	//if (ret != 0) {
+	//	return ret;
+	//}
+
+        idx = 6; //Battery Charger Termination Voltage Warm temp setting to 4.1V
 
 	ret = reg_write(CHGR_BASE, CHGR_OFFSET_VTERM_R, idx);
 	if (ret != 0) {
@@ -418,12 +643,14 @@ int npm1300_charger_init(void)
 	}
 
 	/* Set current, allow rounding down to closest value */
-	ret = linear_range_get_win_index(&charger_current_range,
-					 config->current_microamp - charger_current_range.step,
-					 config->current_microamp, &idx);
-	if (ret != 0) {
-		return ret;
-	}
+	//ret = linear_range_get_win_index(&charger_current_range,
+	//				 config->current_microamp - charger_current_range.step,
+	//				 config->current_microamp, &idx);
+	//if (ret != 0) {
+	//	return ret;
+	//}
+
+        idx = 0x08;  // 32mA
 
 	ret = reg_write2(CHGR_BASE, CHGR_OFFSET_ISET, idx / 2U, idx & 1U);
 	if (ret != 0) {
@@ -431,25 +658,27 @@ int npm1300_charger_init(void)
 	}
 
 	/* Set discharge limit, allow rounding down to closest value */
-	ret = linear_range_get_win_index(&discharge_limit_range,
-					 config->dischg_limit_microamp - discharge_limit_range.step,
-					 config->dischg_limit_microamp, &idx);
-	if (ret != 0) {
-		return ret;
-	}
+	//ret = linear_range_get_win_index(&discharge_limit_range,
+	//				 config->dischg_limit_microamp - discharge_limit_range.step,
+	//				 config->dischg_limit_microamp, &idx);
+	//if (ret != 0) {
+	//	return ret;
+	//}
 
+        idx = 0xCF;  // 1A
 	ret = reg_write2(CHGR_BASE, CHGR_OFFSET_ISET_DISCHG, idx / 2U, idx & 1U);
 	if (ret != 0) {
 		return ret;
 	}
 
-	/* Configure vbus current limit */
-	ret = linear_range_group_get_win_index(vbus_current_ranges, ARRAY_SIZE(vbus_current_ranges),
-					       config->vbus_limit_microamp,
-					       config->vbus_limit_microamp, &idx);
-	if (ret != 0) {
-		return ret;
-	}
+	///* Configure vbus current limit */
+	//ret = linear_range_group_get_win_index(vbus_current_ranges, ARRAY_SIZE(vbus_current_ranges),
+	//				       config->vbus_limit_microamp,
+	//				       config->vbus_limit_microamp, &idx);
+	//if (ret != 0) {
+	//	return ret;
+	//}
+        idx = 0;//  500mA
 	ret = reg_write(VBUS_BASE, VBUS_OFFSET_ILIM, idx);
 	if (ret != 0) {
 		return ret;
@@ -484,3 +713,4 @@ int npm1300_charger_init(void)
 	return 0;
 }
 
+#endif

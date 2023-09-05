@@ -52,4 +52,5 @@ Output/Debug/Obj/npm1300_pca10040/npm1300_charger.o: \
  ../../../../../../examples/lm_code/nrf_npm1300_fuel_gauge/npm1300_lib/include/sensor.h \
  ../../../../../../examples/lm_code/nrf_npm1300_fuel_gauge/npm1300_lib/include/linear_range.h \
  C\:/Program\ Files/SEGGER/SEGGER\ Embedded\ Studio\ for\ ARM\ 5.42a/include/errno.h \
- C\:/Program\ Files/SEGGER/SEGGER\ Embedded\ Studio\ for\ ARM\ 5.42a/include/stdlib.h
+ C\:/Program\ Files/SEGGER/SEGGER\ Embedded\ Studio\ for\ ARM\ 5.42a/include/stdlib.h \
+ ../../../../../../examples/lm_code/nrf_npm1300_fuel_gauge/npm1300_lib/include/util.h

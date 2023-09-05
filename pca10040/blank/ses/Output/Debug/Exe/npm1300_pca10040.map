@@ -358,19 +358,6 @@ Discarded input sections
  .text          0x0000000000000000        0x0 Output/Debug/Obj/npm1300_pca10040/app_error_handler_gcc.o
  .data          0x0000000000000000        0x0 Output/Debug/Obj/npm1300_pca10040/app_error_handler_gcc.o
  .bss           0x0000000000000000        0x0 Output/Debug/Obj/npm1300_pca10040/app_error_handler_gcc.o
- .text.app_error_handler
-                0x0000000000000000       0x1c Output/Debug/Obj/npm1300_pca10040/app_error_handler_gcc.o
- .debug_frame   0x0000000000000000       0x20 Output/Debug/Obj/npm1300_pca10040/app_error_handler_gcc.o
- .debug_info    0x0000000000000000       0xe3 Output/Debug/Obj/npm1300_pca10040/app_error_handler_gcc.o
- .debug_abbrev  0x0000000000000000       0x7a Output/Debug/Obj/npm1300_pca10040/app_error_handler_gcc.o
- .debug_pubnames
-                0x0000000000000000       0x28 Output/Debug/Obj/npm1300_pca10040/app_error_handler_gcc.o
- .debug_pubtypes
-                0x0000000000000000       0xed Output/Debug/Obj/npm1300_pca10040/app_error_handler_gcc.o
- .debug_aranges
-                0x0000000000000000       0x20 Output/Debug/Obj/npm1300_pca10040/app_error_handler_gcc.o
- .debug_ranges  0x0000000000000000       0x10 Output/Debug/Obj/npm1300_pca10040/app_error_handler_gcc.o
- .debug_macro   0x0000000000000000      0x15c Output/Debug/Obj/npm1300_pca10040/app_error_handler_gcc.o
  .debug_macro   0x0000000000000000      0xac6 Output/Debug/Obj/npm1300_pca10040/app_error_handler_gcc.o
  .debug_macro   0x0000000000000000      0x1a3 Output/Debug/Obj/npm1300_pca10040/app_error_handler_gcc.o
  .debug_macro   0x0000000000000000       0x22 Output/Debug/Obj/npm1300_pca10040/app_error_handler_gcc.o
@@ -399,11 +386,6 @@ Discarded input sections
  .debug_macro   0x0000000000000000       0x55 Output/Debug/Obj/npm1300_pca10040/app_error_handler_gcc.o
  .debug_macro   0x0000000000000000       0x72 Output/Debug/Obj/npm1300_pca10040/app_error_handler_gcc.o
  .debug_macro   0x0000000000000000       0x49 Output/Debug/Obj/npm1300_pca10040/app_error_handler_gcc.o
- .debug_line    0x0000000000000000      0x346 Output/Debug/Obj/npm1300_pca10040/app_error_handler_gcc.o
- .debug_str     0x0000000000000000    0x68a7c Output/Debug/Obj/npm1300_pca10040/app_error_handler_gcc.o
- .comment       0x0000000000000000       0x26 Output/Debug/Obj/npm1300_pca10040/app_error_handler_gcc.o
- .ARM.attributes
-                0x0000000000000000       0x39 Output/Debug/Obj/npm1300_pca10040/app_error_handler_gcc.o
  .group         0x0000000000000000        0xc Output/Debug/Obj/npm1300_pca10040/app_error_weak.o
  .group         0x0000000000000000        0xc Output/Debug/Obj/npm1300_pca10040/app_error_weak.o
  .group         0x0000000000000000        0xc Output/Debug/Obj/npm1300_pca10040/app_error_weak.o
@@ -2553,10 +2535,19 @@ Discarded input sections
  .group         0x0000000000000000        0xc Output/Debug/Obj/npm1300_pca10040/npm1300_charger.o
  .group         0x0000000000000000        0xc Output/Debug/Obj/npm1300_pca10040/npm1300_charger.o
  .group         0x0000000000000000        0xc Output/Debug/Obj/npm1300_pca10040/npm1300_charger.o
+ .group         0x0000000000000000        0xc Output/Debug/Obj/npm1300_pca10040/npm1300_charger.o
  .text          0x0000000000000000        0x0 Output/Debug/Obj/npm1300_pca10040/npm1300_charger.o
  .data          0x0000000000000000        0x0 Output/Debug/Obj/npm1300_pca10040/npm1300_charger.o
  .bss           0x0000000000000000        0x0 Output/Debug/Obj/npm1300_pca10040/npm1300_charger.o
  .bss.__packed  0x0000000000000000        0xb Output/Debug/Obj/npm1300_pca10040/npm1300_charger.o
+ .rodata.charger_volt_ranges
+                0x0000000000000000       0x18 Output/Debug/Obj/npm1300_pca10040/npm1300_charger.o
+ .rodata.charger_current_range
+                0x0000000000000000        0xc Output/Debug/Obj/npm1300_pca10040/npm1300_charger.o
+ .rodata.discharge_limit_range
+                0x0000000000000000        0xc Output/Debug/Obj/npm1300_pca10040/npm1300_charger.o
+ .rodata.vbus_current_ranges
+                0x0000000000000000       0x18 Output/Debug/Obj/npm1300_pca10040/npm1300_charger.o
  .debug_macro   0x0000000000000000      0xac6 Output/Debug/Obj/npm1300_pca10040/npm1300_charger.o
  .debug_macro   0x0000000000000000      0x769 Output/Debug/Obj/npm1300_pca10040/npm1300_charger.o
  .debug_macro   0x0000000000000000      0x1a3 Output/Debug/Obj/npm1300_pca10040/npm1300_charger.o
@@ -4897,8 +4888,8 @@ FLASH1           0x0000000000000000 0x0000000000080000 xw
 
 Linker script and memory map
 
-                0x0000000000004630                __do_debug_operation = __do_debug_operation_mempoll
-                0x0000000000003fd8                __vfprintf = __vfprintf_long
+                0x0000000000004780                __do_debug_operation = __do_debug_operation_mempoll
+                0x0000000000004128                __vfprintf = __vfprintf_long
                 0x0000000000000000                __vfscanf = __vfscanf_long
                 0x0000000020000000                __RAM1_segment_start__ = 0x20000000
                 0x0000000020010000                __RAM1_segment_end__ = 0x20010000
@@ -5016,7 +5007,7 @@ Linker script and memory map
                 0x0000000000000001                . = ASSERT (((__init_rodata_start__ == __init_rodata_end__) || ((__init_rodata_end__ - __FLASH1_segment_start__) <= __FLASH1_segment_size__)), error: .init_rodata is too large to fit in FLASH1 memory segment)
                 0x00000000000003d0                __text_load_start__ = ALIGN (__init_rodata_end__, 0x4)
 
-.text           0x00000000000003d0     0x62fc
+.text           0x00000000000003d0     0x644c
                 0x00000000000003d0                __text_start__ = .
  *(.text .text.* .glue_7t .glue_7 .gnu.linkonce.t.* .gcc_except_table .ARM.extab* .gnu.linkonce.armextab.*)
  .glue_7        0x00000000000003d0        0x0 linker stubs
@@ -5071,378 +5062,377 @@ Linker script and memory map
  .text.app_error_save_and_stop
                 0x0000000000000700       0x98 Output/Debug/Obj/npm1300_pca10040/app_error.o
                 0x0000000000000700                app_error_save_and_stop
+ .text.app_error_handler
+                0x0000000000000798       0x1c Output/Debug/Obj/npm1300_pca10040/app_error_handler_gcc.o
+                0x0000000000000798                app_error_handler
  .text.app_error_fault_handler
-                0x0000000000000798       0x54 Output/Debug/Obj/npm1300_pca10040/app_error_weak.o
-                0x0000000000000798                app_error_fault_handler
+                0x00000000000007b4       0x54 Output/Debug/Obj/npm1300_pca10040/app_error_weak.o
+                0x00000000000007b4                app_error_fault_handler
  .text.assert_nrf_callback
-                0x00000000000007ec       0x2c Output/Debug/Obj/npm1300_pca10040/nrf_assert.o
-                0x00000000000007ec                assert_nrf_callback
+                0x0000000000000808       0x2c Output/Debug/Obj/npm1300_pca10040/nrf_assert.o
+                0x0000000000000808                assert_nrf_callback
  .text.__NVIC_EnableIRQ
-                0x0000000000000818       0x34 Output/Debug/Obj/npm1300_pca10040/nrfx_twi.o
+                0x0000000000000834       0x34 Output/Debug/Obj/npm1300_pca10040/nrfx_twi.o
  .text.__NVIC_SetPriority
-                0x000000000000084c       0x50 Output/Debug/Obj/npm1300_pca10040/nrfx_twi.o
+                0x0000000000000868       0x50 Output/Debug/Obj/npm1300_pca10040/nrfx_twi.o
  .text.nrfx_get_irq_number
-                0x000000000000089c       0x10 Output/Debug/Obj/npm1300_pca10040/nrfx_twi.o
+                0x00000000000008b8       0x10 Output/Debug/Obj/npm1300_pca10040/nrfx_twi.o
  .text._NRFX_IRQ_PRIORITY_SET
-                0x00000000000008ac       0x40 Output/Debug/Obj/npm1300_pca10040/nrfx_twi.o
+                0x00000000000008c8       0x40 Output/Debug/Obj/npm1300_pca10040/nrfx_twi.o
  .text._NRFX_IRQ_ENABLE
-                0x00000000000008ec       0x1c Output/Debug/Obj/npm1300_pca10040/nrfx_twi.o
- .text.nrf_twi_task_trigger
                 0x0000000000000908       0x1c Output/Debug/Obj/npm1300_pca10040/nrfx_twi.o
+ .text.nrf_twi_task_trigger
+                0x0000000000000924       0x1c Output/Debug/Obj/npm1300_pca10040/nrfx_twi.o
  .text.nrf_twi_event_clear
-                0x0000000000000924       0x2a Output/Debug/Obj/npm1300_pca10040/nrfx_twi.o
+                0x0000000000000940       0x2a Output/Debug/Obj/npm1300_pca10040/nrfx_twi.o
  .text.nrf_twi_event_check
-                0x000000000000094e       0x24 Output/Debug/Obj/npm1300_pca10040/nrfx_twi.o
+                0x000000000000096a       0x24 Output/Debug/Obj/npm1300_pca10040/nrfx_twi.o
  .text.nrf_twi_int_enable
-                0x0000000000000972       0x14 Output/Debug/Obj/npm1300_pca10040/nrfx_twi.o
+                0x000000000000098e       0x14 Output/Debug/Obj/npm1300_pca10040/nrfx_twi.o
  .text.nrf_twi_int_disable
-                0x0000000000000986       0x14 Output/Debug/Obj/npm1300_pca10040/nrfx_twi.o
+                0x00000000000009a2       0x14 Output/Debug/Obj/npm1300_pca10040/nrfx_twi.o
  .text.nrf_twi_enable
-                0x000000000000099a       0x12 Output/Debug/Obj/npm1300_pca10040/nrfx_twi.o
+                0x00000000000009b6       0x12 Output/Debug/Obj/npm1300_pca10040/nrfx_twi.o
  .text.nrf_twi_disable
-                0x00000000000009ac       0x12 Output/Debug/Obj/npm1300_pca10040/nrfx_twi.o
+                0x00000000000009c8       0x12 Output/Debug/Obj/npm1300_pca10040/nrfx_twi.o
  .text.nrf_twi_pins_set
-                0x00000000000009be       0x1e Output/Debug/Obj/npm1300_pca10040/nrfx_twi.o
+                0x00000000000009da       0x1e Output/Debug/Obj/npm1300_pca10040/nrfx_twi.o
  .text.nrf_twi_frequency_set
-                0x00000000000009dc       0x14 Output/Debug/Obj/npm1300_pca10040/nrfx_twi.o
+                0x00000000000009f8       0x14 Output/Debug/Obj/npm1300_pca10040/nrfx_twi.o
  .text.nrf_twi_errorsrc_get_and_clear
-                0x00000000000009f0       0x1c Output/Debug/Obj/npm1300_pca10040/nrfx_twi.o
+                0x0000000000000a0c       0x1c Output/Debug/Obj/npm1300_pca10040/nrfx_twi.o
  .text.nrf_twi_address_set
-                0x0000000000000a0c       0x1a Output/Debug/Obj/npm1300_pca10040/nrfx_twi.o
+                0x0000000000000a28       0x1a Output/Debug/Obj/npm1300_pca10040/nrfx_twi.o
  .text.nrf_twi_rxd_get
-                0x0000000000000a26       0x12 Output/Debug/Obj/npm1300_pca10040/nrfx_twi.o
+                0x0000000000000a42       0x12 Output/Debug/Obj/npm1300_pca10040/nrfx_twi.o
  .text.nrf_twi_txd_set
-                0x0000000000000a38       0x1a Output/Debug/Obj/npm1300_pca10040/nrfx_twi.o
+                0x0000000000000a54       0x1a Output/Debug/Obj/npm1300_pca10040/nrfx_twi.o
  .text.nrf_twi_shorts_set
-                0x0000000000000a52       0x14 Output/Debug/Obj/npm1300_pca10040/nrfx_twi.o
- *fill*         0x0000000000000a66        0x2 
+                0x0000000000000a6e       0x14 Output/Debug/Obj/npm1300_pca10040/nrfx_twi.o
+ *fill*         0x0000000000000a82        0x2 
  .text.nrf_gpio_pin_port_decode
-                0x0000000000000a68       0x30 Output/Debug/Obj/npm1300_pca10040/nrfx_twi.o
+                0x0000000000000a84       0x30 Output/Debug/Obj/npm1300_pca10040/nrfx_twi.o
  .text.nrf_gpio_cfg
-                0x0000000000000a98       0x62 Output/Debug/Obj/npm1300_pca10040/nrfx_twi.o
+                0x0000000000000ab4       0x62 Output/Debug/Obj/npm1300_pca10040/nrfx_twi.o
  .text.nrf_gpio_pin_present_check
-                0x0000000000000afa       0x40 Output/Debug/Obj/npm1300_pca10040/nrfx_twi.o
+                0x0000000000000b16       0x40 Output/Debug/Obj/npm1300_pca10040/nrfx_twi.o
  .text.twi_process_error
-                0x0000000000000b3a       0x40 Output/Debug/Obj/npm1300_pca10040/nrfx_twi.o
+                0x0000000000000b56       0x40 Output/Debug/Obj/npm1300_pca10040/nrfx_twi.o
  .text.xfer_completeness_check
-                0x0000000000000b7a       0x2e Output/Debug/Obj/npm1300_pca10040/nrfx_twi.o
+                0x0000000000000b96       0x2e Output/Debug/Obj/npm1300_pca10040/nrfx_twi.o
  .text.nrfx_twi_init
-                0x0000000000000ba8      0x128 Output/Debug/Obj/npm1300_pca10040/nrfx_twi.o
-                0x0000000000000ba8                nrfx_twi_init
+                0x0000000000000bc4      0x128 Output/Debug/Obj/npm1300_pca10040/nrfx_twi.o
+                0x0000000000000bc4                nrfx_twi_init
  .text.nrfx_twi_enable
-                0x0000000000000cd0       0x54 Output/Debug/Obj/npm1300_pca10040/nrfx_twi.o
-                0x0000000000000cd0                nrfx_twi_enable
+                0x0000000000000cec       0x54 Output/Debug/Obj/npm1300_pca10040/nrfx_twi.o
+                0x0000000000000cec                nrfx_twi_enable
  .text.twi_send_byte
-                0x0000000000000d24       0x72 Output/Debug/Obj/npm1300_pca10040/nrfx_twi.o
+                0x0000000000000d40       0x72 Output/Debug/Obj/npm1300_pca10040/nrfx_twi.o
  .text.twi_receive_byte
-                0x0000000000000d96       0xa6 Output/Debug/Obj/npm1300_pca10040/nrfx_twi.o
+                0x0000000000000db2       0xa6 Output/Debug/Obj/npm1300_pca10040/nrfx_twi.o
  .text.twi_transfer
-                0x0000000000000e3c      0x19e Output/Debug/Obj/npm1300_pca10040/nrfx_twi.o
- *fill*         0x0000000000000fda        0x2 
+                0x0000000000000e58      0x19e Output/Debug/Obj/npm1300_pca10040/nrfx_twi.o
+ *fill*         0x0000000000000ff6        0x2 
  .text.twi_tx_start_transfer
-                0x0000000000000fdc       0xf4 Output/Debug/Obj/npm1300_pca10040/nrfx_twi.o
+                0x0000000000000ff8       0xf4 Output/Debug/Obj/npm1300_pca10040/nrfx_twi.o
  .text.twi_rx_start_transfer
-                0x00000000000010d0      0x108 Output/Debug/Obj/npm1300_pca10040/nrfx_twi.o
+                0x00000000000010ec      0x108 Output/Debug/Obj/npm1300_pca10040/nrfx_twi.o
  .text.twi_xfer
-                0x00000000000011d8      0x10c Output/Debug/Obj/npm1300_pca10040/nrfx_twi.o
+                0x00000000000011f4      0x10c Output/Debug/Obj/npm1300_pca10040/nrfx_twi.o
  .text.nrfx_twi_xfer
-                0x00000000000012e4       0x78 Output/Debug/Obj/npm1300_pca10040/nrfx_twi.o
-                0x00000000000012e4                nrfx_twi_xfer
+                0x0000000000001300       0x78 Output/Debug/Obj/npm1300_pca10040/nrfx_twi.o
+                0x0000000000001300                nrfx_twi_xfer
  .text.nrfx_twi_tx
-                0x000000000000135c       0x50 Output/Debug/Obj/npm1300_pca10040/nrfx_twi.o
-                0x000000000000135c                nrfx_twi_tx
+                0x0000000000001378       0x50 Output/Debug/Obj/npm1300_pca10040/nrfx_twi.o
+                0x0000000000001378                nrfx_twi_tx
  .text.nrfx_twi_rx
-                0x00000000000013ac       0x44 Output/Debug/Obj/npm1300_pca10040/nrfx_twi.o
-                0x00000000000013ac                nrfx_twi_rx
+                0x00000000000013c8       0x44 Output/Debug/Obj/npm1300_pca10040/nrfx_twi.o
+                0x00000000000013c8                nrfx_twi_rx
  .text.twi_irq_handler
-                0x00000000000013f0      0x140 Output/Debug/Obj/npm1300_pca10040/nrfx_twi.o
+                0x000000000000140c      0x140 Output/Debug/Obj/npm1300_pca10040/nrfx_twi.o
  .text.SPIM0_SPIS0_TWIM0_TWIS0_SPI0_TWI0_IRQHandler
-                0x0000000000001530       0x18 Output/Debug/Obj/npm1300_pca10040/nrfx_twi.o
-                0x0000000000001530                SPIM0_SPIS0_TWIM0_TWIS0_SPI0_TWI0_IRQHandler
+                0x000000000000154c       0x18 Output/Debug/Obj/npm1300_pca10040/nrfx_twi.o
+                0x000000000000154c                SPIM0_SPIS0_TWIM0_TWIS0_SPI0_TWI0_IRQHandler
  .text.nrfx_coredep_delay_us
-                0x0000000000001548       0x30 Output/Debug/Obj/npm1300_pca10040/main.o
+                0x0000000000001564       0x30 Output/Debug/Obj/npm1300_pca10040/main.o
  .text.nrf_delay_ms
-                0x0000000000001578       0x2a Output/Debug/Obj/npm1300_pca10040/main.o
- *fill*         0x00000000000015a2        0x2 
+                0x0000000000001594       0x2a Output/Debug/Obj/npm1300_pca10040/main.o
+ *fill*         0x00000000000015be        0x2 
  .text.nrf_power_gpregret_set
-                0x00000000000015a4       0x20 Output/Debug/Obj/npm1300_pca10040/main.o
+                0x00000000000015c0       0x20 Output/Debug/Obj/npm1300_pca10040/main.o
  .text.nrf_power_gpregret_get
-                0x00000000000015c4       0x28 Output/Debug/Obj/npm1300_pca10040/main.o
- .text.main     0x00000000000015ec       0x7c Output/Debug/Obj/npm1300_pca10040/main.o
-                0x00000000000015ec                main
+                0x00000000000015e0       0x28 Output/Debug/Obj/npm1300_pca10040/main.o
+ .text.main     0x0000000000001608       0x7c Output/Debug/Obj/npm1300_pca10040/main.o
+                0x0000000000001608                main
  .text.__NVIC_SystemReset
-                0x0000000000001668       0x28 Output/Debug/Obj/npm1300_pca10040/system_nrf52.o
+                0x0000000000001684       0x28 Output/Debug/Obj/npm1300_pca10040/system_nrf52.o
  .text.nrf52_errata_12
-                0x0000000000001690       0x88 Output/Debug/Obj/npm1300_pca10040/system_nrf52.o
+                0x00000000000016ac       0x88 Output/Debug/Obj/npm1300_pca10040/system_nrf52.o
  .text.nrf52_errata_16
-                0x0000000000001718       0x68 Output/Debug/Obj/npm1300_pca10040/system_nrf52.o
+                0x0000000000001734       0x68 Output/Debug/Obj/npm1300_pca10040/system_nrf52.o
  .text.nrf52_errata_31
-                0x0000000000001780       0x88 Output/Debug/Obj/npm1300_pca10040/system_nrf52.o
+                0x000000000000179c       0x88 Output/Debug/Obj/npm1300_pca10040/system_nrf52.o
  .text.nrf52_errata_32
-                0x0000000000001808       0x68 Output/Debug/Obj/npm1300_pca10040/system_nrf52.o
+                0x0000000000001824       0x68 Output/Debug/Obj/npm1300_pca10040/system_nrf52.o
  .text.nrf52_errata_36
-                0x0000000000001870       0x88 Output/Debug/Obj/npm1300_pca10040/system_nrf52.o
+                0x000000000000188c       0x88 Output/Debug/Obj/npm1300_pca10040/system_nrf52.o
  .text.nrf52_errata_37
-                0x00000000000018f8       0x68 Output/Debug/Obj/npm1300_pca10040/system_nrf52.o
+                0x0000000000001914       0x68 Output/Debug/Obj/npm1300_pca10040/system_nrf52.o
  .text.nrf52_errata_57
-                0x0000000000001960       0x68 Output/Debug/Obj/npm1300_pca10040/system_nrf52.o
+                0x000000000000197c       0x68 Output/Debug/Obj/npm1300_pca10040/system_nrf52.o
  .text.nrf52_errata_66
-                0x00000000000019c8       0x88 Output/Debug/Obj/npm1300_pca10040/system_nrf52.o
+                0x00000000000019e4       0x88 Output/Debug/Obj/npm1300_pca10040/system_nrf52.o
  .text.nrf52_errata_108
-                0x0000000000001a50       0x88 Output/Debug/Obj/npm1300_pca10040/system_nrf52.o
+                0x0000000000001a6c       0x88 Output/Debug/Obj/npm1300_pca10040/system_nrf52.o
  .text.nrf52_errata_136
-                0x0000000000001ad8       0x88 Output/Debug/Obj/npm1300_pca10040/system_nrf52.o
+                0x0000000000001af4       0x88 Output/Debug/Obj/npm1300_pca10040/system_nrf52.o
  .text.nrf52_errata_182
-                0x0000000000001b60       0x60 Output/Debug/Obj/npm1300_pca10040/system_nrf52.o
+                0x0000000000001b7c       0x60 Output/Debug/Obj/npm1300_pca10040/system_nrf52.o
  .text.nrf52_errata_249
-                0x0000000000001bc0       0x60 Output/Debug/Obj/npm1300_pca10040/system_nrf52.o
+                0x0000000000001bdc       0x60 Output/Debug/Obj/npm1300_pca10040/system_nrf52.o
  .text.nrf52_handle_approtect
-                0x0000000000001c20       0x20 Output/Debug/Obj/npm1300_pca10040/system_nrf52.o
+                0x0000000000001c3c       0x20 Output/Debug/Obj/npm1300_pca10040/system_nrf52.o
  .text.nvmc_wait
-                0x0000000000001c40       0x18 Output/Debug/Obj/npm1300_pca10040/system_nrf52.o
-                0x0000000000001c40                nvmc_wait
+                0x0000000000001c5c       0x18 Output/Debug/Obj/npm1300_pca10040/system_nrf52.o
+                0x0000000000001c5c                nvmc_wait
  .text.nvmc_config
-                0x0000000000001c58       0x20 Output/Debug/Obj/npm1300_pca10040/system_nrf52.o
-                0x0000000000001c58                nvmc_config
+                0x0000000000001c74       0x20 Output/Debug/Obj/npm1300_pca10040/system_nrf52.o
+                0x0000000000001c74                nvmc_config
  .text.SystemCoreClockUpdate
-                0x0000000000001c78       0x14 Output/Debug/Obj/npm1300_pca10040/system_nrf52.o
-                0x0000000000001c78                SystemCoreClockUpdate
+                0x0000000000001c94       0x14 Output/Debug/Obj/npm1300_pca10040/system_nrf52.o
+                0x0000000000001c94                SystemCoreClockUpdate
  .text.SystemInit
-                0x0000000000001c8c      0x2ac Output/Debug/Obj/npm1300_pca10040/system_nrf52.o
-                0x0000000000001c8c                SystemInit
- .text.linear_range_get_max_value
-                0x0000000000001f38       0x24 Output/Debug/Obj/npm1300_pca10040/npm1300_charger.o
- .text.linear_range_get_win_index
-                0x0000000000001f5c       0xd0 Output/Debug/Obj/npm1300_pca10040/npm1300_charger.o
- .text.linear_range_group_get_win_index
-                0x000000000000202c       0x6a Output/Debug/Obj/npm1300_pca10040/npm1300_charger.o
- *fill*         0x0000000000002096        0x2 
+                0x0000000000001ca8      0x2ac Output/Debug/Obj/npm1300_pca10040/system_nrf52.o
+                0x0000000000001ca8                SystemInit
+ .text.twi_handler
+                0x0000000000001f54       0x24 Output/Debug/Obj/npm1300_pca10040/npm1300_charger.o
+                0x0000000000001f54                twi_handler
  .text.twi_master_init
-                0x0000000000002098       0x38 Output/Debug/Obj/npm1300_pca10040/npm1300_charger.o
-                0x0000000000002098                twi_master_init
+                0x0000000000001f78       0x3c Output/Debug/Obj/npm1300_pca10040/npm1300_charger.o
+                0x0000000000001f78                twi_master_init
  .text.reg_read_burst
-                0x00000000000020d0       0x5c Output/Debug/Obj/npm1300_pca10040/npm1300_charger.o
+                0x0000000000001fb4       0x88 Output/Debug/Obj/npm1300_pca10040/npm1300_charger.o
  .text.reg_write
-                0x000000000000212c       0x4c Output/Debug/Obj/npm1300_pca10040/npm1300_charger.o
+                0x000000000000203c       0x84 Output/Debug/Obj/npm1300_pca10040/npm1300_charger.o
  .text.reg_write2
-                0x0000000000002178       0x60 Output/Debug/Obj/npm1300_pca10040/npm1300_charger.o
+                0x00000000000020c0       0x98 Output/Debug/Obj/npm1300_pca10040/npm1300_charger.o
  .text.calc_temp
-                0x00000000000021d8       0xd4 Output/Debug/Obj/npm1300_pca10040/npm1300_charger.o
+                0x0000000000002158       0xd4 Output/Debug/Obj/npm1300_pca10040/npm1300_charger.o
  .text.adc_get_res
-                0x00000000000022ac       0x3c Output/Debug/Obj/npm1300_pca10040/npm1300_charger.o
+                0x000000000000222c       0x3c Output/Debug/Obj/npm1300_pca10040/npm1300_charger.o
  .text.calc_current
-                0x00000000000022e8      0x100 Output/Debug/Obj/npm1300_pca10040/npm1300_charger.o
+                0x0000000000002268      0x100 Output/Debug/Obj/npm1300_pca10040/npm1300_charger.o
  .text.npm1300_charger_channel_get
-                0x00000000000023e8      0x190 Output/Debug/Obj/npm1300_pca10040/npm1300_charger.o
-                0x00000000000023e8                npm1300_charger_channel_get
+                0x0000000000002368      0x1dc Output/Debug/Obj/npm1300_pca10040/npm1300_charger.o
+                0x0000000000002368                npm1300_charger_channel_get
  .text.reg_read
-                0x0000000000002578       0x5c Output/Debug/Obj/npm1300_pca10040/npm1300_charger.o
+                0x0000000000002544       0x84 Output/Debug/Obj/npm1300_pca10040/npm1300_charger.o
  .text.npm1300_charger_sample_fetch
-                0x00000000000025d4      0x146 Output/Debug/Obj/npm1300_pca10040/npm1300_charger.o
-                0x00000000000025d4                npm1300_charger_sample_fetch
- *fill*         0x000000000000271a        0x2 
+                0x00000000000025c8      0x154 Output/Debug/Obj/npm1300_pca10040/npm1300_charger.o
+                0x00000000000025c8                npm1300_charger_sample_fetch
  .text.npm1300_charger_init
-                0x000000000000271c      0x24c Output/Debug/Obj/npm1300_pca10040/npm1300_charger.o
+                0x000000000000271c      0x36e Output/Debug/Obj/npm1300_pca10040/npm1300_charger.o
                 0x000000000000271c                npm1300_charger_init
+ *fill*         0x0000000000002a8a        0x2 
  .text.read_sensors
-                0x0000000000002968       0xb8 Output/Debug/Obj/npm1300_pca10040/fuel_gauge.o
+                0x0000000000002a8c       0xc0 Output/Debug/Obj/npm1300_pca10040/fuel_gauge.o
  .text.fuel_gauge_init
-                0x0000000000002a20       0xd4 Output/Debug/Obj/npm1300_pca10040/fuel_gauge.o
-                0x0000000000002a20                fuel_gauge_init
+                0x0000000000002b4c       0xb4 Output/Debug/Obj/npm1300_pca10040/fuel_gauge.o
+                0x0000000000002b4c                fuel_gauge_init
  .text.fuel_gauge_update
-                0x0000000000002af4      0x3e4 Output/Debug/Obj/npm1300_pca10040/fuel_gauge.o
-                0x0000000000002af4                fuel_gauge_update
+                0x0000000000002c00      0x428 Output/Debug/Obj/npm1300_pca10040/fuel_gauge.o
+                0x0000000000002c00                fuel_gauge_update
  .text.__aeabi_dadd
-                0x0000000000002ed8      0x244 C:/Program Files/SEGGER/SEGGER Embedded Studio for ARM 5.42a/lib/libm_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libm_asm.o)
-                0x0000000000002ed8                __aeabi_dadd
+                0x0000000000003028      0x244 C:/Program Files/SEGGER/SEGGER Embedded Studio for ARM 5.42a/lib/libm_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libm_asm.o)
+                0x0000000000003028                __aeabi_dadd
  .text.__aeabi_dsub
-                0x000000000000311c        0x8 C:/Program Files/SEGGER/SEGGER Embedded Studio for ARM 5.42a/lib/libm_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libm_asm.o)
-                0x000000000000311c                __aeabi_dsub
+                0x000000000000326c        0x8 C:/Program Files/SEGGER/SEGGER Embedded Studio for ARM 5.42a/lib/libm_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libm_asm.o)
+                0x000000000000326c                __aeabi_dsub
  .text.__aeabi_dmul
-                0x0000000000003124      0x138 C:/Program Files/SEGGER/SEGGER Embedded Studio for ARM 5.42a/lib/libm_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libm_asm.o)
-                0x0000000000003124                __aeabi_dmul
+                0x0000000000003274      0x138 C:/Program Files/SEGGER/SEGGER Embedded Studio for ARM 5.42a/lib/libm_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libm_asm.o)
+                0x0000000000003274                __aeabi_dmul
  .text.__aeabi_ddiv
-                0x000000000000325c      0x1cc C:/Program Files/SEGGER/SEGGER Embedded Studio for ARM 5.42a/lib/libm_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libm_asm.o)
-                0x000000000000325c                __aeabi_ddiv
+                0x00000000000033ac      0x1cc C:/Program Files/SEGGER/SEGGER Embedded Studio for ARM 5.42a/lib/libm_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libm_asm.o)
+                0x00000000000033ac                __aeabi_ddiv
  .text.__aeabi_dcmpeq
-                0x0000000000003428       0x34 C:/Program Files/SEGGER/SEGGER Embedded Studio for ARM 5.42a/lib/libm_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libm_asm.o)
-                0x0000000000003428                __aeabi_dcmpeq
+                0x0000000000003578       0x34 C:/Program Files/SEGGER/SEGGER Embedded Studio for ARM 5.42a/lib/libm_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libm_asm.o)
+                0x0000000000003578                __aeabi_dcmpeq
  .text.__aeabi_dcmpgt
-                0x000000000000345c       0x38 C:/Program Files/SEGGER/SEGGER Embedded Studio for ARM 5.42a/lib/libm_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libm_asm.o)
-                0x000000000000345c                __aeabi_dcmpgt
+                0x00000000000035ac       0x38 C:/Program Files/SEGGER/SEGGER Embedded Studio for ARM 5.42a/lib/libm_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libm_asm.o)
+                0x00000000000035ac                __aeabi_dcmpgt
  .text.__aeabi_dcmplt
-                0x0000000000003494       0x38 C:/Program Files/SEGGER/SEGGER Embedded Studio for ARM 5.42a/lib/libm_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libm_asm.o)
-                0x0000000000003494                __aeabi_dcmplt
+                0x00000000000035e4       0x38 C:/Program Files/SEGGER/SEGGER Embedded Studio for ARM 5.42a/lib/libm_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libm_asm.o)
+                0x00000000000035e4                __aeabi_dcmplt
  .text.__aeabi_dcmpun
-                0x00000000000034cc       0x20 C:/Program Files/SEGGER/SEGGER Embedded Studio for ARM 5.42a/lib/libm_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libm_asm.o)
-                0x00000000000034cc                __aeabi_dcmpun
+                0x000000000000361c       0x20 C:/Program Files/SEGGER/SEGGER Embedded Studio for ARM 5.42a/lib/libm_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libm_asm.o)
+                0x000000000000361c                __aeabi_dcmpun
  .text.__aeabi_i2d
-                0x00000000000034ec       0x28 C:/Program Files/SEGGER/SEGGER Embedded Studio for ARM 5.42a/lib/libm_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libm_asm.o)
-                0x00000000000034ec                __aeabi_i2d
+                0x000000000000363c       0x28 C:/Program Files/SEGGER/SEGGER Embedded Studio for ARM 5.42a/lib/libm_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libm_asm.o)
+                0x000000000000363c                __aeabi_i2d
  .text.__aeabi_f2d
-                0x0000000000003514       0x34 C:/Program Files/SEGGER/SEGGER Embedded Studio for ARM 5.42a/lib/libm_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libm_asm.o)
-                0x0000000000003514                __aeabi_f2d
+                0x0000000000003664       0x34 C:/Program Files/SEGGER/SEGGER Embedded Studio for ARM 5.42a/lib/libm_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libm_asm.o)
+                0x0000000000003664                __aeabi_f2d
  .text.__aeabi_d2f
-                0x0000000000003548       0x54 C:/Program Files/SEGGER/SEGGER Embedded Studio for ARM 5.42a/lib/libm_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libm_asm.o)
-                0x0000000000003548                __aeabi_d2f
+                0x0000000000003698       0x54 C:/Program Files/SEGGER/SEGGER Embedded Studio for ARM 5.42a/lib/libm_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libm_asm.o)
+                0x0000000000003698                __aeabi_d2f
  .text.__float32_isinf
-                0x000000000000359c       0x14 C:/Program Files/SEGGER/SEGGER Embedded Studio for ARM 5.42a/lib/libm_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libm_asm.o)
-                0x000000000000359c                __float32_isinf
+                0x00000000000036ec       0x14 C:/Program Files/SEGGER/SEGGER Embedded Studio for ARM 5.42a/lib/libm_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libm_asm.o)
+                0x00000000000036ec                __float32_isinf
  .text.__float32_isnan
-                0x00000000000035b0       0x14 C:/Program Files/SEGGER/SEGGER Embedded Studio for ARM 5.42a/lib/libm_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libm_asm.o)
-                0x00000000000035b0                __float32_isnan
+                0x0000000000003700       0x14 C:/Program Files/SEGGER/SEGGER Embedded Studio for ARM 5.42a/lib/libm_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libm_asm.o)
+                0x0000000000003700                __float32_isnan
  .text.__float64_isnan
-                0x00000000000035c4       0x14 C:/Program Files/SEGGER/SEGGER Embedded Studio for ARM 5.42a/lib/libm_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libm_asm.o)
-                0x00000000000035c4                __float64_isnan
- .text.fabsf    0x00000000000035d8        0x8 C:/Program Files/SEGGER/SEGGER Embedded Studio for ARM 5.42a/lib/libm_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libm_asm.o)
-                0x00000000000035d8                fabsf
-                0x00000000000035d8                fabs(float)
- .text.floorf   0x00000000000035e0       0x70 C:/Program Files/SEGGER/SEGGER Embedded Studio for ARM 5.42a/lib/libm_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libm_asm.o)
-                0x00000000000035e0                floorf
-                0x00000000000035e0                floor(float)
- .text.frexpf   0x0000000000003650       0x3c C:/Program Files/SEGGER/SEGGER Embedded Studio for ARM 5.42a/lib/libm_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libm_asm.o)
-                0x0000000000003650                frexpf
-                0x0000000000003650                frexp(float, int*)
+                0x0000000000003714       0x14 C:/Program Files/SEGGER/SEGGER Embedded Studio for ARM 5.42a/lib/libm_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libm_asm.o)
+                0x0000000000003714                __float64_isnan
+ .text.fabsf    0x0000000000003728        0x8 C:/Program Files/SEGGER/SEGGER Embedded Studio for ARM 5.42a/lib/libm_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libm_asm.o)
+                0x0000000000003728                fabsf
+                0x0000000000003728                fabs(float)
+ .text.floorf   0x0000000000003730       0x70 C:/Program Files/SEGGER/SEGGER Embedded Studio for ARM 5.42a/lib/libm_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libm_asm.o)
+                0x0000000000003730                floorf
+                0x0000000000003730                floor(float)
+ .text.frexpf   0x00000000000037a0       0x3c C:/Program Files/SEGGER/SEGGER Embedded Studio for ARM 5.42a/lib/libm_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libm_asm.o)
+                0x00000000000037a0                frexpf
+                0x00000000000037a0                frexp(float, int*)
  .text.libc.expf
-                0x000000000000368c      0x16c C:/Program Files/SEGGER/SEGGER Embedded Studio for ARM 5.42a/lib/libm_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libm2.o)
-                0x000000000000368c                expf
-                0x000000000000368c                exp(float)
+                0x00000000000037dc      0x16c C:/Program Files/SEGGER/SEGGER Embedded Studio for ARM 5.42a/lib/libm_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libm2.o)
+                0x00000000000037dc                expf
+                0x00000000000037dc                exp(float)
  .text.libc.fmaxf
-                0x00000000000037f8       0x3c C:/Program Files/SEGGER/SEGGER Embedded Studio for ARM 5.42a/lib/libm_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libm2.o)
-                0x00000000000037f8                fmaxf
-                0x00000000000037f8                fmax(float, float)
+                0x0000000000003948       0x3c C:/Program Files/SEGGER/SEGGER Embedded Studio for ARM 5.42a/lib/libm_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libm2.o)
+                0x0000000000003948                fmaxf
+                0x0000000000003948                fmax(float, float)
  .text.libc.fminf
-                0x0000000000003834       0x10 C:/Program Files/SEGGER/SEGGER Embedded Studio for ARM 5.42a/lib/libm_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libm2.o)
-                0x0000000000003834                fmin(float, float)
-                0x0000000000003834                fminf
+                0x0000000000003984       0x10 C:/Program Files/SEGGER/SEGGER Embedded Studio for ARM 5.42a/lib/libm_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libm2.o)
+                0x0000000000003984                fmin(float, float)
+                0x0000000000003984                fminf
  .text.libc.frexp
-                0x0000000000003844       0x50 C:/Program Files/SEGGER/SEGGER Embedded Studio for ARM 5.42a/lib/libm_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libm2.o)
-                0x0000000000003844                frexpl(long double, int*)
-                0x0000000000003844                frexpl
-                0x0000000000003844                frexp
-                0x0000000000003844                frexp(double, int*)
- *fill*         0x0000000000003894        0x4 
+                0x0000000000003994       0x50 C:/Program Files/SEGGER/SEGGER Embedded Studio for ARM 5.42a/lib/libm_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libm2.o)
+                0x0000000000003994                frexpl(long double, int*)
+                0x0000000000003994                frexpl
+                0x0000000000003994                frexp
+                0x0000000000003994                frexp(double, int*)
+ *fill*         0x00000000000039e4        0x4 
  .text.libc.ldexp
-                0x0000000000003898       0x7c C:/Program Files/SEGGER/SEGGER Embedded Studio for ARM 5.42a/lib/libm_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libm2.o)
-                0x0000000000003898                ldexpl(long double, int)
-                0x0000000000003898                ldexp
-                0x0000000000003898                ldexpl
-                0x0000000000003898                ldexp(double, int)
- *fill*         0x0000000000003914        0x4 
+                0x00000000000039e8       0x7c C:/Program Files/SEGGER/SEGGER Embedded Studio for ARM 5.42a/lib/libm_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libm2.o)
+                0x00000000000039e8                ldexpl(long double, int)
+                0x00000000000039e8                ldexp
+                0x00000000000039e8                ldexpl
+                0x00000000000039e8                ldexp(double, int)
+ *fill*         0x0000000000003a64        0x4 
  .text.libc.log
-                0x0000000000003918      0x230 C:/Program Files/SEGGER/SEGGER Embedded Studio for ARM 5.42a/lib/libm_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libm2.o)
-                0x0000000000003918                log(double)
-                0x0000000000003918                logl
-                0x0000000000003918                logl(long double)
-                0x0000000000003918                log
+                0x0000000000003a68      0x230 C:/Program Files/SEGGER/SEGGER Embedded Studio for ARM 5.42a/lib/libm_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libm2.o)
+                0x0000000000003a68                log(double)
+                0x0000000000003a68                logl
+                0x0000000000003a68                logl(long double)
+                0x0000000000003a68                log
  .text.libc.logf
-                0x0000000000003b48      0x114 C:/Program Files/SEGGER/SEGGER Embedded Studio for ARM 5.42a/lib/libm_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libm2.o)
-                0x0000000000003b48                log(float)
-                0x0000000000003b48                logf
+                0x0000000000003c98      0x114 C:/Program Files/SEGGER/SEGGER Embedded Studio for ARM 5.42a/lib/libm_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libm2.o)
+                0x0000000000003c98                log(float)
+                0x0000000000003c98                logf
  .text.libc.modff
-                0x0000000000003c5c       0x5c C:/Program Files/SEGGER/SEGGER Embedded Studio for ARM 5.42a/lib/libm_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libm2.o)
-                0x0000000000003c5c                modf(float, float*)
-                0x0000000000003c5c                modff
+                0x0000000000003dac       0x5c C:/Program Files/SEGGER/SEGGER Embedded Studio for ARM 5.42a/lib/libm_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libm2.o)
+                0x0000000000003dac                modf(float, float*)
+                0x0000000000003dac                modff
  .text.libc.fmodf
-                0x0000000000003cb8       0xfc C:/Program Files/SEGGER/SEGGER Embedded Studio for ARM 5.42a/lib/libm_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libm2.o)
-                0x0000000000003cb8                fmod(float, float)
-                0x0000000000003cb8                fmodf
+                0x0000000000003e08       0xfc C:/Program Files/SEGGER/SEGGER Embedded Studio for ARM 5.42a/lib/libm_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libm2.o)
+                0x0000000000003e08                fmod(float, float)
+                0x0000000000003e08                fmodf
  .text.libc.__putc
-                0x0000000000003db4       0x36 C:/Program Files/SEGGER/SEGGER Embedded Studio for ARM 5.42a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libc2.o)
-                0x0000000000003db4                __putc
+                0x0000000000003f04       0x36 C:/Program Files/SEGGER/SEGGER Embedded Studio for ARM 5.42a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libc2.o)
+                0x0000000000003f04                __putc
  .text.libc.__RAL_print_padding
-                0x0000000000003dea       0x1c C:/Program Files/SEGGER/SEGGER Embedded Studio for ARM 5.42a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libc2.o)
-                0x0000000000003dea                __RAL_print_padding
+                0x0000000000003f3a       0x1c C:/Program Files/SEGGER/SEGGER Embedded Studio for ARM 5.42a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libc2.o)
+                0x0000000000003f3a                __RAL_print_padding
  .text.libc.__RAL_pre_padding
-                0x0000000000003e06       0x1a C:/Program Files/SEGGER/SEGGER Embedded Studio for ARM 5.42a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libc2.o)
-                0x0000000000003e06                __RAL_pre_padding
+                0x0000000000003f56       0x1a C:/Program Files/SEGGER/SEGGER Embedded Studio for ARM 5.42a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libc2.o)
+                0x0000000000003f56                __RAL_pre_padding
  .text.libc.__aeabi_errno_addr
-                0x0000000000003e20       0x14 C:/Program Files/SEGGER/SEGGER Embedded Studio for ARM 5.42a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libc2.o)
-                0x0000000000003e20                __aeabi_errno_addr
+                0x0000000000003f70       0x14 C:/Program Files/SEGGER/SEGGER Embedded Studio for ARM 5.42a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libc2.o)
+                0x0000000000003f70                __aeabi_errno_addr
  .text.libc.printf
-                0x0000000000003e34       0x40 C:/Program Files/SEGGER/SEGGER Embedded Studio for ARM 5.42a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libc2.o)
-                0x0000000000003e34                printf
+                0x0000000000003f84       0x40 C:/Program Files/SEGGER/SEGGER Embedded Studio for ARM 5.42a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libc2.o)
+                0x0000000000003f84                printf
  .text.libc.sprintf
-                0x0000000000003e74       0x2a C:/Program Files/SEGGER/SEGGER Embedded Studio for ARM 5.42a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libc2.o)
-                0x0000000000003e74                sprintf
+                0x0000000000003fc4       0x2a C:/Program Files/SEGGER/SEGGER Embedded Studio for ARM 5.42a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libc2.o)
+                0x0000000000003fc4                sprintf
  .text.libc.strnlen
-                0x0000000000003e9e       0x22 C:/Program Files/SEGGER/SEGGER Embedded Studio for ARM 5.42a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libc2.o)
-                0x0000000000003e9e                strnlen
+                0x0000000000003fee       0x22 C:/Program Files/SEGGER/SEGGER Embedded Studio for ARM 5.42a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libc2.o)
+                0x0000000000003fee                strnlen
  .text.libc.memcpy
-                0x0000000000003ec0       0x52 C:/Program Files/SEGGER/SEGGER Embedded Studio for ARM 5.42a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libc2_asm.o)
-                0x0000000000003ec0                __aeabi_memcpy
-                0x0000000000003ec0                memcpy
-                0x0000000000003ecc                __aeabi_memcpy8
-                0x0000000000003ecc                __aeabi_memcpy4
+                0x0000000000004010       0x52 C:/Program Files/SEGGER/SEGGER Embedded Studio for ARM 5.42a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libc2_asm.o)
+                0x0000000000004010                __aeabi_memcpy
+                0x0000000000004010                memcpy
+                0x000000000000401c                __aeabi_memcpy8
+                0x000000000000401c                __aeabi_memcpy4
  .text.libc.memset
-                0x0000000000003f12       0x66 C:/Program Files/SEGGER/SEGGER Embedded Studio for ARM 5.42a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libc2_asm.o)
-                0x0000000000003f12                memset
+                0x0000000000004062       0x66 C:/Program Files/SEGGER/SEGGER Embedded Studio for ARM 5.42a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libc2_asm.o)
+                0x0000000000004062                memset
  .text.libc.strlen
-                0x0000000000003f78       0x60 C:/Program Files/SEGGER/SEGGER Embedded Studio for ARM 5.42a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libc2_asm.o)
-                0x0000000000003f78                strlen
+                0x00000000000040c8       0x60 C:/Program Files/SEGGER/SEGGER Embedded Studio for ARM 5.42a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libc2_asm.o)
+                0x00000000000040c8                strlen
  .text.libc.__vfprintf_long
-                0x0000000000003fd8      0x638 C:/Program Files/SEGGER/SEGGER Embedded Studio for ARM 5.42a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libvfprintf.o)
-                0x0000000000003fd8                __vfprintf_long
+                0x0000000000004128      0x638 C:/Program Files/SEGGER/SEGGER Embedded Studio for ARM 5.42a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libvfprintf.o)
+                0x0000000000004128                __vfprintf_long
  .text.libc.__printf_lock
-                0x0000000000004610        0x2 C:/Program Files/SEGGER/SEGGER Embedded Studio for ARM 5.42a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libc.o)
-                0x0000000000004610                __printf_lock
+                0x0000000000004760        0x2 C:/Program Files/SEGGER/SEGGER Embedded Studio for ARM 5.42a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libc.o)
+                0x0000000000004760                __printf_lock
  .text.libc.__printf_unlock
-                0x0000000000004612        0x2 C:/Program Files/SEGGER/SEGGER Embedded Studio for ARM 5.42a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libc.o)
-                0x0000000000004612                __printf_unlock
+                0x0000000000004762        0x2 C:/Program Files/SEGGER/SEGGER Embedded Studio for ARM 5.42a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libc.o)
+                0x0000000000004762                __printf_unlock
  .text.libdebugio.debug_putchar
-                0x0000000000004614       0x18 C:/Program Files/SEGGER/SEGGER Embedded Studio for ARM 5.42a/lib/libdebugio_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libdebugio.o)
-                0x0000000000004614                debug_putchar
+                0x0000000000004764       0x18 C:/Program Files/SEGGER/SEGGER Embedded Studio for ARM 5.42a/lib/libdebugio_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libdebugio.o)
+                0x0000000000004764                debug_putchar
  .text.libdebugio.__debug_io_lock
-                0x000000000000462c        0x2 C:/Program Files/SEGGER/SEGGER Embedded Studio for ARM 5.42a/lib/libdebugio_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libdebugio.o)
-                0x000000000000462c                __debug_io_lock
+                0x000000000000477c        0x2 C:/Program Files/SEGGER/SEGGER Embedded Studio for ARM 5.42a/lib/libdebugio_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libdebugio.o)
+                0x000000000000477c                __debug_io_lock
  .text.libdebugio.__debug_io_unlock
-                0x000000000000462e        0x2 C:/Program Files/SEGGER/SEGGER Embedded Studio for ARM 5.42a/lib/libdebugio_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libdebugio.o)
-                0x000000000000462e                __debug_io_unlock
+                0x000000000000477e        0x2 C:/Program Files/SEGGER/SEGGER Embedded Studio for ARM 5.42a/lib/libdebugio_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libdebugio.o)
+                0x000000000000477e                __debug_io_unlock
  .text.libdebugio.__do_debug_operation_mempoll
-                0x0000000000004630       0x30 C:/Program Files/SEGGER/SEGGER Embedded Studio for ARM 5.42a/lib/libdebugio_v7em_fpv4_sp_d16_hard_t_le_eabi.a(mempoll_debug_operations.o)
-                0x0000000000004630                __do_debug_operation_mempoll
- .text          0x0000000000004660       0x8c ../../../../../../examples/lm_code/nrf_npm1300_fuel_gauge/npm1300_lib/lib/cortex-m4/hard-float/libnrf_fuel_gauge.a(libnrf_fuel_gauge__obfuscated.elf)
-                0x0000000000004660                nrf_fuel_gauge_init
- .text          0x00000000000046ec       0x60 ../../../../../../examples/lm_code/nrf_npm1300_fuel_gauge/npm1300_lib/lib/cortex-m4/hard-float/libnrf_fuel_gauge.a(libnrf_fuel_gauge__obfuscated.elf)
-                0x00000000000046ec                nrf_fuel_gauge_process
- .text          0x000000000000474c        0xc ../../../../../../examples/lm_code/nrf_npm1300_fuel_gauge/npm1300_lib/lib/cortex-m4/hard-float/libnrf_fuel_gauge.a(libnrf_fuel_gauge__obfuscated.elf)
-                0x000000000000474c                nrf_fuel_gauge_tte_get
- .text          0x0000000000004758        0xc ../../../../../../examples/lm_code/nrf_npm1300_fuel_gauge/npm1300_lib/lib/cortex-m4/hard-float/libnrf_fuel_gauge.a(libnrf_fuel_gauge__obfuscated.elf)
-                0x0000000000004758                nrf_fuel_gauge_ttf_get
- .text          0x0000000000004764      0x198 ../../../../../../examples/lm_code/nrf_npm1300_fuel_gauge/npm1300_lib/lib/cortex-m4/hard-float/libnrf_fuel_gauge.a(libnrf_fuel_gauge__obfuscated.elf)
-                0x0000000000004764                sym_UAZPLDKGPDVQX5TKL77ORD2WLPGOPSZ2NV5YCZI
- .text          0x00000000000048fc      0x400 ../../../../../../examples/lm_code/nrf_npm1300_fuel_gauge/npm1300_lib/lib/cortex-m4/hard-float/libnrf_fuel_gauge.a(libnrf_fuel_gauge__obfuscated.elf)
-                0x00000000000048fc                sym_5OPP37WU6XHQMSAL5GW2DIFF6HY5W7NQQYWLB5Y
- .text          0x0000000000004cfc       0x1c ../../../../../../examples/lm_code/nrf_npm1300_fuel_gauge/npm1300_lib/lib/cortex-m4/hard-float/libnrf_fuel_gauge.a(libnrf_fuel_gauge__obfuscated.elf)
-                0x0000000000004cfc                sym_IIGOMG7JGLSQ4TS65377DCUR25GF54AHS4YY7WY
- .text          0x0000000000004d18       0x64 ../../../../../../examples/lm_code/nrf_npm1300_fuel_gauge/npm1300_lib/lib/cortex-m4/hard-float/libnrf_fuel_gauge.a(libnrf_fuel_gauge__obfuscated.elf)
-                0x0000000000004d18                sym_ZYPI4JQCEQGXDLJFOPU5GSQ3XIVTXZC6R4B7OYQ
- .text          0x0000000000004d7c       0x64 ../../../../../../examples/lm_code/nrf_npm1300_fuel_gauge/npm1300_lib/lib/cortex-m4/hard-float/libnrf_fuel_gauge.a(libnrf_fuel_gauge__obfuscated.elf)
-                0x0000000000004d7c                sym_Y7TL3SFWHWSOZBTJCULEIA3LHLTTIAX7EYNM7OQ
- .text          0x0000000000004de0       0x34 ../../../../../../examples/lm_code/nrf_npm1300_fuel_gauge/npm1300_lib/lib/cortex-m4/hard-float/libnrf_fuel_gauge.a(libnrf_fuel_gauge__obfuscated.elf)
-                0x0000000000004de0                sym_3UIHQUC7XVAXESSVI5JMOL44XN7QRX6LGJLZCPA
- .text          0x0000000000004e14      0x1a4 ../../../../../../examples/lm_code/nrf_npm1300_fuel_gauge/npm1300_lib/lib/cortex-m4/hard-float/libnrf_fuel_gauge.a(libnrf_fuel_gauge__obfuscated.elf)
-                0x0000000000004e14                sym_GUEPXTDH5NNPPR4S7QYQRKNWV6MFZE6WHCAQYTI
- .text          0x0000000000004fb8       0x24 ../../../../../../examples/lm_code/nrf_npm1300_fuel_gauge/npm1300_lib/lib/cortex-m4/hard-float/libnrf_fuel_gauge.a(libnrf_fuel_gauge__obfuscated.elf)
-                0x0000000000004fb8                sym_SBD2NVCKYJ3J5NPJP4ABVNYTZBKNTPTXCRZVBFY
- *fill*         0x0000000000004fdc        0x4 
- .text          0x0000000000004fe0     0x1214 ../../../../../../examples/lm_code/nrf_npm1300_fuel_gauge/npm1300_lib/lib/cortex-m4/hard-float/libnrf_fuel_gauge.a(libnrf_fuel_gauge__obfuscated.elf)
-                0x0000000000004fe0                sym_3KIPDHMQQDERGOPJKAF4KMY7F76E62MKGMWAZYA
- .text          0x00000000000061f4      0x30c ../../../../../../examples/lm_code/nrf_npm1300_fuel_gauge/npm1300_lib/lib/cortex-m4/hard-float/libnrf_fuel_gauge.a(libnrf_fuel_gauge__obfuscated.elf)
-                0x00000000000061f4                sym_AG2LBGGSIA77K5XJMD3UV3SBGRW3AIHATLB7FZA
- .text          0x0000000000006500      0x10c ../../../../../../examples/lm_code/nrf_npm1300_fuel_gauge/npm1300_lib/lib/cortex-m4/hard-float/libnrf_fuel_gauge.a(libnrf_fuel_gauge__obfuscated.elf)
-                0x0000000000006500                sym_7XQW4RE4A3JLVFL2OP6WK5QVNJ446EJG7FAPPAY
- .text          0x000000000000660c       0xb8 ../../../../../../examples/lm_code/nrf_npm1300_fuel_gauge/npm1300_lib/lib/cortex-m4/hard-float/libnrf_fuel_gauge.a(libnrf_fuel_gauge__obfuscated.elf)
-                0x000000000000660c                sym_OPTO2XH6CI6Y5TL7RRJWOQE3AL2WZINJXFVJHQY
+                0x0000000000004780       0x30 C:/Program Files/SEGGER/SEGGER Embedded Studio for ARM 5.42a/lib/libdebugio_v7em_fpv4_sp_d16_hard_t_le_eabi.a(mempoll_debug_operations.o)
+                0x0000000000004780                __do_debug_operation_mempoll
+ .text          0x00000000000047b0       0x8c ../../../../../../examples/lm_code/nrf_npm1300_fuel_gauge/npm1300_lib/lib/cortex-m4/hard-float/libnrf_fuel_gauge.a(libnrf_fuel_gauge__obfuscated.elf)
+                0x00000000000047b0                nrf_fuel_gauge_init
+ .text          0x000000000000483c       0x60 ../../../../../../examples/lm_code/nrf_npm1300_fuel_gauge/npm1300_lib/lib/cortex-m4/hard-float/libnrf_fuel_gauge.a(libnrf_fuel_gauge__obfuscated.elf)
+                0x000000000000483c                nrf_fuel_gauge_process
+ .text          0x000000000000489c        0xc ../../../../../../examples/lm_code/nrf_npm1300_fuel_gauge/npm1300_lib/lib/cortex-m4/hard-float/libnrf_fuel_gauge.a(libnrf_fuel_gauge__obfuscated.elf)
+                0x000000000000489c                nrf_fuel_gauge_tte_get
+ .text          0x00000000000048a8        0xc ../../../../../../examples/lm_code/nrf_npm1300_fuel_gauge/npm1300_lib/lib/cortex-m4/hard-float/libnrf_fuel_gauge.a(libnrf_fuel_gauge__obfuscated.elf)
+                0x00000000000048a8                nrf_fuel_gauge_ttf_get
+ .text          0x00000000000048b4      0x198 ../../../../../../examples/lm_code/nrf_npm1300_fuel_gauge/npm1300_lib/lib/cortex-m4/hard-float/libnrf_fuel_gauge.a(libnrf_fuel_gauge__obfuscated.elf)
+                0x00000000000048b4                sym_UAZPLDKGPDVQX5TKL77ORD2WLPGOPSZ2NV5YCZI
+ .text          0x0000000000004a4c      0x400 ../../../../../../examples/lm_code/nrf_npm1300_fuel_gauge/npm1300_lib/lib/cortex-m4/hard-float/libnrf_fuel_gauge.a(libnrf_fuel_gauge__obfuscated.elf)
+                0x0000000000004a4c                sym_5OPP37WU6XHQMSAL5GW2DIFF6HY5W7NQQYWLB5Y
+ .text          0x0000000000004e4c       0x1c ../../../../../../examples/lm_code/nrf_npm1300_fuel_gauge/npm1300_lib/lib/cortex-m4/hard-float/libnrf_fuel_gauge.a(libnrf_fuel_gauge__obfuscated.elf)
+                0x0000000000004e4c                sym_IIGOMG7JGLSQ4TS65377DCUR25GF54AHS4YY7WY
+ .text          0x0000000000004e68       0x64 ../../../../../../examples/lm_code/nrf_npm1300_fuel_gauge/npm1300_lib/lib/cortex-m4/hard-float/libnrf_fuel_gauge.a(libnrf_fuel_gauge__obfuscated.elf)
+                0x0000000000004e68                sym_ZYPI4JQCEQGXDLJFOPU5GSQ3XIVTXZC6R4B7OYQ
+ .text          0x0000000000004ecc       0x64 ../../../../../../examples/lm_code/nrf_npm1300_fuel_gauge/npm1300_lib/lib/cortex-m4/hard-float/libnrf_fuel_gauge.a(libnrf_fuel_gauge__obfuscated.elf)
+                0x0000000000004ecc                sym_Y7TL3SFWHWSOZBTJCULEIA3LHLTTIAX7EYNM7OQ
+ .text          0x0000000000004f30       0x34 ../../../../../../examples/lm_code/nrf_npm1300_fuel_gauge/npm1300_lib/lib/cortex-m4/hard-float/libnrf_fuel_gauge.a(libnrf_fuel_gauge__obfuscated.elf)
+                0x0000000000004f30                sym_3UIHQUC7XVAXESSVI5JMOL44XN7QRX6LGJLZCPA
+ .text          0x0000000000004f64      0x1a4 ../../../../../../examples/lm_code/nrf_npm1300_fuel_gauge/npm1300_lib/lib/cortex-m4/hard-float/libnrf_fuel_gauge.a(libnrf_fuel_gauge__obfuscated.elf)
+                0x0000000000004f64                sym_GUEPXTDH5NNPPR4S7QYQRKNWV6MFZE6WHCAQYTI
+ .text          0x0000000000005108       0x24 ../../../../../../examples/lm_code/nrf_npm1300_fuel_gauge/npm1300_lib/lib/cortex-m4/hard-float/libnrf_fuel_gauge.a(libnrf_fuel_gauge__obfuscated.elf)
+                0x0000000000005108                sym_SBD2NVCKYJ3J5NPJP4ABVNYTZBKNTPTXCRZVBFY
+ *fill*         0x000000000000512c        0x4 
+ .text          0x0000000000005130     0x1214 ../../../../../../examples/lm_code/nrf_npm1300_fuel_gauge/npm1300_lib/lib/cortex-m4/hard-float/libnrf_fuel_gauge.a(libnrf_fuel_gauge__obfuscated.elf)
+                0x0000000000005130                sym_3KIPDHMQQDERGOPJKAF4KMY7F76E62MKGMWAZYA
+ .text          0x0000000000006344      0x30c ../../../../../../examples/lm_code/nrf_npm1300_fuel_gauge/npm1300_lib/lib/cortex-m4/hard-float/libnrf_fuel_gauge.a(libnrf_fuel_gauge__obfuscated.elf)
+                0x0000000000006344                sym_AG2LBGGSIA77K5XJMD3UV3SBGRW3AIHATLB7FZA
+ .text          0x0000000000006650      0x10c ../../../../../../examples/lm_code/nrf_npm1300_fuel_gauge/npm1300_lib/lib/cortex-m4/hard-float/libnrf_fuel_gauge.a(libnrf_fuel_gauge__obfuscated.elf)
+                0x0000000000006650                sym_7XQW4RE4A3JLVFL2OP6WK5QVNJ446EJG7FAPPAY
+ .text          0x000000000000675c       0xb8 ../../../../../../examples/lm_code/nrf_npm1300_fuel_gauge/npm1300_lib/lib/cortex-m4/hard-float/libnrf_fuel_gauge.a(libnrf_fuel_gauge__obfuscated.elf)
+                0x000000000000675c                sym_OPTO2XH6CI6Y5TL7RRJWOQE3AL2WZINJXFVJHQY
  .text.libc.sqrtf
-                0x00000000000066c4        0x6 C:/Program Files/SEGGER/SEGGER Embedded Studio for ARM 5.42a/lib/libm_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libm2_asm.o)
-                0x00000000000066c4                sqrt(float)
-                0x00000000000066c4                sqrtf
-                0x00000000000066cc                . = ALIGN (MAX ((__text_start__ + 0x4), .), 0x4)
- *fill*         0x00000000000066ca        0x2 
-                0x00000000000066cc                __text_end__ = (__text_start__ + SIZEOF (.text))
-                0x00000000000062fc                __text_size__ = SIZEOF (.text)
-                0x00000000000066cc                __text_load_end__ = __text_end__
+                0x0000000000006814        0x6 C:/Program Files/SEGGER/SEGGER Embedded Studio for ARM 5.42a/lib/libm_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libm2_asm.o)
+                0x0000000000006814                sqrt(float)
+                0x0000000000006814                sqrtf
+                0x000000000000681c                . = ALIGN (MAX ((__text_start__ + 0x4), .), 0x4)
+ *fill*         0x000000000000681a        0x2 
+                0x000000000000681c                __text_end__ = (__text_start__ + SIZEOF (.text))
+                0x000000000000644c                __text_size__ = SIZEOF (.text)
+                0x000000000000681c                __text_load_end__ = __text_end__
 
 .vfp11_veneer   0x0000000100000000        0x0
  .vfp11_veneer  0x0000000100000000        0x0 linker stubs
@@ -5453,59 +5443,59 @@ Linker script and memory map
 .iplt           0x0000000100000000        0x0
  .iplt          0x0000000100000000        0x0 Output/Debug/Obj/npm1300_pca10040/thumb_crt0.o
                 0x0000000000000001                . = ASSERT (((__text_start__ == __text_end__) || ((__text_end__ - __FLASH1_segment_start__) <= __FLASH1_segment_size__)), error: .text is too large to fit in FLASH1 memory segment)
-                0x00000000000066cc                __log_const_data_load_start__ = ALIGN (__text_end__, 0x4)
+                0x000000000000681c                __log_const_data_load_start__ = ALIGN (__text_end__, 0x4)
 
 .log_const_data
-                0x00000000000066cc        0x0
-                0x00000000000066cc                __log_const_data_start__ = .
-                0x00000000000066cc                __start_log_const_data = __log_const_data_start__
+                0x000000000000681c        0x0
+                0x000000000000681c                __log_const_data_start__ = .
+                0x000000000000681c                __start_log_const_data = __log_const_data_start__
  *(SORT_BY_NAME(.log_const_data*))
-                0x00000000000066cc                __log_const_data_end__ = (__log_const_data_start__ + SIZEOF (.log_const_data))
+                0x000000000000681c                __log_const_data_end__ = (__log_const_data_start__ + SIZEOF (.log_const_data))
                 0x0000000000000000                __log_const_data_size__ = SIZEOF (.log_const_data)
-                0x00000000000066cc                __stop_log_const_data = __log_const_data_end__
-                0x00000000000066cc                __log_const_data_load_end__ = __log_const_data_end__
+                0x000000000000681c                __stop_log_const_data = __log_const_data_end__
+                0x000000000000681c                __log_const_data_load_end__ = __log_const_data_end__
                 0x0000000000000001                . = ASSERT (((__log_const_data_start__ == __log_const_data_end__) || ((__log_const_data_end__ - __FLASH1_segment_start__) <= __FLASH1_segment_size__)), error: .log_const_data is too large to fit in FLASH1 memory segment)
-                0x00000000000066cc                __log_backends_load_start__ = ALIGN (__log_const_data_end__, 0x4)
+                0x000000000000681c                __log_backends_load_start__ = ALIGN (__log_const_data_end__, 0x4)
 
-.log_backends   0x00000000000066cc        0x0
-                0x00000000000066cc                __log_backends_start__ = .
-                0x00000000000066cc                __start_log_backends = __log_backends_start__
+.log_backends   0x000000000000681c        0x0
+                0x000000000000681c                __log_backends_start__ = .
+                0x000000000000681c                __start_log_backends = __log_backends_start__
  *(SORT_BY_NAME(.log_backends*))
-                0x00000000000066cc                __log_backends_end__ = (__log_backends_start__ + SIZEOF (.log_backends))
+                0x000000000000681c                __log_backends_end__ = (__log_backends_start__ + SIZEOF (.log_backends))
                 0x0000000000000000                __log_backends_size__ = SIZEOF (.log_backends)
-                0x00000000000066cc                __stop_log_backends = __log_backends_end__
-                0x00000000000066cc                __log_backends_load_end__ = __log_backends_end__
+                0x000000000000681c                __stop_log_backends = __log_backends_end__
+                0x000000000000681c                __log_backends_load_end__ = __log_backends_end__
                 0x0000000000000001                . = ASSERT (((__log_backends_start__ == __log_backends_end__) || ((__log_backends_end__ - __FLASH1_segment_start__) <= __FLASH1_segment_size__)), error: .log_backends is too large to fit in FLASH1 memory segment)
-                0x00000000000066cc                __nrf_balloc_load_start__ = ALIGN (__log_backends_end__, 0x4)
+                0x000000000000681c                __nrf_balloc_load_start__ = ALIGN (__log_backends_end__, 0x4)
 
-.nrf_balloc     0x00000000000066cc        0x0
-                0x00000000000066cc                __nrf_balloc_start__ = .
-                0x00000000000066cc                __start_nrf_balloc = __nrf_balloc_start__
+.nrf_balloc     0x000000000000681c        0x0
+                0x000000000000681c                __nrf_balloc_start__ = .
+                0x000000000000681c                __start_nrf_balloc = __nrf_balloc_start__
  *(.nrf_balloc*)
-                0x00000000000066cc                __nrf_balloc_end__ = (__nrf_balloc_start__ + SIZEOF (.nrf_balloc))
+                0x000000000000681c                __nrf_balloc_end__ = (__nrf_balloc_start__ + SIZEOF (.nrf_balloc))
                 0x0000000000000000                __nrf_balloc_size__ = SIZEOF (.nrf_balloc)
-                0x00000000000066cc                __stop_nrf_balloc = __nrf_balloc_end__
-                0x00000000000066cc                __nrf_balloc_load_end__ = __nrf_balloc_end__
+                0x000000000000681c                __stop_nrf_balloc = __nrf_balloc_end__
+                0x000000000000681c                __nrf_balloc_load_end__ = __nrf_balloc_end__
                 0x0000000000000001                . = ASSERT (((__nrf_balloc_start__ == __nrf_balloc_end__) || ((__nrf_balloc_end__ - __FLASH1_segment_start__) <= __FLASH1_segment_size__)), error: .nrf_balloc is too large to fit in FLASH1 memory segment)
-                0x00000000000066cc                __nrf_sections_load_start__ = ALIGN (__nrf_balloc_end__, 0x4)
+                0x000000000000681c                __nrf_sections_load_start__ = ALIGN (__nrf_balloc_end__, 0x4)
 
-.nrf_sections   0x00000000000066cc        0x0
-                0x00000000000066cc                __nrf_sections_start__ = .
-                0x00000000000066cc                __start_nrf_sections = __nrf_sections_start__
+.nrf_sections   0x000000000000681c        0x0
+                0x000000000000681c                __nrf_sections_start__ = .
+                0x000000000000681c                __start_nrf_sections = __nrf_sections_start__
  *(.nrf_sections .nrf_sections.*)
-                0x00000000000066cc                __nrf_sections_end__ = (__nrf_sections_start__ + SIZEOF (.nrf_sections))
+                0x000000000000681c                __nrf_sections_end__ = (__nrf_sections_start__ + SIZEOF (.nrf_sections))
                 0x0000000000000000                __nrf_sections_size__ = SIZEOF (.nrf_sections)
-                0x00000000000066cc                __nrf_sections_load_end__ = __nrf_sections_end__
+                0x000000000000681c                __nrf_sections_load_end__ = __nrf_sections_end__
                 0x0000000000000001                . = ASSERT (((__nrf_sections_start__ == __nrf_sections_end__) || ((__nrf_sections_end__ - __FLASH1_segment_start__) <= __FLASH1_segment_size__)), error: .nrf_sections is too large to fit in FLASH1 memory segment)
-                0x00000000000066cc                __log_dynamic_data_load_start__ = ALIGN (__nrf_sections_end__, 0x4)
+                0x000000000000681c                __log_dynamic_data_load_start__ = ALIGN (__nrf_sections_end__, 0x4)
 
 .log_dynamic_data
-                0x0000000020000000        0x0 load address 0x00000000000066cc
+                0x0000000020000000        0x0 load address 0x000000000000681c
                 0x0000000020000000                __log_dynamic_data_start__ = .
  *(SORT_BY_NAME(.log_dynamic_data*))
                 0x0000000020000000                __log_dynamic_data_end__ = (__log_dynamic_data_start__ + SIZEOF (.log_dynamic_data))
                 0x0000000000000000                __log_dynamic_data_size__ = SIZEOF (.log_dynamic_data)
-                0x00000000000066cc                __log_dynamic_data_load_end__ = (__log_dynamic_data_load_start__ + SIZEOF (.log_dynamic_data))
+                0x000000000000681c                __log_dynamic_data_load_end__ = (__log_dynamic_data_load_start__ + SIZEOF (.log_dynamic_data))
                 0x0000000000000001                . = ASSERT (((__log_dynamic_data_load_start__ == __log_dynamic_data_load_end__) || ((__log_dynamic_data_load_end__ - __FLASH1_segment_start__) <= __FLASH1_segment_size__)), error: .log_dynamic_data is too large to fit in FLASH1 memory segment)
 
 .log_dynamic_data_run
@@ -5517,15 +5507,15 @@ Linker script and memory map
                 0x0000000020000000                __stop_log_dynamic_data = __log_dynamic_data_run_end__
                 0x0000000020000000                __log_dynamic_data_run_load_end__ = __log_dynamic_data_run_end__
                 0x0000000000000001                . = ASSERT (((__log_dynamic_data_run_start__ == __log_dynamic_data_run_end__) || ((__log_dynamic_data_run_end__ - __RAM1_segment_start__) <= __RAM1_segment_size__)), error: .log_dynamic_data_run is too large to fit in RAM1 memory segment)
-                0x00000000000066cc                __log_filter_data_load_start__ = ALIGN ((__log_dynamic_data_load_start__ + SIZEOF (.log_dynamic_data)), 0x4)
+                0x000000000000681c                __log_filter_data_load_start__ = ALIGN ((__log_dynamic_data_load_start__ + SIZEOF (.log_dynamic_data)), 0x4)
 
 .log_filter_data
-                0x0000000020000000        0x0 load address 0x00000000000066cc
+                0x0000000020000000        0x0 load address 0x000000000000681c
                 0x0000000020000000                __log_filter_data_start__ = .
  *(SORT_BY_NAME(.log_filter_data*))
                 0x0000000020000000                __log_filter_data_end__ = (__log_filter_data_start__ + SIZEOF (.log_filter_data))
                 0x0000000000000000                __log_filter_data_size__ = SIZEOF (.log_filter_data)
-                0x00000000000066cc                __log_filter_data_load_end__ = (__log_filter_data_load_start__ + SIZEOF (.log_filter_data))
+                0x000000000000681c                __log_filter_data_load_end__ = (__log_filter_data_load_start__ + SIZEOF (.log_filter_data))
                 0x0000000000000001                . = ASSERT (((__log_filter_data_load_start__ == __log_filter_data_load_end__) || ((__log_filter_data_load_end__ - __FLASH1_segment_start__) <= __FLASH1_segment_size__)), error: .log_filter_data is too large to fit in FLASH1 memory segment)
 
 .log_filter_data_run
@@ -5548,107 +5538,99 @@ Linker script and memory map
                 0x0000000000000000                __nrf_sections_run_end_size__ = SIZEOF (.nrf_sections_run_end)
                 0x0000000020000000                __nrf_sections_run_end_load_end__ = __nrf_sections_run_end_end__
                 0x0000000000000001                . = ASSERT (((__nrf_sections_run_end_start__ == __nrf_sections_run_end_end__) || ((__nrf_sections_run_end_end__ - __RAM1_segment_start__) <= __RAM1_segment_size__)), error: .nrf_sections_run_end is too large to fit in RAM1 memory segment)
-                0x00000000000066cc                __dtors_load_start__ = ALIGN ((__log_filter_data_load_start__ + SIZEOF (.log_filter_data)), 0x4)
+                0x000000000000681c                __dtors_load_start__ = ALIGN ((__log_filter_data_load_start__ + SIZEOF (.log_filter_data)), 0x4)
 
-.dtors          0x00000000000066cc        0x0
-                0x00000000000066cc                __dtors_start__ = .
+.dtors          0x000000000000681c        0x0
+                0x000000000000681c                __dtors_start__ = .
  *(SORT_BY_NAME(.dtors.*))
  *(.dtors)
  *(.fini_array)
  *(SORT_BY_NAME(.fini_array.*))
-                0x00000000000066cc                __dtors_end__ = (__dtors_start__ + SIZEOF (.dtors))
+                0x000000000000681c                __dtors_end__ = (__dtors_start__ + SIZEOF (.dtors))
                 0x0000000000000000                __dtors_size__ = SIZEOF (.dtors)
-                0x00000000000066cc                __dtors_load_end__ = __dtors_end__
+                0x000000000000681c                __dtors_load_end__ = __dtors_end__
                 0x0000000000000001                . = ASSERT (((__dtors_start__ == __dtors_end__) || ((__dtors_end__ - __FLASH1_segment_start__) <= __FLASH1_segment_size__)), error: .dtors is too large to fit in FLASH1 memory segment)
-                0x00000000000066cc                __ctors_load_start__ = ALIGN (__dtors_end__, 0x4)
+                0x000000000000681c                __ctors_load_start__ = ALIGN (__dtors_end__, 0x4)
 
-.ctors          0x00000000000066cc        0x0
-                0x00000000000066cc                __ctors_start__ = .
+.ctors          0x000000000000681c        0x0
+                0x000000000000681c                __ctors_start__ = .
  *(SORT_BY_NAME(.ctors.*))
  *(.ctors)
  *(.init_array)
  *(SORT_BY_NAME(.init_array.*))
-                0x00000000000066cc                __ctors_end__ = (__ctors_start__ + SIZEOF (.ctors))
+                0x000000000000681c                __ctors_end__ = (__ctors_start__ + SIZEOF (.ctors))
                 0x0000000000000000                __ctors_size__ = SIZEOF (.ctors)
-                0x00000000000066cc                __ctors_load_end__ = __ctors_end__
+                0x000000000000681c                __ctors_load_end__ = __ctors_end__
                 0x0000000000000001                . = ASSERT (((__ctors_start__ == __ctors_end__) || ((__ctors_end__ - __FLASH1_segment_start__) <= __FLASH1_segment_size__)), error: .ctors is too large to fit in FLASH1 memory segment)
-                0x00000000000066cc                __rodata_load_start__ = ALIGN (__ctors_end__, 0x4)
+                0x000000000000681c                __rodata_load_start__ = ALIGN (__ctors_end__, 0x4)
 
-.rodata         0x00000000000066cc     0x18ec
-                0x00000000000066cc                __rodata_start__ = .
+.rodata         0x000000000000681c     0x1918
+                0x000000000000681c                __rodata_start__ = .
  *(.rodata .rodata.* .gnu.linkonce.r.*)
- .rodata        0x00000000000066cc       0x79 Output/Debug/Obj/npm1300_pca10040/boards.o
- *fill*         0x0000000000006745        0x3 
+ .rodata        0x000000000000681c       0x79 Output/Debug/Obj/npm1300_pca10040/boards.o
+ *fill*         0x0000000000006895        0x3 
  .rodata.m_board_led_list
-                0x0000000000006748        0x4 Output/Debug/Obj/npm1300_pca10040/boards.o
+                0x0000000000006898        0x4 Output/Debug/Obj/npm1300_pca10040/boards.o
  .rodata.m_board_btn_list
-                0x000000000000674c        0x4 Output/Debug/Obj/npm1300_pca10040/boards.o
- .rodata        0x0000000000006750       0xb2 Output/Debug/Obj/npm1300_pca10040/nrfx_twi.o
- *fill*         0x0000000000006802        0x2 
- .rodata        0x0000000000006804       0x34 Output/Debug/Obj/npm1300_pca10040/main.o
- *fill*         0x0000000000006838        0x8 
+                0x000000000000689c        0x4 Output/Debug/Obj/npm1300_pca10040/boards.o
+ .rodata        0x00000000000068a0       0xb2 Output/Debug/Obj/npm1300_pca10040/nrfx_twi.o
+ *fill*         0x0000000000006952        0x2 
+ .rodata        0x0000000000006954       0x34 Output/Debug/Obj/npm1300_pca10040/main.o
+ *fill*         0x0000000000006988        0x8 
  .rodata.delay_machine_code.0
-                0x0000000000006840        0x6 Output/Debug/Obj/npm1300_pca10040/main.o
- *fill*         0x0000000000006846        0x2 
- .rodata.m_twi  0x0000000000006848        0x8 Output/Debug/Obj/npm1300_pca10040/npm1300_charger.o
- .rodata.charger_volt_ranges
-                0x0000000000006850       0x18 Output/Debug/Obj/npm1300_pca10040/npm1300_charger.o
- .rodata.charger_current_range
-                0x0000000000006868        0xc Output/Debug/Obj/npm1300_pca10040/npm1300_charger.o
- .rodata.discharge_limit_range
-                0x0000000000006874        0xc Output/Debug/Obj/npm1300_pca10040/npm1300_charger.o
- .rodata.vbus_current_ranges
-                0x0000000000006880       0x18 Output/Debug/Obj/npm1300_pca10040/npm1300_charger.o
- .rodata        0x0000000000006898       0x10 Output/Debug/Obj/npm1300_pca10040/npm1300_charger.o
+                0x0000000000006990        0x6 Output/Debug/Obj/npm1300_pca10040/main.o
+ *fill*         0x0000000000006996        0x2 
+ .rodata.m_twi  0x0000000000006998        0x8 Output/Debug/Obj/npm1300_pca10040/npm1300_charger.o
+ .rodata        0x00000000000069a0       0x84 Output/Debug/Obj/npm1300_pca10040/npm1300_charger.o
  .rodata.battery_model
-                0x00000000000068a8     0x1600 Output/Debug/Obj/npm1300_pca10040/fuel_gauge.o
- .rodata        0x0000000000007ea8       0x7f Output/Debug/Obj/npm1300_pca10040/fuel_gauge.o
- *fill*         0x0000000000007f27        0x1 
+                0x0000000000006a24     0x1600 Output/Debug/Obj/npm1300_pca10040/fuel_gauge.o
+ .rodata        0x0000000000008024       0x7f Output/Debug/Obj/npm1300_pca10040/fuel_gauge.o
+ *fill*         0x00000000000080a3        0x1 
  .rodata.libc.expf_twojby8
-                0x0000000000007f28       0x20 C:/Program Files/SEGGER/SEGGER Embedded Studio for ARM 5.42a/lib/libm_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libm2.o)
+                0x00000000000080a4       0x20 C:/Program Files/SEGGER/SEGGER Embedded Studio for ARM 5.42a/lib/libm_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libm2.o)
  .rodata.libc.__RAL_hex_lc
-                0x0000000000007f48       0x10 C:/Program Files/SEGGER/SEGGER Embedded Studio for ARM 5.42a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libc2.o)
-                0x0000000000007f48                __RAL_hex_lc
+                0x00000000000080c4       0x10 C:/Program Files/SEGGER/SEGGER Embedded Studio for ARM 5.42a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libc2.o)
+                0x00000000000080c4                __RAL_hex_lc
  .rodata.libc.__RAL_hex_uc
-                0x0000000000007f58       0x10 C:/Program Files/SEGGER/SEGGER Embedded Studio for ARM 5.42a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libc2.o)
-                0x0000000000007f58                __RAL_hex_uc
+                0x00000000000080d4       0x10 C:/Program Files/SEGGER/SEGGER Embedded Studio for ARM 5.42a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libc2.o)
+                0x00000000000080d4                __RAL_hex_uc
  .rodata.libc.__aeabi_EDOM
-                0x0000000000007f68        0x4 C:/Program Files/SEGGER/SEGGER Embedded Studio for ARM 5.42a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libc2.o)
-                0x0000000000007f68                __aeabi_EDOM
+                0x00000000000080e4        0x4 C:/Program Files/SEGGER/SEGGER Embedded Studio for ARM 5.42a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libc2.o)
+                0x00000000000080e4                __aeabi_EDOM
  .rodata.libc.__aeabi_ERANGE
-                0x0000000000007f6c        0x4 C:/Program Files/SEGGER/SEGGER Embedded Studio for ARM 5.42a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libc2.o)
-                0x0000000000007f6c                __aeabi_ERANGE
+                0x00000000000080e8        0x4 C:/Program Files/SEGGER/SEGGER Embedded Studio for ARM 5.42a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libc2.o)
+                0x00000000000080e8                __aeabi_ERANGE
  .rodata.libc.__vfprintf_int.str1.4
-                0x0000000000007f70        0x7 C:/Program Files/SEGGER/SEGGER Embedded Studio for ARM 5.42a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libvfprintf.o)
- *fill*         0x0000000000007f77        0x1 
- .rodata        0x0000000000007f78       0x40 ../../../../../../examples/lm_code/nrf_npm1300_fuel_gauge/npm1300_lib/lib/cortex-m4/hard-float/libnrf_fuel_gauge.a(libnrf_fuel_gauge__obfuscated.elf)
-                0x0000000000007fb8                . = ALIGN (MAX ((__rodata_start__ + 0x4), .), 0x4)
-                0x0000000000007fb8                __rodata_end__ = (__rodata_start__ + SIZEOF (.rodata))
-                0x00000000000018ec                __rodata_size__ = SIZEOF (.rodata)
-                0x0000000000007fb8                __rodata_load_end__ = __rodata_end__
+                0x00000000000080ec        0x7 C:/Program Files/SEGGER/SEGGER Embedded Studio for ARM 5.42a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libvfprintf.o)
+ *fill*         0x00000000000080f3        0x1 
+ .rodata        0x00000000000080f4       0x40 ../../../../../../examples/lm_code/nrf_npm1300_fuel_gauge/npm1300_lib/lib/cortex-m4/hard-float/libnrf_fuel_gauge.a(libnrf_fuel_gauge__obfuscated.elf)
+                0x0000000000008134                . = ALIGN (MAX ((__rodata_start__ + 0x4), .), 0x4)
+                0x0000000000008134                __rodata_end__ = (__rodata_start__ + SIZEOF (.rodata))
+                0x0000000000001918                __rodata_size__ = SIZEOF (.rodata)
+                0x0000000000008134                __rodata_load_end__ = __rodata_end__
 
-.rel.dyn        0x0000000000007fb8        0x0
- .rel.iplt      0x0000000000007fb8        0x0 Output/Debug/Obj/npm1300_pca10040/thumb_crt0.o
+.rel.dyn        0x0000000000008134        0x0
+ .rel.iplt      0x0000000000008134        0x0 Output/Debug/Obj/npm1300_pca10040/thumb_crt0.o
                 0x0000000000000001                . = ASSERT (((__rodata_start__ == __rodata_end__) || ((__rodata_end__ - __FLASH1_segment_start__) <= __FLASH1_segment_size__)), error: .rodata is too large to fit in FLASH1 memory segment)
-                0x0000000000007fb8                __ARM.exidx_load_start__ = ALIGN (__rodata_end__, 0x4)
+                0x0000000000008134                __ARM.exidx_load_start__ = ALIGN (__rodata_end__, 0x4)
 
-.ARM.exidx      0x0000000000007fb8        0x0
-                0x0000000000007fb8                __ARM.exidx_start__ = .
-                0x0000000000007fb8                __exidx_start = __ARM.exidx_start__
+.ARM.exidx      0x0000000000008134        0x0
+                0x0000000000008134                __ARM.exidx_start__ = .
+                0x0000000000008134                __exidx_start = __ARM.exidx_start__
  *(.ARM.exidx .ARM.exidx.*)
-                0x0000000000007fb8                __ARM.exidx_end__ = (__ARM.exidx_start__ + SIZEOF (.ARM.exidx))
+                0x0000000000008134                __ARM.exidx_end__ = (__ARM.exidx_start__ + SIZEOF (.ARM.exidx))
                 0x0000000000000000                __ARM.exidx_size__ = SIZEOF (.ARM.exidx)
-                0x0000000000007fb8                __exidx_end = __ARM.exidx_end__
-                0x0000000000007fb8                __ARM.exidx_load_end__ = __ARM.exidx_end__
+                0x0000000000008134                __exidx_end = __ARM.exidx_end__
+                0x0000000000008134                __ARM.exidx_load_end__ = __ARM.exidx_end__
                 0x0000000000000001                . = ASSERT (((__ARM.exidx_start__ == __ARM.exidx_end__) || ((__ARM.exidx_end__ - __FLASH1_segment_start__) <= __FLASH1_segment_size__)), error: .ARM.exidx is too large to fit in FLASH1 memory segment)
-                0x0000000000007fb8                __fast_load_start__ = ALIGN (__ARM.exidx_end__, 0x4)
+                0x0000000000008134                __fast_load_start__ = ALIGN (__ARM.exidx_end__, 0x4)
 
-.fast           0x0000000020000000        0x0 load address 0x0000000000007fb8
+.fast           0x0000000020000000        0x0 load address 0x0000000000008134
                 0x0000000020000000                __fast_start__ = .
  *(.fast .fast.*)
                 0x0000000020000000                __fast_end__ = (__fast_start__ + SIZEOF (.fast))
                 0x0000000000000000                __fast_size__ = SIZEOF (.fast)
-                0x0000000000007fb8                __fast_load_end__ = (__fast_load_start__ + SIZEOF (.fast))
+                0x0000000000008134                __fast_load_end__ = (__fast_load_start__ + SIZEOF (.fast))
                 0x0000000000000001                . = ASSERT (((__fast_load_start__ == __fast_load_end__) || ((__fast_load_end__ - __FLASH1_segment_start__) <= __FLASH1_segment_size__)), error: .fast is too large to fit in FLASH1 memory segment)
 
 .fast_run       0x0000000020000000        0x0
@@ -5657,9 +5639,9 @@ Linker script and memory map
                 0x0000000000000000                __fast_run_size__ = (__fast_run_end__ - __fast_run_start__)
                 0x0000000020000000                __fast_run_load_end__ = __fast_run_end__
                 0x0000000000000001                . = ASSERT (((__fast_run_start__ == __fast_run_end__) || ((__fast_run_end__ - __RAM1_segment_start__) <= __RAM1_segment_size__)), error: .fast_run is too large to fit in RAM1 memory segment)
-                0x0000000000007fb8                __data_load_start__ = ALIGN ((__fast_load_start__ + SIZEOF (.fast)), 0x4)
+                0x0000000000008134                __data_load_start__ = ALIGN ((__fast_load_start__ + SIZEOF (.fast)), 0x4)
 
-.data           0x0000000020000000       0x18 load address 0x0000000000007fb8
+.data           0x0000000020000000       0x18 load address 0x0000000000008134
                 0x0000000020000000                __data_start__ = .
  *(.data .data.* .gnu.linkonce.d.*)
  .data.SystemCoreClock
@@ -5677,7 +5659,7 @@ Linker script and memory map
                 0x0000000020000014                sym_OUH6KZMY2ETTXPV2GCCP7QSK6DOY3JTULCLIDAI
                 0x0000000020000018                __data_end__ = (__data_start__ + SIZEOF (.data))
                 0x0000000000000018                __data_size__ = SIZEOF (.data)
-                0x0000000000007fd0                __data_load_end__ = (__data_load_start__ + SIZEOF (.data))
+                0x000000000000814c                __data_load_end__ = (__data_load_start__ + SIZEOF (.data))
 
 .igot.plt       0x0000000100000000        0x0
  .igot.plt      0x0000000100000000        0x0 Output/Debug/Obj/npm1300_pca10040/thumb_crt0.o
@@ -5689,16 +5671,16 @@ Linker script and memory map
                 0x0000000000000018                __data_run_size__ = (__data_run_end__ - __data_run_start__)
                 0x0000000020000018                __data_run_load_end__ = __data_run_end__
                 0x0000000000000001                . = ASSERT (((__data_run_start__ == __data_run_end__) || ((__data_run_end__ - __RAM1_segment_start__) <= __RAM1_segment_size__)), error: .data_run is too large to fit in RAM1 memory segment)
-                0x0000000000007fd0                __tdata_load_start__ = ALIGN ((__data_load_start__ + SIZEOF (.data)), 0x4)
+                0x000000000000814c                __tdata_load_start__ = ALIGN ((__data_load_start__ + SIZEOF (.data)), 0x4)
 
-.tdata          0x0000000020000018        0x0 load address 0x0000000000007fd0
+.tdata          0x0000000020000018        0x0 load address 0x000000000000814c
                 0x0000000020000018                __tdata_start__ = .
  *(.tdata .tdata.*)
                 0x0000000020000018                __tdata_end__ = (__tdata_start__ + SIZEOF (.tdata))
                 0x0000000000000000                __tdata_size__ = SIZEOF (.tdata)
-                0x0000000000007fd0                __tdata_load_end__ = (__tdata_load_start__ + SIZEOF (.tdata))
-                0x0000000000007fd0                __FLASH1_segment_used_end__ = (ALIGN ((__data_load_start__ + SIZEOF (.data)), 0x4) + SIZEOF (.tdata))
-                0x0000000000007fd0                __FLASH1_segment_used_size__ = (__FLASH1_segment_used_end__ - __FLASH1_segment_start__)
+                0x000000000000814c                __tdata_load_end__ = (__tdata_load_start__ + SIZEOF (.tdata))
+                0x000000000000814c                __FLASH1_segment_used_end__ = (ALIGN ((__data_load_start__ + SIZEOF (.data)), 0x4) + SIZEOF (.tdata))
+                0x000000000000814c                __FLASH1_segment_used_size__ = (__FLASH1_segment_used_end__ - __FLASH1_segment_start__)
                 0x0000000000000001                . = ASSERT (((__tdata_load_start__ == __tdata_load_end__) || ((__tdata_load_end__ - __FLASH1_segment_start__) <= __FLASH1_segment_size__)), error: .tdata is too large to fit in FLASH1 memory segment)
 
 .tdata_run      0x0000000020000018        0x0
@@ -5709,63 +5691,78 @@ Linker script and memory map
                 0x0000000000000001                . = ASSERT (((__tdata_run_start__ == __tdata_run_end__) || ((__tdata_run_end__ - __RAM1_segment_start__) <= __RAM1_segment_size__)), error: .tdata_run is too large to fit in RAM1 memory segment)
                 0x0000000020000018                __bss_load_start__ = ALIGN (__tdata_run_end__, 0x4)
 
-.bss            0x0000000020000018     0x17f4
+.bss            0x0000000020000018     0x1818
                 0x0000000020000018                __bss_start__ = .
  *(.bss .bss.* .gnu.linkonce.b.*)
  .bss.m_error_data.0
                 0x0000000020000018       0x20 Output/Debug/Obj/npm1300_pca10040/app_error.o
  .bss.m_cb      0x0000000020000038       0x3c Output/Debug/Obj/npm1300_pca10040/nrfx_twi.o
  .bss.val.1     0x0000000020000074        0x4 Output/Debug/Obj/npm1300_pca10040/main.o
+ .bss.m_xfer_done
+                0x0000000020000078        0x1 Output/Debug/Obj/npm1300_pca10040/npm1300_charger.o
+ *fill*         0x0000000020000079        0x3 
+ .bss.data      0x000000002000007c        0x4 Output/Debug/Obj/npm1300_pca10040/npm1300_charger.o
+                0x000000002000007c                data
+ .bss.results   0x0000000020000080        0xb Output/Debug/Obj/npm1300_pca10040/npm1300_charger.o
+                0x0000000020000080                results
+ *fill*         0x000000002000008b        0x1 
  .bss.max_charge_current
-                0x0000000020000078        0x4 Output/Debug/Obj/npm1300_pca10040/fuel_gauge.o
+                0x000000002000008c        0x4 Output/Debug/Obj/npm1300_pca10040/fuel_gauge.o
  .bss.term_charge_current
-                0x000000002000007c        0x4 Output/Debug/Obj/npm1300_pca10040/fuel_gauge.o
- .bss.ref_time  0x0000000020000080        0x8 Output/Debug/Obj/npm1300_pca10040/fuel_gauge.o
+                0x0000000020000090        0x4 Output/Debug/Obj/npm1300_pca10040/fuel_gauge.o
+ *fill*         0x0000000020000094        0x4 
+ .bss.ref_time  0x0000000020000098        0x8 Output/Debug/Obj/npm1300_pca10040/fuel_gauge.o
+ .bss.voltage   0x00000000200000a0        0x4 Output/Debug/Obj/npm1300_pca10040/fuel_gauge.o
+                0x00000000200000a0                voltage
+ .bss.current   0x00000000200000a4        0x4 Output/Debug/Obj/npm1300_pca10040/fuel_gauge.o
+                0x00000000200000a4                current
+ .bss.temp      0x00000000200000a8        0x4 Output/Debug/Obj/npm1300_pca10040/fuel_gauge.o
+                0x00000000200000a8                temp
  .bss.libc.__user_format_extender
-                0x0000000020000088        0x4 C:/Program Files/SEGGER/SEGGER Embedded Studio for ARM 5.42a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libc2.o)
-                0x0000000020000088                __user_format_extender
+                0x00000000200000ac        0x4 C:/Program Files/SEGGER/SEGGER Embedded Studio for ARM 5.42a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libc2.o)
+                0x00000000200000ac                __user_format_extender
  .bss.libdebugio.dbgCntrlWord_mempoll
-                0x000000002000008c        0x4 C:/Program Files/SEGGER/SEGGER Embedded Studio for ARM 5.42a/lib/libdebugio_v7em_fpv4_sp_d16_hard_t_le_eabi.a(mempoll_debug_operations.o)
-                0x000000002000008c                dbgCntrlWord_mempoll
+                0x00000000200000b0        0x4 C:/Program Files/SEGGER/SEGGER Embedded Studio for ARM 5.42a/lib/libdebugio_v7em_fpv4_sp_d16_hard_t_le_eabi.a(mempoll_debug_operations.o)
+                0x00000000200000b0                dbgCntrlWord_mempoll
  .bss.libdebugio.dbgCommWord
-                0x0000000020000090        0x4 C:/Program Files/SEGGER/SEGGER Embedded Studio for ARM 5.42a/lib/libdebugio_v7em_fpv4_sp_d16_hard_t_le_eabi.a(mempoll_debug_operations.o)
-                0x0000000020000090                dbgCommWord
- .bss.ekf_data  0x0000000020000094     0x1778 ../../../../../../examples/lm_code/nrf_npm1300_fuel_gauge/npm1300_lib/lib/cortex-m4/hard-float/libnrf_fuel_gauge.a(libnrf_fuel_gauge__obfuscated.elf)
+                0x00000000200000b4        0x4 C:/Program Files/SEGGER/SEGGER Embedded Studio for ARM 5.42a/lib/libdebugio_v7em_fpv4_sp_d16_hard_t_le_eabi.a(mempoll_debug_operations.o)
+                0x00000000200000b4                dbgCommWord
+ .bss.ekf_data  0x00000000200000b8     0x1778 ../../../../../../examples/lm_code/nrf_npm1300_fuel_gauge/npm1300_lib/lib/cortex-m4/hard-float/libnrf_fuel_gauge.a(libnrf_fuel_gauge__obfuscated.elf)
  *(COMMON)
-                0x000000002000180c                __bss_end__ = (__bss_start__ + SIZEOF (.bss))
-                0x00000000000017f4                __bss_size__ = SIZEOF (.bss)
-                0x000000002000180c                __bss_load_end__ = __bss_end__
+                0x0000000020001830                __bss_end__ = (__bss_start__ + SIZEOF (.bss))
+                0x0000000000001818                __bss_size__ = SIZEOF (.bss)
+                0x0000000020001830                __bss_load_end__ = __bss_end__
                 0x0000000000000001                . = ASSERT (((__bss_start__ == __bss_end__) || ((__bss_end__ - __RAM1_segment_start__) <= __RAM1_segment_size__)), error: .bss is too large to fit in RAM1 memory segment)
-                0x000000002000180c                __tbss_load_start__ = ALIGN (__bss_end__, 0x4)
+                0x0000000020001830                __tbss_load_start__ = ALIGN (__bss_end__, 0x4)
 
-.tbss           0x000000002000180c        0x4
-                0x000000002000180c                __tbss_start__ = .
+.tbss           0x0000000020001830        0x4
+                0x0000000020001830                __tbss_start__ = .
  *(.tbss .tbss.*)
  .tbss.errno_val
-                0x000000002000180c        0x4 C:/Program Files/SEGGER/SEGGER Embedded Studio for ARM 5.42a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libc2.o)
-                0x0000000020001810                __tbss_end__ = (__tbss_start__ + SIZEOF (.tbss))
+                0x0000000020001830        0x4 C:/Program Files/SEGGER/SEGGER Embedded Studio for ARM 5.42a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libc2.o)
+                0x0000000020001834                __tbss_end__ = (__tbss_start__ + SIZEOF (.tbss))
                 0x0000000000000004                __tbss_size__ = SIZEOF (.tbss)
-                0x0000000020001810                __tbss_load_end__ = __tbss_end__
+                0x0000000020001834                __tbss_load_end__ = __tbss_end__
                 0x0000000000000001                . = ASSERT (((__tbss_start__ == __tbss_end__) || ((__tbss_end__ - __RAM1_segment_start__) <= __RAM1_segment_size__)), error: .tbss is too large to fit in RAM1 memory segment)
-                0x0000000020001810                __non_init_load_start__ = ALIGN (__tbss_end__, 0x4)
+                0x0000000020001834                __non_init_load_start__ = ALIGN (__tbss_end__, 0x4)
 
-.non_init       0x0000000020001810        0x0
-                0x0000000020001810                __non_init_start__ = .
+.non_init       0x0000000020001834        0x0
+                0x0000000020001834                __non_init_start__ = .
  *(.non_init .non_init.*)
-                0x0000000020001810                __non_init_end__ = (__non_init_start__ + SIZEOF (.non_init))
+                0x0000000020001834                __non_init_end__ = (__non_init_start__ + SIZEOF (.non_init))
                 0x0000000000000000                __non_init_size__ = SIZEOF (.non_init)
-                0x0000000020001810                __non_init_load_end__ = __non_init_end__
+                0x0000000020001834                __non_init_load_end__ = __non_init_end__
                 0x0000000000000001                . = ASSERT (((__non_init_start__ == __non_init_end__) || ((__non_init_end__ - __RAM1_segment_start__) <= __RAM1_segment_size__)), error: .non_init is too large to fit in RAM1 memory segment)
-                0x0000000020001810                __heap_load_start__ = ALIGN (__non_init_end__, 0x4)
+                0x0000000020001834                __heap_load_start__ = ALIGN (__non_init_end__, 0x4)
 
-.heap           0x0000000020001810     0x2000
-                0x0000000020001810                __heap_start__ = .
+.heap           0x0000000020001834     0x2000
+                0x0000000020001834                __heap_start__ = .
  *(.heap .heap.*)
-                0x0000000020003810                . = ALIGN (MAX ((__heap_start__ + __HEAPSIZE__), .), 0x4)
- *fill*         0x0000000020001810     0x2000 
-                0x0000000020003810                __heap_end__ = (__heap_start__ + SIZEOF (.heap))
+                0x0000000020003834                . = ALIGN (MAX ((__heap_start__ + __HEAPSIZE__), .), 0x4)
+ *fill*         0x0000000020001834     0x2000 
+                0x0000000020003834                __heap_end__ = (__heap_start__ + SIZEOF (.heap))
                 0x0000000000002000                __heap_size__ = SIZEOF (.heap)
-                0x0000000020003810                __heap_load_end__ = __heap_end__
+                0x0000000020003834                __heap_load_end__ = __heap_end__
                 0x0000000000000001                . = ASSERT (((__heap_start__ == __heap_end__) || ((__heap_end__ - __RAM1_segment_start__) <= __RAM1_segment_size__)), error: .heap is too large to fit in RAM1 memory segment)
                 0x000000002000e000                __stack_load_start__ = (__RAM1_segment_start__ + (__RAM1_segment_size__ - 0x2000))
 
@@ -5836,48 +5833,51 @@ LOAD linker stubs
  .ARM.attributes
                 0x0000000000000059       0x39 Output/Debug/Obj/npm1300_pca10040/app_error.o
  .ARM.attributes
-                0x0000000000000092       0x39 Output/Debug/Obj/npm1300_pca10040/app_error_weak.o
+                0x0000000000000092       0x39 Output/Debug/Obj/npm1300_pca10040/app_error_handler_gcc.o
  .ARM.attributes
-                0x00000000000000cb       0x39 Output/Debug/Obj/npm1300_pca10040/nrf_assert.o
+                0x00000000000000cb       0x39 Output/Debug/Obj/npm1300_pca10040/app_error_weak.o
  .ARM.attributes
-                0x0000000000000104       0x39 Output/Debug/Obj/npm1300_pca10040/nrfx_twi.o
+                0x0000000000000104       0x39 Output/Debug/Obj/npm1300_pca10040/nrf_assert.o
  .ARM.attributes
-                0x000000000000013d       0x39 Output/Debug/Obj/npm1300_pca10040/main.o
+                0x000000000000013d       0x39 Output/Debug/Obj/npm1300_pca10040/nrfx_twi.o
  .ARM.attributes
-                0x0000000000000176       0x20 Output/Debug/Obj/npm1300_pca10040/ses_startup_nrf52.o
+                0x0000000000000176       0x39 Output/Debug/Obj/npm1300_pca10040/main.o
  .ARM.attributes
-                0x0000000000000196       0x20 Output/Debug/Obj/npm1300_pca10040/ses_startup_nrf_common.o
+                0x00000000000001af       0x20 Output/Debug/Obj/npm1300_pca10040/ses_startup_nrf52.o
  .ARM.attributes
-                0x00000000000001b6       0x39 Output/Debug/Obj/npm1300_pca10040/system_nrf52.o
+                0x00000000000001cf       0x20 Output/Debug/Obj/npm1300_pca10040/ses_startup_nrf_common.o
  .ARM.attributes
-                0x00000000000001ef       0x39 Output/Debug/Obj/npm1300_pca10040/npm1300_charger.o
+                0x00000000000001ef       0x39 Output/Debug/Obj/npm1300_pca10040/system_nrf52.o
  .ARM.attributes
-                0x0000000000000228       0x39 Output/Debug/Obj/npm1300_pca10040/fuel_gauge.o
+                0x0000000000000228       0x39 Output/Debug/Obj/npm1300_pca10040/npm1300_charger.o
  .ARM.attributes
-                0x0000000000000261       0x20 C:/Program Files/SEGGER/SEGGER Embedded Studio for ARM 5.42a/lib/libm_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libm_asm.o)
+                0x0000000000000261       0x39 Output/Debug/Obj/npm1300_pca10040/fuel_gauge.o
  .ARM.attributes
-                0x0000000000000281       0x34 C:/Program Files/SEGGER/SEGGER Embedded Studio for ARM 5.42a/lib/libm_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libm2.o)
+                0x000000000000029a       0x20 C:/Program Files/SEGGER/SEGGER Embedded Studio for ARM 5.42a/lib/libm_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libm_asm.o)
  .ARM.attributes
-                0x00000000000002b5       0x34 C:/Program Files/SEGGER/SEGGER Embedded Studio for ARM 5.42a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libc2.o)
+                0x00000000000002ba       0x34 C:/Program Files/SEGGER/SEGGER Embedded Studio for ARM 5.42a/lib/libm_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libm2.o)
  .ARM.attributes
-                0x00000000000002e9       0x20 C:/Program Files/SEGGER/SEGGER Embedded Studio for ARM 5.42a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libc2_asm.o)
+                0x00000000000002ee       0x34 C:/Program Files/SEGGER/SEGGER Embedded Studio for ARM 5.42a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libc2.o)
  .ARM.attributes
-                0x0000000000000309       0x34 C:/Program Files/SEGGER/SEGGER Embedded Studio for ARM 5.42a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libvfprintf.o)
+                0x0000000000000322       0x20 C:/Program Files/SEGGER/SEGGER Embedded Studio for ARM 5.42a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libc2_asm.o)
  .ARM.attributes
-                0x000000000000033d       0x34 C:/Program Files/SEGGER/SEGGER Embedded Studio for ARM 5.42a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libc.o)
+                0x0000000000000342       0x34 C:/Program Files/SEGGER/SEGGER Embedded Studio for ARM 5.42a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libvfprintf.o)
  .ARM.attributes
-                0x0000000000000371       0x34 C:/Program Files/SEGGER/SEGGER Embedded Studio for ARM 5.42a/lib/libdebugio_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libdebugio.o)
+                0x0000000000000376       0x34 C:/Program Files/SEGGER/SEGGER Embedded Studio for ARM 5.42a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libc.o)
  .ARM.attributes
-                0x00000000000003a5       0x34 C:/Program Files/SEGGER/SEGGER Embedded Studio for ARM 5.42a/lib/libdebugio_v7em_fpv4_sp_d16_hard_t_le_eabi.a(mempoll_debug_operations.o)
+                0x00000000000003aa       0x34 C:/Program Files/SEGGER/SEGGER Embedded Studio for ARM 5.42a/lib/libdebugio_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libdebugio.o)
  .ARM.attributes
-                0x00000000000003d9       0x34 ../../../../../../examples/lm_code/nrf_npm1300_fuel_gauge/npm1300_lib/lib/cortex-m4/hard-float/libnrf_fuel_gauge.a(libnrf_fuel_gauge__obfuscated.elf)
+                0x00000000000003de       0x34 C:/Program Files/SEGGER/SEGGER Embedded Studio for ARM 5.42a/lib/libdebugio_v7em_fpv4_sp_d16_hard_t_le_eabi.a(mempoll_debug_operations.o)
  .ARM.attributes
-                0x000000000000040d       0x20 C:/Program Files/SEGGER/SEGGER Embedded Studio for ARM 5.42a/lib/libm_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libm2_asm.o)
+                0x0000000000000412       0x34 ../../../../../../examples/lm_code/nrf_npm1300_fuel_gauge/npm1300_lib/lib/cortex-m4/hard-float/libnrf_fuel_gauge.a(libnrf_fuel_gauge__obfuscated.elf)
+ .ARM.attributes
+                0x0000000000000446       0x20 C:/Program Files/SEGGER/SEGGER Embedded Studio for ARM 5.42a/lib/libm_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libm2_asm.o)
 
 .comment        0x0000000000000000       0x25
  .comment       0x0000000000000000       0x25 Output/Debug/Obj/npm1300_pca10040/boards.o
                                          0x26 (size before relaxing)
  .comment       0x0000000000000025       0x26 Output/Debug/Obj/npm1300_pca10040/app_error.o
+ .comment       0x0000000000000025       0x26 Output/Debug/Obj/npm1300_pca10040/app_error_handler_gcc.o
  .comment       0x0000000000000025       0x26 Output/Debug/Obj/npm1300_pca10040/app_error_weak.o
  .comment       0x0000000000000025       0x26 Output/Debug/Obj/npm1300_pca10040/nrf_assert.o
  .comment       0x0000000000000025       0x26 Output/Debug/Obj/npm1300_pca10040/nrfx_twi.o
@@ -5892,49 +5892,52 @@ LOAD linker stubs
  .comment       0x0000000000000025       0x26 C:/Program Files/SEGGER/SEGGER Embedded Studio for ARM 5.42a/lib/libdebugio_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libdebugio.o)
  .comment       0x0000000000000025       0x26 C:/Program Files/SEGGER/SEGGER Embedded Studio for ARM 5.42a/lib/libdebugio_v7em_fpv4_sp_d16_hard_t_le_eabi.a(mempoll_debug_operations.o)
 
-.debug_line     0x0000000000000000     0x8508
+.debug_line     0x0000000000000000     0x88eb
  .debug_line    0x0000000000000000      0x21f Output/Debug/Obj/npm1300_pca10040/thumb_crt0.o
  .debug_line    0x000000000000021f      0x9a4 Output/Debug/Obj/npm1300_pca10040/boards.o
  .debug_line    0x0000000000000bc3      0x353 Output/Debug/Obj/npm1300_pca10040/app_error.o
- .debug_line    0x0000000000000f16      0x563 Output/Debug/Obj/npm1300_pca10040/app_error_weak.o
- .debug_line    0x0000000000001479      0x2d0 Output/Debug/Obj/npm1300_pca10040/nrf_assert.o
- .debug_line    0x0000000000001749     0x1169 Output/Debug/Obj/npm1300_pca10040/nrfx_twi.o
- .debug_line    0x00000000000028b2      0x6da Output/Debug/Obj/npm1300_pca10040/main.o
- .debug_line    0x0000000000002f8c       0x91 Output/Debug/Obj/npm1300_pca10040/ses_startup_nrf52.o
- .debug_line    0x000000000000301d       0xb3 Output/Debug/Obj/npm1300_pca10040/ses_startup_nrf_common.o
- .debug_line    0x00000000000030d0     0x3f82 Output/Debug/Obj/npm1300_pca10040/system_nrf52.o
- .debug_line    0x0000000000007052      0xab1 Output/Debug/Obj/npm1300_pca10040/npm1300_charger.o
- .debug_line    0x0000000000007b03      0xa05 Output/Debug/Obj/npm1300_pca10040/fuel_gauge.o
+ .debug_line    0x0000000000000f16      0x346 Output/Debug/Obj/npm1300_pca10040/app_error_handler_gcc.o
+ .debug_line    0x000000000000125c      0x563 Output/Debug/Obj/npm1300_pca10040/app_error_weak.o
+ .debug_line    0x00000000000017bf      0x2d0 Output/Debug/Obj/npm1300_pca10040/nrf_assert.o
+ .debug_line    0x0000000000001a8f     0x1169 Output/Debug/Obj/npm1300_pca10040/nrfx_twi.o
+ .debug_line    0x0000000000002bf8      0x6da Output/Debug/Obj/npm1300_pca10040/main.o
+ .debug_line    0x00000000000032d2       0x91 Output/Debug/Obj/npm1300_pca10040/ses_startup_nrf52.o
+ .debug_line    0x0000000000003363       0xb3 Output/Debug/Obj/npm1300_pca10040/ses_startup_nrf_common.o
+ .debug_line    0x0000000000003416     0x3f82 Output/Debug/Obj/npm1300_pca10040/system_nrf52.o
+ .debug_line    0x0000000000007398      0xb54 Output/Debug/Obj/npm1300_pca10040/npm1300_charger.o
+ .debug_line    0x0000000000007eec      0x9ff Output/Debug/Obj/npm1300_pca10040/fuel_gauge.o
 
-.debug_info     0x0000000000000000     0x88c0
+.debug_info     0x0000000000000000     0x8a4f
  .debug_info    0x0000000000000000       0x22 Output/Debug/Obj/npm1300_pca10040/thumb_crt0.o
  .debug_info    0x0000000000000022      0x90f Output/Debug/Obj/npm1300_pca10040/boards.o
  .debug_info    0x0000000000000931      0x264 Output/Debug/Obj/npm1300_pca10040/app_error.o
- .debug_info    0x0000000000000b95      0x237 Output/Debug/Obj/npm1300_pca10040/app_error_weak.o
- .debug_info    0x0000000000000dcc      0x10f Output/Debug/Obj/npm1300_pca10040/nrf_assert.o
- .debug_info    0x0000000000000edb     0x1c04 Output/Debug/Obj/npm1300_pca10040/nrfx_twi.o
- .debug_info    0x0000000000002adf      0x57d Output/Debug/Obj/npm1300_pca10040/main.o
- .debug_info    0x000000000000305c       0x23 Output/Debug/Obj/npm1300_pca10040/ses_startup_nrf52.o
- .debug_info    0x000000000000307f       0x23 Output/Debug/Obj/npm1300_pca10040/ses_startup_nrf_common.o
- .debug_info    0x00000000000030a2     0x4328 Output/Debug/Obj/npm1300_pca10040/system_nrf52.o
- .debug_info    0x00000000000073ca      0xf00 Output/Debug/Obj/npm1300_pca10040/npm1300_charger.o
- .debug_info    0x00000000000082ca      0x5f6 Output/Debug/Obj/npm1300_pca10040/fuel_gauge.o
+ .debug_info    0x0000000000000b95       0xe3 Output/Debug/Obj/npm1300_pca10040/app_error_handler_gcc.o
+ .debug_info    0x0000000000000c78      0x237 Output/Debug/Obj/npm1300_pca10040/app_error_weak.o
+ .debug_info    0x0000000000000eaf      0x10f Output/Debug/Obj/npm1300_pca10040/nrf_assert.o
+ .debug_info    0x0000000000000fbe     0x1c04 Output/Debug/Obj/npm1300_pca10040/nrfx_twi.o
+ .debug_info    0x0000000000002bc2      0x57d Output/Debug/Obj/npm1300_pca10040/main.o
+ .debug_info    0x000000000000313f       0x23 Output/Debug/Obj/npm1300_pca10040/ses_startup_nrf52.o
+ .debug_info    0x0000000000003162       0x23 Output/Debug/Obj/npm1300_pca10040/ses_startup_nrf_common.o
+ .debug_info    0x0000000000003185     0x4328 Output/Debug/Obj/npm1300_pca10040/system_nrf52.o
+ .debug_info    0x00000000000074ad      0xfdd Output/Debug/Obj/npm1300_pca10040/npm1300_charger.o
+ .debug_info    0x000000000000848a      0x5c5 Output/Debug/Obj/npm1300_pca10040/fuel_gauge.o
 
-.debug_abbrev   0x0000000000000000     0x1184
+.debug_abbrev   0x0000000000000000     0x11da
  .debug_abbrev  0x0000000000000000       0x12 Output/Debug/Obj/npm1300_pca10040/thumb_crt0.o
  .debug_abbrev  0x0000000000000012      0x24d Output/Debug/Obj/npm1300_pca10040/boards.o
  .debug_abbrev  0x000000000000025f      0x114 Output/Debug/Obj/npm1300_pca10040/app_error.o
- .debug_abbrev  0x0000000000000373      0x13d Output/Debug/Obj/npm1300_pca10040/app_error_weak.o
- .debug_abbrev  0x00000000000004b0       0xab Output/Debug/Obj/npm1300_pca10040/nrf_assert.o
- .debug_abbrev  0x000000000000055b      0x37d Output/Debug/Obj/npm1300_pca10040/nrfx_twi.o
- .debug_abbrev  0x00000000000008d8      0x1b6 Output/Debug/Obj/npm1300_pca10040/main.o
- .debug_abbrev  0x0000000000000a8e       0x14 Output/Debug/Obj/npm1300_pca10040/ses_startup_nrf52.o
- .debug_abbrev  0x0000000000000aa2       0x14 Output/Debug/Obj/npm1300_pca10040/ses_startup_nrf_common.o
- .debug_abbrev  0x0000000000000ab6      0x27f Output/Debug/Obj/npm1300_pca10040/system_nrf52.o
- .debug_abbrev  0x0000000000000d35      0x2da Output/Debug/Obj/npm1300_pca10040/npm1300_charger.o
- .debug_abbrev  0x000000000000100f      0x175 Output/Debug/Obj/npm1300_pca10040/fuel_gauge.o
+ .debug_abbrev  0x0000000000000373       0x7a Output/Debug/Obj/npm1300_pca10040/app_error_handler_gcc.o
+ .debug_abbrev  0x00000000000003ed      0x13d Output/Debug/Obj/npm1300_pca10040/app_error_weak.o
+ .debug_abbrev  0x000000000000052a       0xab Output/Debug/Obj/npm1300_pca10040/nrf_assert.o
+ .debug_abbrev  0x00000000000005d5      0x37d Output/Debug/Obj/npm1300_pca10040/nrfx_twi.o
+ .debug_abbrev  0x0000000000000952      0x1b6 Output/Debug/Obj/npm1300_pca10040/main.o
+ .debug_abbrev  0x0000000000000b08       0x14 Output/Debug/Obj/npm1300_pca10040/ses_startup_nrf52.o
+ .debug_abbrev  0x0000000000000b1c       0x14 Output/Debug/Obj/npm1300_pca10040/ses_startup_nrf_common.o
+ .debug_abbrev  0x0000000000000b30      0x27f Output/Debug/Obj/npm1300_pca10040/system_nrf52.o
+ .debug_abbrev  0x0000000000000daf      0x2b6 Output/Debug/Obj/npm1300_pca10040/npm1300_charger.o
+ .debug_abbrev  0x0000000000001065      0x175 Output/Debug/Obj/npm1300_pca10040/fuel_gauge.o
 
-.debug_aranges  0x0000000000000000     0x1108
+.debug_aranges  0x0000000000000000     0x1118
  .debug_aranges
                 0x0000000000000000       0x98 Output/Debug/Obj/npm1300_pca10040/thumb_crt0.o
  .debug_aranges
@@ -5942,115 +5945,125 @@ LOAD linker stubs
  .debug_aranges
                 0x0000000000000198       0x28 Output/Debug/Obj/npm1300_pca10040/app_error.o
  .debug_aranges
-                0x00000000000001c0       0x20 Output/Debug/Obj/npm1300_pca10040/app_error_weak.o
+                0x00000000000001c0       0x20 Output/Debug/Obj/npm1300_pca10040/app_error_handler_gcc.o
  .debug_aranges
-                0x00000000000001e0       0x20 Output/Debug/Obj/npm1300_pca10040/nrf_assert.o
+                0x00000000000001e0       0x20 Output/Debug/Obj/npm1300_pca10040/app_error_weak.o
  .debug_aranges
-                0x0000000000000200      0x1a0 Output/Debug/Obj/npm1300_pca10040/nrfx_twi.o
+                0x0000000000000200       0x20 Output/Debug/Obj/npm1300_pca10040/nrf_assert.o
  .debug_aranges
-                0x00000000000003a0       0x40 Output/Debug/Obj/npm1300_pca10040/main.o
+                0x0000000000000220      0x1a0 Output/Debug/Obj/npm1300_pca10040/nrfx_twi.o
  .debug_aranges
-                0x00000000000003e0       0x20 Output/Debug/Obj/npm1300_pca10040/ses_startup_nrf52.o
+                0x00000000000003c0       0x40 Output/Debug/Obj/npm1300_pca10040/main.o
  .debug_aranges
-                0x0000000000000400       0x20 Output/Debug/Obj/npm1300_pca10040/ses_startup_nrf_common.o
+                0x0000000000000400       0x20 Output/Debug/Obj/npm1300_pca10040/ses_startup_nrf52.o
  .debug_aranges
-                0x0000000000000420      0xc30 Output/Debug/Obj/npm1300_pca10040/system_nrf52.o
+                0x0000000000000420       0x20 Output/Debug/Obj/npm1300_pca10040/ses_startup_nrf_common.o
  .debug_aranges
-                0x0000000000001050       0x88 Output/Debug/Obj/npm1300_pca10040/npm1300_charger.o
+                0x0000000000000440      0xc30 Output/Debug/Obj/npm1300_pca10040/system_nrf52.o
  .debug_aranges
-                0x00000000000010d8       0x30 Output/Debug/Obj/npm1300_pca10040/fuel_gauge.o
+                0x0000000000001070       0x78 Output/Debug/Obj/npm1300_pca10040/npm1300_charger.o
+ .debug_aranges
+                0x00000000000010e8       0x30 Output/Debug/Obj/npm1300_pca10040/fuel_gauge.o
 
-.debug_str      0x0000000000000000    0x7c523
+.debug_str      0x0000000000000000    0x7d0c4
  .debug_str     0x0000000000000000       0xc8 Output/Debug/Obj/npm1300_pca10040/thumb_crt0.o
  .debug_str     0x00000000000000c8    0x6b58a Output/Debug/Obj/npm1300_pca10040/boards.o
                                       0x6c1f2 (size before relaxing)
  .debug_str     0x000000000006b652      0x123 Output/Debug/Obj/npm1300_pca10040/app_error.o
                                       0x5eb72 (size before relaxing)
- .debug_str     0x000000000006b775     0x301e Output/Debug/Obj/npm1300_pca10040/app_error_weak.o
+ .debug_str     0x000000000006b775      0x586 Output/Debug/Obj/npm1300_pca10040/app_error_handler_gcc.o
+                                      0x68a7c (size before relaxing)
+ .debug_str     0x000000000006bcfb     0x2b2b Output/Debug/Obj/npm1300_pca10040/app_error_weak.o
                                       0x6b898 (size before relaxing)
- .debug_str     0x000000000006e793       0x69 Output/Debug/Obj/npm1300_pca10040/nrf_assert.o
+ .debug_str     0x000000000006e826       0x69 Output/Debug/Obj/npm1300_pca10040/nrf_assert.o
                                       0x5eb86 (size before relaxing)
- .debug_str     0x000000000006e7fc     0x1b4c Output/Debug/Obj/npm1300_pca10040/nrfx_twi.o
+ .debug_str     0x000000000006e88f     0x1b46 Output/Debug/Obj/npm1300_pca10040/nrfx_twi.o
                                       0x6f766 (size before relaxing)
- .debug_str     0x0000000000070348      0x2ba Output/Debug/Obj/npm1300_pca10040/main.o
+ .debug_str     0x00000000000703d5      0x2ba Output/Debug/Obj/npm1300_pca10040/main.o
                                       0x6bfa6 (size before relaxing)
- .debug_str     0x0000000000070602       0x53 Output/Debug/Obj/npm1300_pca10040/ses_startup_nrf52.o
+ .debug_str     0x000000000007068f       0x53 Output/Debug/Obj/npm1300_pca10040/ses_startup_nrf52.o
                                          0xca (size before relaxing)
- .debug_str     0x0000000000070655       0x58 Output/Debug/Obj/npm1300_pca10040/ses_startup_nrf_common.o
+ .debug_str     0x00000000000706e2       0x58 Output/Debug/Obj/npm1300_pca10040/ses_startup_nrf_common.o
                                          0xcf (size before relaxing)
- .debug_str     0x00000000000706ad     0x9a18 Output/Debug/Obj/npm1300_pca10040/system_nrf52.o
+ .debug_str     0x000000000007073a     0x9a18 Output/Debug/Obj/npm1300_pca10040/system_nrf52.o
                                       0x67ad8 (size before relaxing)
- .debug_str     0x000000000007a0c5     0x2282 Output/Debug/Obj/npm1300_pca10040/npm1300_charger.o
-                                      0x6d67c (size before relaxing)
- .debug_str     0x000000000007c347      0x1dc Output/Debug/Obj/npm1300_pca10040/fuel_gauge.o
+ .debug_str     0x000000000007a152     0x2db7 Output/Debug/Obj/npm1300_pca10040/npm1300_charger.o
+                                      0x6e314 (size before relaxing)
+ .debug_str     0x000000000007cf09      0x1bb Output/Debug/Obj/npm1300_pca10040/fuel_gauge.o
                                       0x6f030 (size before relaxing)
 
 .debug_ranges   0x0000000000000000     0x1030
  .debug_ranges  0x0000000000000000       0x90 Output/Debug/Obj/npm1300_pca10040/thumb_crt0.o
  .debug_ranges  0x0000000000000090       0xf0 Output/Debug/Obj/npm1300_pca10040/boards.o
  .debug_ranges  0x0000000000000180       0x18 Output/Debug/Obj/npm1300_pca10040/app_error.o
- .debug_ranges  0x0000000000000198       0x10 Output/Debug/Obj/npm1300_pca10040/app_error_weak.o
- .debug_ranges  0x00000000000001a8       0x10 Output/Debug/Obj/npm1300_pca10040/nrf_assert.o
- .debug_ranges  0x00000000000001b8      0x190 Output/Debug/Obj/npm1300_pca10040/nrfx_twi.o
- .debug_ranges  0x0000000000000348       0x30 Output/Debug/Obj/npm1300_pca10040/main.o
- .debug_ranges  0x0000000000000378      0xc20 Output/Debug/Obj/npm1300_pca10040/system_nrf52.o
- .debug_ranges  0x0000000000000f98       0x78 Output/Debug/Obj/npm1300_pca10040/npm1300_charger.o
+ .debug_ranges  0x0000000000000198       0x10 Output/Debug/Obj/npm1300_pca10040/app_error_handler_gcc.o
+ .debug_ranges  0x00000000000001a8       0x10 Output/Debug/Obj/npm1300_pca10040/app_error_weak.o
+ .debug_ranges  0x00000000000001b8       0x10 Output/Debug/Obj/npm1300_pca10040/nrf_assert.o
+ .debug_ranges  0x00000000000001c8      0x190 Output/Debug/Obj/npm1300_pca10040/nrfx_twi.o
+ .debug_ranges  0x0000000000000358       0x30 Output/Debug/Obj/npm1300_pca10040/main.o
+ .debug_ranges  0x0000000000000388      0xc20 Output/Debug/Obj/npm1300_pca10040/system_nrf52.o
+ .debug_ranges  0x0000000000000fa8       0x68 Output/Debug/Obj/npm1300_pca10040/npm1300_charger.o
  .debug_ranges  0x0000000000001010       0x20 Output/Debug/Obj/npm1300_pca10040/fuel_gauge.o
 
-.debug_frame    0x0000000000000000     0x2ed0
+.debug_frame    0x0000000000000000     0x2ea4
  .debug_frame   0x0000000000000000      0x460 Output/Debug/Obj/npm1300_pca10040/boards.o
  .debug_frame   0x0000000000000460       0x58 Output/Debug/Obj/npm1300_pca10040/app_error.o
- .debug_frame   0x00000000000004b8       0x38 Output/Debug/Obj/npm1300_pca10040/app_error_weak.o
- .debug_frame   0x00000000000004f0       0x38 Output/Debug/Obj/npm1300_pca10040/nrf_assert.o
- .debug_frame   0x0000000000000528      0x6e8 Output/Debug/Obj/npm1300_pca10040/nrfx_twi.o
- .debug_frame   0x0000000000000c10       0xc8 Output/Debug/Obj/npm1300_pca10040/main.o
- .debug_frame   0x0000000000000cd8     0x1f40 Output/Debug/Obj/npm1300_pca10040/system_nrf52.o
- .debug_frame   0x0000000000002c18      0x230 Output/Debug/Obj/npm1300_pca10040/npm1300_charger.o
- .debug_frame   0x0000000000002e48       0x88 Output/Debug/Obj/npm1300_pca10040/fuel_gauge.o
+ .debug_frame   0x00000000000004b8       0x20 Output/Debug/Obj/npm1300_pca10040/app_error_handler_gcc.o
+ .debug_frame   0x00000000000004d8       0x38 Output/Debug/Obj/npm1300_pca10040/app_error_weak.o
+ .debug_frame   0x0000000000000510       0x38 Output/Debug/Obj/npm1300_pca10040/nrf_assert.o
+ .debug_frame   0x0000000000000548      0x6e8 Output/Debug/Obj/npm1300_pca10040/nrfx_twi.o
+ .debug_frame   0x0000000000000c30       0xc8 Output/Debug/Obj/npm1300_pca10040/main.o
+ .debug_frame   0x0000000000000cf8     0x1f40 Output/Debug/Obj/npm1300_pca10040/system_nrf52.o
+ .debug_frame   0x0000000000002c38      0x1e4 Output/Debug/Obj/npm1300_pca10040/npm1300_charger.o
+ .debug_frame   0x0000000000002e1c       0x88 Output/Debug/Obj/npm1300_pca10040/fuel_gauge.o
 
 .debug_pubnames
-                0x0000000000000000     0x42bf
+                0x0000000000000000     0x43c3
  .debug_pubnames
                 0x0000000000000000      0x4dc Output/Debug/Obj/npm1300_pca10040/boards.o
  .debug_pubnames
                 0x00000000000004dc       0x6c Output/Debug/Obj/npm1300_pca10040/app_error.o
  .debug_pubnames
-                0x0000000000000548       0xe5 Output/Debug/Obj/npm1300_pca10040/app_error_weak.o
+                0x0000000000000548       0x28 Output/Debug/Obj/npm1300_pca10040/app_error_handler_gcc.o
  .debug_pubnames
-                0x000000000000062d       0x2a Output/Debug/Obj/npm1300_pca10040/nrf_assert.o
+                0x0000000000000570       0xe5 Output/Debug/Obj/npm1300_pca10040/app_error_weak.o
  .debug_pubnames
-                0x0000000000000657      0xb42 Output/Debug/Obj/npm1300_pca10040/nrfx_twi.o
+                0x0000000000000655       0x2a Output/Debug/Obj/npm1300_pca10040/nrf_assert.o
  .debug_pubnames
-                0x0000000000001199       0x7c Output/Debug/Obj/npm1300_pca10040/main.o
+                0x000000000000067f      0xb42 Output/Debug/Obj/npm1300_pca10040/nrfx_twi.o
  .debug_pubnames
-                0x0000000000001215     0x1ed5 Output/Debug/Obj/npm1300_pca10040/system_nrf52.o
+                0x00000000000011c1       0x7c Output/Debug/Obj/npm1300_pca10040/main.o
  .debug_pubnames
-                0x00000000000030ea      0xa30 Output/Debug/Obj/npm1300_pca10040/npm1300_charger.o
+                0x000000000000123d     0x1ed5 Output/Debug/Obj/npm1300_pca10040/system_nrf52.o
  .debug_pubnames
-                0x0000000000003b1a      0x7a5 Output/Debug/Obj/npm1300_pca10040/fuel_gauge.o
+                0x0000000000003112      0xaca Output/Debug/Obj/npm1300_pca10040/npm1300_charger.o
+ .debug_pubnames
+                0x0000000000003bdc      0x7e7 Output/Debug/Obj/npm1300_pca10040/fuel_gauge.o
 
 .debug_pubtypes
-                0x0000000000000000      0xde3
+                0x0000000000000000      0xf2d
  .debug_pubtypes
                 0x0000000000000000      0x181 Output/Debug/Obj/npm1300_pca10040/boards.o
  .debug_pubtypes
                 0x0000000000000181      0x10a Output/Debug/Obj/npm1300_pca10040/app_error.o
  .debug_pubtypes
-                0x000000000000028b      0x11e Output/Debug/Obj/npm1300_pca10040/app_error_weak.o
+                0x000000000000028b       0xed Output/Debug/Obj/npm1300_pca10040/app_error_handler_gcc.o
  .debug_pubtypes
-                0x00000000000003a9       0xed Output/Debug/Obj/npm1300_pca10040/nrf_assert.o
+                0x0000000000000378      0x11e Output/Debug/Obj/npm1300_pca10040/app_error_weak.o
  .debug_pubtypes
-                0x0000000000000496      0x30b Output/Debug/Obj/npm1300_pca10040/nrfx_twi.o
+                0x0000000000000496       0xed Output/Debug/Obj/npm1300_pca10040/nrf_assert.o
  .debug_pubtypes
-                0x00000000000007a1      0x111 Output/Debug/Obj/npm1300_pca10040/main.o
+                0x0000000000000583      0x30b Output/Debug/Obj/npm1300_pca10040/nrfx_twi.o
  .debug_pubtypes
-                0x00000000000008b2      0x1be Output/Debug/Obj/npm1300_pca10040/system_nrf52.o
+                0x000000000000088e      0x111 Output/Debug/Obj/npm1300_pca10040/main.o
  .debug_pubtypes
-                0x0000000000000a70      0x21c Output/Debug/Obj/npm1300_pca10040/npm1300_charger.o
+                0x000000000000099f      0x1be Output/Debug/Obj/npm1300_pca10040/system_nrf52.o
  .debug_pubtypes
-                0x0000000000000c8c      0x157 Output/Debug/Obj/npm1300_pca10040/fuel_gauge.o
+                0x0000000000000b5d      0x279 Output/Debug/Obj/npm1300_pca10040/npm1300_charger.o
+ .debug_pubtypes
+                0x0000000000000dd6      0x157 Output/Debug/Obj/npm1300_pca10040/fuel_gauge.o
 
-.debug_macro    0x0000000000000000     0x3d98
+.debug_macro    0x0000000000000000     0x4017
  .debug_macro   0x0000000000000000      0x225 Output/Debug/Obj/npm1300_pca10040/boards.o
  .debug_macro   0x0000000000000225       0x1c Output/Debug/Obj/npm1300_pca10040/boards.o
  .debug_macro   0x0000000000000241       0xfb Output/Debug/Obj/npm1300_pca10040/boards.o
@@ -6074,37 +6087,39 @@ LOAD linker stubs
  .debug_macro   0x0000000000000e67      0x16d Output/Debug/Obj/npm1300_pca10040/boards.o
  .debug_macro   0x0000000000000fd4      0x103 Output/Debug/Obj/npm1300_pca10040/app_error.o
  .debug_macro   0x00000000000010d7       0x78 Output/Debug/Obj/npm1300_pca10040/app_error.o
- .debug_macro   0x000000000000114f      0x202 Output/Debug/Obj/npm1300_pca10040/app_error_weak.o
- .debug_macro   0x0000000000001351       0x31 Output/Debug/Obj/npm1300_pca10040/app_error_weak.o
- .debug_macro   0x0000000000001382       0x16 Output/Debug/Obj/npm1300_pca10040/app_error_weak.o
- .debug_macro   0x0000000000001398       0x55 Output/Debug/Obj/npm1300_pca10040/app_error_weak.o
- .debug_macro   0x00000000000013ed      0x17f Output/Debug/Obj/npm1300_pca10040/app_error_weak.o
- .debug_macro   0x000000000000156c       0x9a Output/Debug/Obj/npm1300_pca10040/app_error_weak.o
- .debug_macro   0x0000000000001606       0x28 Output/Debug/Obj/npm1300_pca10040/app_error_weak.o
- .debug_macro   0x000000000000162e       0x23 Output/Debug/Obj/npm1300_pca10040/app_error_weak.o
- .debug_macro   0x0000000000001651       0x1c Output/Debug/Obj/npm1300_pca10040/app_error_weak.o
- .debug_macro   0x000000000000166d      0x112 Output/Debug/Obj/npm1300_pca10040/nrf_assert.o
- .debug_macro   0x000000000000177f       0x10 Output/Debug/Obj/npm1300_pca10040/nrf_assert.o
- .debug_macro   0x000000000000178f      0x2ee Output/Debug/Obj/npm1300_pca10040/nrfx_twi.o
- .debug_macro   0x0000000000001a7d       0x3e Output/Debug/Obj/npm1300_pca10040/nrfx_twi.o
- .debug_macro   0x0000000000001abb       0x22 Output/Debug/Obj/npm1300_pca10040/nrfx_twi.o
- .debug_macro   0x0000000000001add       0x28 Output/Debug/Obj/npm1300_pca10040/nrfx_twi.o
- .debug_macro   0x0000000000001b05       0x1c Output/Debug/Obj/npm1300_pca10040/nrfx_twi.o
- .debug_macro   0x0000000000001b21       0x37 Output/Debug/Obj/npm1300_pca10040/nrfx_twi.o
- .debug_macro   0x0000000000001b58       0x10 Output/Debug/Obj/npm1300_pca10040/nrfx_twi.o
- .debug_macro   0x0000000000001b68      0x179 Output/Debug/Obj/npm1300_pca10040/nrfx_twi.o
- .debug_macro   0x0000000000001ce1       0x42 Output/Debug/Obj/npm1300_pca10040/nrfx_twi.o
- .debug_macro   0x0000000000001d23      0x242 Output/Debug/Obj/npm1300_pca10040/main.o
- .debug_macro   0x0000000000001f65       0x2e Output/Debug/Obj/npm1300_pca10040/main.o
- .debug_macro   0x0000000000001f93      0x108 Output/Debug/Obj/npm1300_pca10040/system_nrf52.o
- .debug_macro   0x000000000000209b      0x44e Output/Debug/Obj/npm1300_pca10040/system_nrf52.o
- .debug_macro   0x00000000000024e9      0xa28 Output/Debug/Obj/npm1300_pca10040/system_nrf52.o
- .debug_macro   0x0000000000002f11      0x520 Output/Debug/Obj/npm1300_pca10040/system_nrf52.o
- .debug_macro   0x0000000000003431      0x164 Output/Debug/Obj/npm1300_pca10040/system_nrf52.o
- .debug_macro   0x0000000000003595      0x355 Output/Debug/Obj/npm1300_pca10040/npm1300_charger.o
- .debug_macro   0x00000000000038ea      0x113 Output/Debug/Obj/npm1300_pca10040/npm1300_charger.o
- .debug_macro   0x00000000000039fd       0x3a Output/Debug/Obj/npm1300_pca10040/npm1300_charger.o
- .debug_macro   0x0000000000003a37       0x22 Output/Debug/Obj/npm1300_pca10040/npm1300_charger.o
- .debug_macro   0x0000000000003a59       0x10 Output/Debug/Obj/npm1300_pca10040/npm1300_charger.o
- .debug_macro   0x0000000000003a69      0x2ea Output/Debug/Obj/npm1300_pca10040/fuel_gauge.o
- .debug_macro   0x0000000000003d53       0x45 Output/Debug/Obj/npm1300_pca10040/fuel_gauge.o
+ .debug_macro   0x000000000000114f      0x15c Output/Debug/Obj/npm1300_pca10040/app_error_handler_gcc.o
+ .debug_macro   0x00000000000012ab      0x202 Output/Debug/Obj/npm1300_pca10040/app_error_weak.o
+ .debug_macro   0x00000000000014ad       0x31 Output/Debug/Obj/npm1300_pca10040/app_error_weak.o
+ .debug_macro   0x00000000000014de       0x16 Output/Debug/Obj/npm1300_pca10040/app_error_weak.o
+ .debug_macro   0x00000000000014f4       0x55 Output/Debug/Obj/npm1300_pca10040/app_error_weak.o
+ .debug_macro   0x0000000000001549      0x17f Output/Debug/Obj/npm1300_pca10040/app_error_weak.o
+ .debug_macro   0x00000000000016c8       0x9a Output/Debug/Obj/npm1300_pca10040/app_error_weak.o
+ .debug_macro   0x0000000000001762       0x28 Output/Debug/Obj/npm1300_pca10040/app_error_weak.o
+ .debug_macro   0x000000000000178a       0x23 Output/Debug/Obj/npm1300_pca10040/app_error_weak.o
+ .debug_macro   0x00000000000017ad       0x1c Output/Debug/Obj/npm1300_pca10040/app_error_weak.o
+ .debug_macro   0x00000000000017c9      0x112 Output/Debug/Obj/npm1300_pca10040/nrf_assert.o
+ .debug_macro   0x00000000000018db       0x10 Output/Debug/Obj/npm1300_pca10040/nrf_assert.o
+ .debug_macro   0x00000000000018eb      0x2ee Output/Debug/Obj/npm1300_pca10040/nrfx_twi.o
+ .debug_macro   0x0000000000001bd9       0x3e Output/Debug/Obj/npm1300_pca10040/nrfx_twi.o
+ .debug_macro   0x0000000000001c17       0x22 Output/Debug/Obj/npm1300_pca10040/nrfx_twi.o
+ .debug_macro   0x0000000000001c39       0x28 Output/Debug/Obj/npm1300_pca10040/nrfx_twi.o
+ .debug_macro   0x0000000000001c61       0x1c Output/Debug/Obj/npm1300_pca10040/nrfx_twi.o
+ .debug_macro   0x0000000000001c7d       0x37 Output/Debug/Obj/npm1300_pca10040/nrfx_twi.o
+ .debug_macro   0x0000000000001cb4       0x10 Output/Debug/Obj/npm1300_pca10040/nrfx_twi.o
+ .debug_macro   0x0000000000001cc4      0x179 Output/Debug/Obj/npm1300_pca10040/nrfx_twi.o
+ .debug_macro   0x0000000000001e3d       0x42 Output/Debug/Obj/npm1300_pca10040/nrfx_twi.o
+ .debug_macro   0x0000000000001e7f      0x242 Output/Debug/Obj/npm1300_pca10040/main.o
+ .debug_macro   0x00000000000020c1       0x2e Output/Debug/Obj/npm1300_pca10040/main.o
+ .debug_macro   0x00000000000020ef      0x108 Output/Debug/Obj/npm1300_pca10040/system_nrf52.o
+ .debug_macro   0x00000000000021f7      0x44e Output/Debug/Obj/npm1300_pca10040/system_nrf52.o
+ .debug_macro   0x0000000000002645      0xa28 Output/Debug/Obj/npm1300_pca10040/system_nrf52.o
+ .debug_macro   0x000000000000306d      0x520 Output/Debug/Obj/npm1300_pca10040/system_nrf52.o
+ .debug_macro   0x000000000000358d      0x164 Output/Debug/Obj/npm1300_pca10040/system_nrf52.o
+ .debug_macro   0x00000000000036f1      0x35e Output/Debug/Obj/npm1300_pca10040/npm1300_charger.o
+ .debug_macro   0x0000000000003a4f      0x113 Output/Debug/Obj/npm1300_pca10040/npm1300_charger.o
+ .debug_macro   0x0000000000003b62       0x3a Output/Debug/Obj/npm1300_pca10040/npm1300_charger.o
+ .debug_macro   0x0000000000003b9c       0x22 Output/Debug/Obj/npm1300_pca10040/npm1300_charger.o
+ .debug_macro   0x0000000000003bbe       0x10 Output/Debug/Obj/npm1300_pca10040/npm1300_charger.o
+ .debug_macro   0x0000000000003bce      0x11a Output/Debug/Obj/npm1300_pca10040/npm1300_charger.o
+ .debug_macro   0x0000000000003ce8      0x2ea Output/Debug/Obj/npm1300_pca10040/fuel_gauge.o
+ .debug_macro   0x0000000000003fd2       0x45 Output/Debug/Obj/npm1300_pca10040/fuel_gauge.o
