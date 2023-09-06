@@ -2,29 +2,20 @@
  * Copyright (c) 2023 Nordic Semiconductor ASA
  * SPDX-License-Identifier: Apache-2.0
  */
-
-#define DT_DRV_COMPAT nordic_npm1300_charger
-
 #include <math.h>
 #include "nrf_drv_twi.h"
 #include "sensor.h"
 #include "linear_range.h"
 #include "util.h"
 
-
-
-#define EDQUOT 132
-#define ESTALE 133
-#define ENOTSUP 134		/* Not supported */
-
 /* Common addresses definition for temperature sensor. */
 #define NPM1300_ADDR             0x6B  //   (0x6BU >> 1)
-
 #define ARDUINO_SCL_PIN             27    // SCL signal pin
 #define ARDUINO_SDA_PIN             26    // SDA signal pin
-
 /* TWI instance. */
 static const  nrfx_twi_t m_twi = NRFX_TWI_INSTANCE(0);  
+/* Indicates if operation on TWI has ended. */
+static volatile bool m_xfer_done = false;
 
 struct npm1300_charger_config {
 	int32_t term_microvolt;
@@ -37,7 +28,7 @@ struct npm1300_charger_config {
 	bool charging_enable;
 };
 
-struct npm1300_charger_config config = {
+static struct npm1300_charger_config config = {
     .term_microvolt = 4150000,
    .term_warm_microvolt = 4000000, 
    .current_microamp = 150000,
@@ -57,15 +48,8 @@ struct npm1300_charger_data {
 	uint8_t vbus_stat;
 };
 
-struct npm1300_charger_data npm1300_data = {
-  .current=0,
-  .error = 0,
-  .ibat_stat = 0,
-  .status = 0,
-  .temp = 0,
-  .vbus_stat = 0,
-  .voltage = 0,
-};
+static struct npm1300_charger_data npm1300_data = {0};
+
 
 
 /* nPM1300 base addresses */
@@ -116,6 +100,8 @@ struct adc_results_t {
 	uint8_t lsb_b;
 } __packed;
 
+static struct adc_results_t adc_results={0};
+
 /* ADC result masks */
 #define ADC_MSB_SHIFT	   2U
 #define ADC_LSB_MASK	   0x03U
@@ -137,10 +123,6 @@ static const struct linear_range discharge_limit_range = LINEAR_RANGE_INIT(26809
 static const struct linear_range vbus_current_ranges[] = {
 	LINEAR_RANGE_INIT(100000, 0, 1U, 1U), LINEAR_RANGE_INIT(500000, 100000, 5U, 15U)};
 
-/* Indicates if operation on TWI has ended. */
-static volatile bool m_xfer_done = false;
-
-struct adc_results_t results;
 
 /**
  * @brief TWI events handler.
@@ -150,12 +132,9 @@ void twi_handler(nrfx_twi_evt_t const * p_event, void * p_context)
     switch (p_event->type)
     {
         case NRF_DRV_TWI_EVT_DONE:
-            if (p_event->xfer_desc.type == NRF_DRV_TWI_XFER_RX)
-            {
-               // data_handler(m_sample);
-            }
             m_xfer_done = true;
             break;
+
         default:
             break;
     }
@@ -163,7 +142,7 @@ void twi_handler(nrfx_twi_evt_t const * p_event, void * p_context)
 
 
 
-ret_code_t twi_master_init(void)
+void twi_master_init(void)
 {
     ret_code_t ret;
     const nrfx_twi_config_t config =
@@ -176,13 +155,9 @@ ret_code_t twi_master_init(void)
     };
 
     ret = nrfx_twi_init(&m_twi, &config, twi_handler, NULL);
+    APP_ERROR_CHECK(ret);
 
-    if (NRF_SUCCESS == ret)
-    {
-        nrfx_twi_enable(&m_twi);
-    }
-
-    return ret;
+    nrfx_twi_enable(&m_twi);
 }
 
 
@@ -191,500 +166,206 @@ ret_code_t twi_master_init(void)
 /* base= device address
    offset = reg
  */
-static ret_code_t reg_read_burst(uint8_t base, uint8_t offset, void *data, size_t len)
+static void reg_read_burst(uint8_t base, uint8_t offset, void *data, size_t len)
 {
-    ret_code_t ret;
     uint8_t buffer[]={base, offset};
-    do
-    {
-       m_xfer_done = false;
-       ret = nrfx_twi_tx(&m_twi, NPM1300_ADDR, buffer,sizeof(buffer), true);
-         //if (NRF_SUCCESS != ret)
-         //{
-         //    break;
-         //}
-        while (m_xfer_done == false);
-       m_xfer_done = false;
-       ret = nrfx_twi_rx(&m_twi, NPM1300_ADDR, data, len);
-       while (m_xfer_done == false);
-    }while (0);
 
-    return ret;
+    m_xfer_done = false;
+    APP_ERROR_CHECK(nrfx_twi_tx(&m_twi, NPM1300_ADDR, buffer,sizeof(buffer), true));
+    while (m_xfer_done == false);
+
+    m_xfer_done = false;
+    APP_ERROR_CHECK(nrfx_twi_rx(&m_twi, NPM1300_ADDR, data, len));
+    while (m_xfer_done == false);
 }
 
-static ret_code_t reg_write(uint8_t base, uint8_t offset, uint8_t data)
+static void reg_write(uint8_t base, uint8_t offset, uint8_t data)
 {  
-    ret_code_t ret;
     uint8_t buffer[] = {base, offset, data};
+
     m_xfer_done = false;
-    ret = nrfx_twi_tx(&m_twi, NPM1300_ADDR, buffer, sizeof(buffer), false);
-    APP_ERROR_CHECK(ret);
+    APP_ERROR_CHECK(nrfx_twi_tx(&m_twi, NPM1300_ADDR, buffer, sizeof(buffer), false));
     while (m_xfer_done == false);
-   // for(int i=0; i<100000;i++);
-    return ret;
 }
 
-static ret_code_t reg_write2(uint8_t base, uint8_t offset, uint8_t data1,uint8_t data2)
+static void reg_write2(uint8_t base, uint8_t offset, uint8_t data1,uint8_t data2)
 {
-    ret_code_t ret;
     uint8_t buffer[] = {base, offset, data1, data2};
+
     m_xfer_done = false;
-    ret = nrfx_twi_tx(&m_twi, NPM1300_ADDR, buffer, sizeof(buffer), false);
-    APP_ERROR_CHECK(ret);
+    APP_ERROR_CHECK(nrfx_twi_tx(&m_twi, NPM1300_ADDR, buffer, sizeof(buffer), false));
     while (m_xfer_done == false);
-    return ret;
+}
+
+static void reg_read(uint8_t base, uint8_t offset, uint8_t * pdata)
+{
+    uint8_t buffer[]= { base, offset}; 
+   
+    m_xfer_done = false;
+    APP_ERROR_CHECK(nrfx_twi_tx(&m_twi, NPM1300_ADDR, buffer, sizeof(buffer), true));
+    while (m_xfer_done == false);
+
+    m_xfer_done = false;
+    APP_ERROR_CHECK(nrfx_twi_rx(&m_twi, NPM1300_ADDR, pdata, 1U));
+    while (m_xfer_done == false);
 }
 
 static void calc_temp(uint16_t code,
 		      struct sensor_value *valp)
 {
-	/* Ref: Datasheet Figure 42: Battery temperature (Kelvin) */
-	float log_result = log((1024.f / (float)code) - 1);
-	float inv_temp_k = (1.f / 298.15f) - (log_result / (float)config.thermistor_beta);
+    /* Ref: Datasheet Figure 42: Battery temperature (Kelvin) */
+    float log_result = log((1024.f / (float)code) - 1);
+    float inv_temp_k = (1.f / 298.15f) - (log_result / (float)config.thermistor_beta);
 
-	float temp = (1.f / inv_temp_k) - 273.15f;
+    float temp = (1.f / inv_temp_k) - 273.15f;
 
-	valp->val1 = (int32_t)temp;
-	valp->val2 = (int32_t)(fmodf(temp, 1.f) * 1000000.f);
+    valp->val1 = (int32_t)temp;
+    valp->val2 = (int32_t)(fmodf(temp, 1.f) * 1000000.f);
 }
 
 static uint16_t adc_get_res(uint8_t msb, uint8_t lsb, uint16_t lsb_shift)
 {
-	return ((uint16_t)msb << ADC_MSB_SHIFT) | ((lsb >> lsb_shift) & ADC_LSB_MASK);
+    return ((uint16_t)msb << ADC_MSB_SHIFT) | ((lsb >> lsb_shift) & ADC_LSB_MASK);
 }
 
 static void calc_current(struct npm1300_charger_data *const data, struct sensor_value *valp)
 {
-	int32_t full_scale_ma;
-	int32_t current;
+      int32_t full_scale_ma;
+      int32_t current;
 
-	switch (data->ibat_stat) {
-	case IBAT_STAT_DISCHARGE:
-		full_scale_ma = config.dischg_limit_microamp / 1000;
-		break;
-	case IBAT_STAT_CHARGE_TRICKLE:
-		full_scale_ma = -config.current_microamp / 10000;
-		break;
-	case IBAT_STAT_CHARGE_COOL:
-		full_scale_ma = -config.current_microamp / 2000;
-		break;
-	case IBAT_STAT_CHARGE_NORMAL:
-		full_scale_ma = -config.current_microamp / 1000;
-		break;
-	default:
-		full_scale_ma = 0;
-		break;
-	}
+      switch (data->ibat_stat) {
+      case IBAT_STAT_DISCHARGE:
+              full_scale_ma = config.dischg_limit_microamp / 1000;
+              break;
+      case IBAT_STAT_CHARGE_TRICKLE:
+              full_scale_ma = -config.current_microamp / 10000;
+              break;
+      case IBAT_STAT_CHARGE_COOL:
+              full_scale_ma = -config.current_microamp / 2000;
+              break;
+      case IBAT_STAT_CHARGE_NORMAL:
+              full_scale_ma = -config.current_microamp / 1000;
+              break;
+      default:
+              full_scale_ma = 0;
+              break;
+      }
 
-	current = (data->current * full_scale_ma) / 1024;
+      current = (data->current * full_scale_ma) / 1024;
 
-	valp->val1 = current / 1000;
-	valp->val2 = (current % 1000) * 1000;
+      valp->val1 = current / 1000;
+      valp->val2 = (current % 1000) * 1000;
 }
 
 int npm1300_charger_channel_get(enum sensor_channel chan,struct sensor_value *valp)
-{
-        
-	int32_t tmp;
+{       
+      int32_t tmp;
 
-	switch ((uint32_t)chan) {
-	case SENSOR_CHAN_GAUGE_VOLTAGE:
-		tmp = npm1300_data.voltage * 5000 / 1024;
-		valp->val1 = tmp / 1000;
-		valp->val2 = (tmp % 1000) * 1000;
-		break;
-	case SENSOR_CHAN_GAUGE_TEMP:
-		calc_temp(npm1300_data.temp, valp);
-		break;
-	case SENSOR_CHAN_GAUGE_AVG_CURRENT:
-		calc_current(&npm1300_data, valp);
-		break;
-	case SENSOR_CHAN_NPM1300_CHARGER_STATUS:
-		valp->val1 = npm1300_data.status;
-		valp->val2 = 0;
-		break;
-	case SENSOR_CHAN_NPM1300_CHARGER_ERROR:
-		valp->val1 = npm1300_data.error;
-		valp->val2 = 0;
-		break;
-	case SENSOR_CHAN_GAUGE_DESIRED_CHARGING_CURRENT:
-		valp->val1 = config.current_microamp / 1000000;
-		valp->val2 = config.current_microamp % 1000000;
-		break;
-	case SENSOR_CHAN_GAUGE_MAX_LOAD_CURRENT:
-		valp->val1 = config.dischg_limit_microamp / 1000000;
-		valp->val2 = config.dischg_limit_microamp % 1000000;
-		break;
-	default:
-		return -ENOTSUP;
-	}
+      switch ((uint32_t)chan) {
+      case SENSOR_CHAN_GAUGE_VOLTAGE:
+              tmp = npm1300_data.voltage * 5000 / 1024;
+              valp->val1 = tmp / 1000;
+              valp->val2 = (tmp % 1000) * 1000;
+              break;
+      case SENSOR_CHAN_GAUGE_TEMP:
+              calc_temp(npm1300_data.temp, valp);
+              break;
+      case SENSOR_CHAN_GAUGE_AVG_CURRENT:
+              calc_current(&npm1300_data, valp);
+              break;
+      case SENSOR_CHAN_NPM1300_CHARGER_STATUS:
+              valp->val1 = npm1300_data.status;
+              valp->val2 = 0;
+              break;
+      case SENSOR_CHAN_NPM1300_CHARGER_ERROR:
+              valp->val1 = npm1300_data.error;
+              valp->val2 = 0;
+              break;
+      case SENSOR_CHAN_GAUGE_DESIRED_CHARGING_CURRENT:
+              valp->val1 = config.current_microamp / 1000000;
+              valp->val2 = config.current_microamp % 1000000;
+              break;
+      case SENSOR_CHAN_GAUGE_MAX_LOAD_CURRENT:
+              valp->val1 = config.dischg_limit_microamp / 1000000;
+              valp->val2 = config.dischg_limit_microamp % 1000000;
+              break;
+      default:
+              return NRF_ERROR_NOT_SUPPORTED; 
+      }
 
-	return 0;
+      return 0;
 }
 
-static ret_code_t reg_read(uint8_t base, uint8_t offset, uint8_t * pdata)
+void npm1300_charger_sample_fetch(void)
 {
-    ret_code_t ret;
-    uint8_t buffer[]= { base, offset}; 
-    do
-    {    
-       m_xfer_done = false;
-       ret = nrfx_twi_tx(&m_twi, NPM1300_ADDR, buffer, sizeof(buffer), true);
-        while (m_xfer_done == false);
-       //if (NRF_SUCCESS != ret)
-       //{
-       //    break;
-       //}
-       m_xfer_done = false;
-       ret = nrfx_twi_rx(&m_twi, NPM1300_ADDR, pdata, 1U);
-        while (m_xfer_done == false);
-    }while (0);
-    return ret;
+    bool last_vbus;
+
+    /* Read charge status and error reason */
+    reg_read(CHGR_BASE, CHGR_OFFSET_CHG_STAT, &npm1300_data.status);    
+    reg_read(CHGR_BASE, CHGR_OFFSET_ERR_REASON, &npm1300_data.error);
+    
+    /* Read adc results */
+    reg_read_burst(ADC_BASE, ADC_OFFSET_RESULTS, &adc_results, sizeof(adc_results));
+    
+    npm1300_data.voltage = adc_get_res(adc_results.msb_vbat, adc_results.lsb_a, ADC_LSB_VBAT_SHIFT);
+    npm1300_data.temp = adc_get_res(adc_results.msb_ntc, adc_results.lsb_a, ADC_LSB_NTC_SHIFT);
+    npm1300_data.current = adc_get_res(adc_results.msb_ibat, adc_results.lsb_b, ADC_LSB_IBAT_SHIFT);
+    npm1300_data.ibat_stat = adc_results.ibat_stat;
+
+    /* Trigger temperature measurement */
+    reg_write(ADC_BASE, ADC_OFFSET_TASK_TEMP, 1U);
+    
+    /* Trigger current and voltage measurement */
+    reg_write(ADC_BASE, ADC_OFFSET_TASK_VBAT, 1U);
+    
+
+    /* Read vbus status, and set SW current limit on new vbus detection */
+    last_vbus = (npm1300_data.vbus_stat & 1U) != 0U;
+    reg_read(VBUS_BASE, VBUS_OFFSET_STATUS, &npm1300_data.vbus_stat);
+    
+
+    if (!last_vbus && ((npm1300_data.vbus_stat & 1U) != 0U)) {
+            reg_write(VBUS_BASE, VBUS_OFFSET_TASK_UPDATE, 1U);		
+    }   
 }
 
-int npm1300_charger_sample_fetch(void)
+void npm1300_charger_init(void)
 {
-	//struct npm1300_charger_data *data = NULL;
-	//struct adc_results_t results;
-	bool last_vbus;
-	int ret;
+    static uint8_t results = 0;
+    static uint8_t res_buf[11] = {0};
 
-	/* Read charge status and error reason */
-	ret = reg_read(CHGR_BASE, CHGR_OFFSET_CHG_STAT, &npm1300_data.status);
-	if (ret != 0) {
-		return ret;
-	}
-
-	ret = reg_read(CHGR_BASE, CHGR_OFFSET_ERR_REASON, &npm1300_data.error);
-	if (ret != 0) {
-		return ret;
-	}
-
-	/* Read adc results */
-	ret = reg_read_burst(ADC_BASE, ADC_OFFSET_RESULTS, &results, sizeof(results));
-	if (ret != 0) {
-		return ret;
-	}
-
-	npm1300_data.voltage = adc_get_res(results.msb_vbat, results.lsb_a, ADC_LSB_VBAT_SHIFT);
-	npm1300_data.temp = adc_get_res(results.msb_ntc, results.lsb_a, ADC_LSB_NTC_SHIFT);
-	npm1300_data.current = adc_get_res(results.msb_ibat, results.lsb_b, ADC_LSB_IBAT_SHIFT);
-	npm1300_data.ibat_stat = results.ibat_stat;
-
-	/* Trigger temperature measurement */
-	ret = reg_write(ADC_BASE, ADC_OFFSET_TASK_TEMP, 1U);
-	if (ret != 0) {
-		return ret;
-	}
-
-	/* Trigger current and voltage measurement */
-	ret = reg_write(ADC_BASE, ADC_OFFSET_TASK_VBAT, 1U);
-	if (ret != 0) {
-		return ret;
-	}
-
-	/* Read vbus status, and set SW current limit on new vbus detection */
-	last_vbus = (npm1300_data.vbus_stat & 1U) != 0U;
-	ret = reg_read(VBUS_BASE, VBUS_OFFSET_STATUS, &npm1300_data.vbus_stat);
-	if (ret != 0) {
-		return ret;
-	}
-
-	if (!last_vbus && ((npm1300_data.vbus_stat & 1U) != 0U)) {
-		ret = reg_write(VBUS_BASE, VBUS_OFFSET_TASK_UPDATE, 1U);
-
-		if (ret != 0) {
-			return ret;
-		}
-	}
-
-        printf("results:ibat=%d,vbat=%d,ntc=%d, \n",results.ibat_stat,results.msb_vbat,results.msb_ntc);
-
-	return ret;
+    reg_read_burst(0x08, 0x0c, &results, sizeof(results));  
+    reg_write(0x08, 0x05, 0x00);
+    reg_write(0x04, 0x0A, 0x17);
+    reg_read_burst(0x04, 0x0f, &results, sizeof(results));
+    reg_write(0x04, 0x0F, 0x02);
+    reg_read_burst(0x04, 0x0F, &results, sizeof(results)); 
+    reg_read_burst(0x04, 0x0A, &results, sizeof(results));
+    reg_write(0x04, 0x0B, 0x0F);
+    reg_read_burst(0x04, 0x0C, &results, sizeof(results));
+    reg_write(0x04, 0x0C, 0x90);
+    reg_read_burst(0x04, 0x0D, &results, sizeof(results));
+    reg_write(0x04, 0x0D, 0x18);
+    reg_read_burst(0x04, 0x0E, &results, sizeof(results));
+    reg_write(0x04, 0x0D, 0x98);
+    reg_read_burst(0x04, 0x0F, &results, sizeof(results));  
+    reg_read_burst(0x04, 0x10, &results, sizeof(results));
+    reg_write(0x05, 0x0A, 0x01);  
+    reg_write(0x03, 0x0C, 0x07);
+    reg_write(0x03, 0x0d, 0x04);
+    reg_write2(0x03, 0x08, 0x25,0x00);
+    reg_write2(0x03, 0x0A, 0x9A,0x01);
+    reg_write(0x02, 0x01, 0x05);
+    reg_write(0x05, 0x24, 0x01);
+    reg_write(0x05, 0x00, 0x01);
+    reg_write(0x05, 0x01, 0x01);
+    reg_write(0x03, 0x04, 0x01);
+    reg_read_burst(0x03, 0x34, &results, sizeof(results));
+    reg_read_burst(0x03, 0x36, &results, sizeof(results));
+    reg_read_burst(0x05, 0x10, &res_buf, sizeof(res_buf));
+    reg_write(0x05, 0x01, 0x01);
+    reg_write(0x05, 0x00, 0x01);
+    reg_read_burst(0x02, 0x07, &results, sizeof(results));
+    reg_write(0x02, 0x00, 0x01);
 }
 
-int npm1300_charger_init(void)
-{
-
-  uint8_t results = 0;
-  uint8_t res_buf[11] = {0};
-  int ret;
-  //w 08 0c,r 00
-   ret = reg_read_burst(0x08, 0x0c, &results, sizeof(results));
-   if (ret != 0) {
-      return ret;
-  }
-  //w 08 05 00
-  ret = reg_write(0x08, 0x05, 0x00);
-  if (ret != 0) {
-    return ret;
-  }
-  //w 04 0A 17
-  ret = reg_write(0x04, 0x0A, 0x17);
-  if (ret != 0) {
-    return ret;
-  }
-  //w 04 0f,r 02
-   ret = reg_read_burst(0x04, 0x0f, &results, sizeof(results));
-   if (ret != 0) {
-      return ret;
-  }
-   //w 04 0F 02
-  ret = reg_write(0x04, 0x0F, 0x02);
-  if (ret != 0) {
-    return ret;
-  }
- 
-   ret = reg_read_burst(0x04, 0x0F, &results, sizeof(results));
-   if (ret != 0) {
-      return ret;
-  }
-
-    //w 04 0A,r 17
-   ret = reg_read_burst(0x04, 0x0A, &results, sizeof(results));
-   if (ret != 0) {
-      return ret;
-  }
-
-     //w 04 0B 0F
-  ret = reg_write(0x04, 0x0B, 0x0F);
-  if (ret != 0) {
-    return ret;
-  }
-
-   //w 04 0C,r 90
-   ret = reg_read_burst(0x04, 0x0C, &results, sizeof(results));
-   if (ret != 0) {
-      return ret;
-  }
-
-  ret = reg_write(0x04, 0x0C, 0x90);
-  if (ret != 0) {
-    return ret;
-  }
-
-   ret = reg_read_burst(0x04, 0x0D, &results, sizeof(results));
-   if (ret != 0) {
-      return ret;
-  }
-
-   ret = reg_write(0x04, 0x0D, 0x18);
-  if (ret != 0) {
-    return ret;
-  }
-
-  ret = reg_read_burst(0x04, 0x0E, &results, sizeof(results));
-   if (ret != 0) {
-      return ret;
-  }
-
-     ret = reg_write(0x04, 0x0D, 0x98);
-  if (ret != 0) {
-    return ret;
-  }
-
-   ret = reg_read_burst(0x04, 0x0F, &results, sizeof(results));
-   if (ret != 0) {
-      return ret;
-  }
-  ret = reg_read_burst(0x04, 0x10, &results, sizeof(results));
-   if (ret != 0) {
-      return ret;
-  }
-
-     ret = reg_write(0x05, 0x0A, 0x01);
-  if (ret != 0) {
-    return ret;
-  }
-      ret = reg_write(0x03, 0x0C, 0x07);
-  if (ret != 0) {
-    return ret;
-  }
-      ret = reg_write(0x03, 0x0d, 0x04);
-  if (ret != 0) {
-    return ret;
-  }
-
-      ret = reg_write2(0x03, 0x08, 0x25,0x00);
-  if (ret != 0) {
-    return ret;
-  }
-
-        ret = reg_write2(0x03, 0x0A, 0x9A,0x01);
-  if (ret != 0) {
-    return ret;
-  }
-
-        ret = reg_write(0x02, 0x01, 0x05);
-  if (ret != 0) {
-    return ret;
-  }
-
-   ret = reg_write(0x05, 0x24, 0x01);
-  if (ret != 0) {
-    return ret;
-  }
-   ret = reg_write(0x05, 0x00, 0x01);
-  if (ret != 0) {
-    return ret;
-  }
-   ret = reg_write(0x05, 0x01, 0x01);
-  if (ret != 0) {
-    return ret;
-  }
-   ret = reg_write(0x03, 0x04, 0x01);
-  if (ret != 0) {
-    return ret;
-  }
-
-   ret = reg_read_burst(0x03, 0x34, &results, sizeof(results));
-   if (ret != 0) {
-      return ret;
-  }
-  ret = reg_read_burst(0x03, 0x36, &results, sizeof(results));
-   if (ret != 0) {
-      return ret;
-  }
-
-  ret = reg_read_burst(0x05, 0x10, &res_buf, sizeof(res_buf));
-   if (ret != 0) {
-      return ret;
-  }
-    ret = reg_write(0x05, 0x01, 0x01);
-  if (ret != 0) {
-    return ret;
-  }
-  ret = reg_write(0x05, 0x00, 0x01);
-  if (ret != 0) {
-    return ret;
-  }
-   ret = reg_read_burst(0x02, 0x07, &results, sizeof(results));
-   if (ret != 0) {
-      return ret;
-  }
-
-    ret = reg_write(0x02, 0x00, 0x01);
-  if (ret != 0) {
-    return ret;
-  }
-
-}
-
-#if 0
-int npm1300_charger_init(void)
-{
-	struct npm1300_charger_config *config = NULL;
-        config->term_microvolt = 0x3f52f0;
-        config->term_warm_microvolt = 0x3d0900; 
-        config->current_microamp = 0x249f0;
-        config->dischg_limit_microamp = 0xf4240;
-        config->vbus_limit_microamp = 0x7a120;
-
-	uint16_t idx;
-	int ret;
-
-	/* Configure thermistor */
-	ret = reg_write(ADC_BASE, ADC_OFFSET_NTCR_SEL, config->thermistor_idx + 1U);
-	if (ret != 0) {
-		return ret;
-	}
-
-	/* Configure termination voltages */
-	//ret = linear_range_group_get_win_index(charger_volt_ranges, ARRAY_SIZE(charger_volt_ranges),
-	//				       config->term_microvolt, config->term_microvolt,
-	//				       &idx);
-	//if (ret != 0) {
-	//	return ret;
-	//}
-        idx = 4; // Configure termination voltages setting to 4V
-	ret = reg_write(CHGR_BASE, CHGR_OFFSET_VTERM, idx);
-	if (ret != 0) {
-		return ret;
-	}
-
-	//ret = linear_range_group_get_win_index(charger_volt_ranges, ARRAY_SIZE(charger_volt_ranges),
-	//				       config->term_warm_microvolt,
-	//				       config->term_warm_microvolt, &idx);
-	//if (ret != 0) {
-	//	return ret;
-	//}
-
-        idx = 6; //Battery Charger Termination Voltage Warm temp setting to 4.1V
-
-	ret = reg_write(CHGR_BASE, CHGR_OFFSET_VTERM_R, idx);
-	if (ret != 0) {
-		return ret;
-	}
-
-	/* Set current, allow rounding down to closest value */
-	//ret = linear_range_get_win_index(&charger_current_range,
-	//				 config->current_microamp - charger_current_range.step,
-	//				 config->current_microamp, &idx);
-	//if (ret != 0) {
-	//	return ret;
-	//}
-
-        idx = 0x08;  // 32mA
-
-	ret = reg_write2(CHGR_BASE, CHGR_OFFSET_ISET, idx / 2U, idx & 1U);
-	if (ret != 0) {
-		return ret;
-	}
-
-	/* Set discharge limit, allow rounding down to closest value */
-	//ret = linear_range_get_win_index(&discharge_limit_range,
-	//				 config->dischg_limit_microamp - discharge_limit_range.step,
-	//				 config->dischg_limit_microamp, &idx);
-	//if (ret != 0) {
-	//	return ret;
-	//}
-
-        idx = 0xCF;  // 1A
-	ret = reg_write2(CHGR_BASE, CHGR_OFFSET_ISET_DISCHG, idx / 2U, idx & 1U);
-	if (ret != 0) {
-		return ret;
-	}
-
-	///* Configure vbus current limit */
-	//ret = linear_range_group_get_win_index(vbus_current_ranges, ARRAY_SIZE(vbus_current_ranges),
-	//				       config->vbus_limit_microamp,
-	//				       config->vbus_limit_microamp, &idx);
-	//if (ret != 0) {
-	//	return ret;
-	//}
-        idx = 0;//  500mA
-	ret = reg_write(VBUS_BASE, VBUS_OFFSET_ILIM, idx);
-	if (ret != 0) {
-		return ret;
-	}
-
-	/* Enable current measurement */
-	ret = reg_write(ADC_BASE, ADC_OFFSET_IBAT_EN, 1U);
-	if (ret != 0) {
-		return ret;
-	}
-
-	/* Trigger current and voltage measurement */
-	ret = reg_write(ADC_BASE, ADC_OFFSET_TASK_VBAT, 1U);
-	if (ret != 0) {
-		return ret;
-	}
-
-	/* Trigger temperature measurement */
-	ret = reg_write(ADC_BASE, ADC_OFFSET_TASK_TEMP, 1U);
-	if (ret != 0) {
-		return ret;
-	}
-
-	/* Enable charging if configured */
-	if (config->charging_enable) {
-		ret = reg_write(CHGR_BASE, CHGR_OFFSET_EN_SET, 1U);
-		if (ret != 0) {
-			return ret;
-		}
-	}
-
-	return 0;
-}
-
-#endif

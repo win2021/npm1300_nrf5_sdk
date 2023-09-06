@@ -39,12 +39,12 @@
  */
 /** @file
  *
- * @defgroup blinky_example_main main.c
+ * @defgroup npm1300_example_main main.c
  * @{
- * @ingroup blinky_example
+ * @ingroup npm1300_example
  * @brief Blinky Example Application main file.
  *
- * This file contains the source code for a sample application to blink LEDs.
+ * This file contains the source code for a sample application to blink LEDs and npm1300 fuel gauge fuction.
  *
  */
 
@@ -54,6 +54,9 @@
 #include "boards.h"
 #include "nrf_power.h"
 #include "fuel_gauge.h"
+#include "nrf_log.h"
+#include "nrf_log_ctrl.h"
+#include "nrf_log_default_backends.h"
 /**
  * @brief Function for application main entry.
  */
@@ -69,7 +72,7 @@ int main(void)
 
     val += 1;
 
-    if (fuel_gauge_init() < 0) {
+    if (fuel_gauge_init() != 0) {
 	printf("Could not initialise fuel gauge.\n");
 	return 0;
     }
@@ -79,8 +82,7 @@ int main(void)
     while (true)
     {
         fuel_gauge_update();
-        //npm1300_charger_sample_fetch();
-      
+    
         for (int i = 0; i < LEDS_NUMBER; i++)
         {
             bsp_board_led_invert(i);

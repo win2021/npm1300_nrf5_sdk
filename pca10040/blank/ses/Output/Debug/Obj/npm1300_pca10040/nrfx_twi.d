@@ -55,6 +55,7 @@ Output/Debug/Obj/npm1300_pca10040/nrfx_twi.o: \
  ../../../../../../components/libraries/util/app_util.h \
  ../../../../../../components/libraries/util/sdk_macros.h \
  ../../../../../../components/libraries/experimental_section_vars/nrf_section.h \
+ ../../../../../../components/libraries/strerror/nrf_strerror.h \
  ../../../../../../components/libraries/log/src/nrf_log_internal.h \
  ../../../../../../components/libraries/log/nrf_log_instance.h \
  ../../../../../../components/libraries/log/nrf_log_types.h \
